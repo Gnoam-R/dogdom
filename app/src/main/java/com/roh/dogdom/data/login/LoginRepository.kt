@@ -1,4 +1,7 @@
 package com.roh.dogdom.data.login
 
-class LoginRepository {
+interface LoginRepository {
+    fun kakaoLogin() : Boolean
+    fun goEmailSignUp() : Boolean
+    fun goMasterLogin() : Boolean
 }
