@@ -7,28 +7,87 @@
     <data>
         <variable
             name="vm"
-            type="com.roh.dogdom.views.LoginViewModel" />
+            type="com.roh.dogdom.views.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_login_image_dark"
         >
 
-        <TextView
-            android:id="@+id/test1"
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/appCompatImageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="342dp"
-            android:layout_marginBottom="712dp"
-            android:text="hello world"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="157dp"
+            android:src="@drawable/ic_dogdom_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bt_login_phone_number"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="319dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/iv_login_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2">
 
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/bt_login_get_captcha"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/iv_login_captcha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_login_phone_number" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_password_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="235dp"
+            android:gravity="center"
+            android:text="@string/password_to_login_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_login_get_captcha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_13sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bg_bottom_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </layout>

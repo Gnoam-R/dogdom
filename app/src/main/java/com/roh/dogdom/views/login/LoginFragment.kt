@@ -1,4 +1,4 @@
-package com.roh.dogdom.views
+package com.roh.dogdom.views.login
 
 import android.os.Bundle
 import android.view.View

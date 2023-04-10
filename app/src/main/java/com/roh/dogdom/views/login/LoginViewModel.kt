@@ -1,4 +1,4 @@
-package com.roh.dogdom.views
+package com.roh.dogdom.views.login
 
 import com.roh.dogdom.base.BaseViewModel
 import com.roh.dogdom.data.login.LoginRepository
