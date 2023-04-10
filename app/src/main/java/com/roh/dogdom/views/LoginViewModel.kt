@@ -5,15 +5,15 @@ import com.roh.dogdom.data.login.LoginRepository
 
 class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel (){
 
-    fun kakaoLogin() : Boolean {
-
-
-        viewModelScope.launch {
-            loginRepository.kakaoLogin()
-            return true
-        }
-
-    }
+//    fun kakaoLogin() : Boolean {
+//
+//
+//        viewModelScope.launch {
+//            loginRepository.kakaoLogin()
+//            return true
+//        }
+//
+//    }
 
     fun goEmailSignUp() : Boolean {
         loginRepository.goEmailSignUp()
