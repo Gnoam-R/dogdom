@@ -33,11 +33,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
     }
 
     private fun moveNextScreen() {
-        if(isAdded) {
-            findNavController().navigate(
-                SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-            )
-        }
+        findNavController().navigate(
+            SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+        )
     }
 
 }
