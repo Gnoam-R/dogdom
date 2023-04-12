@@ -1,6 +1,7 @@
 package com.roh.dogdom.views.todo
 
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.roh.dogdom.data.todo.Todo
 import com.roh.dogdom.data.todo.TodoRepository
@@ -17,7 +18,7 @@ class AddEditTodoViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _todo = MutableLiveData<Todo>(null)
-    val todo: LiveData<Todo> get()= _todo
+    val todo: LiveData<Todo?> get()= _todo
 
     private var _title = MutableLiveData<String>("")
     val title: LiveData<String?> get() = _title
@@ -33,27 +34,32 @@ class AddEditTodoViewModel @Inject constructor(
         if (todoId != -1) {
             viewModelScope.launch {
                 repository.getTodoById(todoId)?.let { todo ->
-                    title = todo.title
-                    description = todo.description
-                    this@AddEditTodoViewModel.todo = todo
+                    _title.value = todo.title ?: ""
+                    _description.value = todo.description ?: ""
+                    this@AddEditTodoViewModel._todo.value = todo
                 }
 
             }
         }
+        onEvent()
+        Log.e("AddEditTodoViewModel", "check3")
     }
     fun onEvent() {
+        Log.e("AddEditTodoViewModel", "check1")
         viewModelScope.launch {
-            if(title.isBlank()){
-
-            }
+//            if(title.isBlank()){
+//
+//            }
+            Log.e("AddEditTodoViewModel", "check2")
             repository.insertTodo(
                 Todo(
                     title = "title",
                     description =  "description",
-                    isDone = todo?.isDone ?: false,
-                    id = todo?.id
+                    isDone = true,
+//                    id = todo?.id
                 )
             )
+
         }
     }
 
