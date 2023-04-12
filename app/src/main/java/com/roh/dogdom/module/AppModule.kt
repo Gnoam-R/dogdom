@@ -1,12 +1,12 @@
 package com.roh.dogdom.module
 
 import android.app.Application
-import com.roh.dogdom.data.TodoDatabase
+import com.roh.dogdom.data.todo.TodoDatabase
 import dagger.Module
 import dagger.Provides
 import androidx.room.Room
-import com.roh.dogdom.data.TodoRepository
-import com.roh.dogdom.data.TodoRepositoryImpl
+import com.roh.dogdom.data.todo.TodoRepository
+import com.roh.dogdom.data.todo.TodoRepositoryImpl
 
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
