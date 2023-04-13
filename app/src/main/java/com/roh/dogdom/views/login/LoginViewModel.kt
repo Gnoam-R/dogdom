@@ -1,33 +1,32 @@
 package com.roh.dogdom.views.login
 
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
 import com.roh.dogdom.base.BaseViewModel
 import com.roh.dogdom.data.login.LoginRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
-
-class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel (){
-
-//    fun kakaoLogin() : Boolean {
+//@HiltViewModel
+//class LoginViewModel @Inject constructor(
+//    private val loginRepository: LoginRepository,
+//    savedStateHandle: SavedStateHandle
+//) : ViewModel() {
 //
 //
-//        viewModelScope.launch {
-//            loginRepository.kakaoLogin()
-//            return true
-//        }
 //
+//    fun goEmailSignUp() : Boolean {
+//        loginRepository.goEmailSignUp()
+//        return true
 //    }
-
-    fun goEmailSignUp() : Boolean {
-        loginRepository.goEmailSignUp()
-        return true
-    }
-
-    fun goMasterLogin() : Boolean {
-        loginRepository.goMasterLogin()
-        return true
-    }
-
-    fun onBackButtonClick() {
-//        _backClick.call()
-    }
-}
+//
+//    fun goMasterLogin() : Boolean {
+//        loginRepository.goMasterLogin()
+//        return true
+//    }
+//
+//    fun onBackButtonClick() {
+////        _backClick.call()
+//    }
+//}

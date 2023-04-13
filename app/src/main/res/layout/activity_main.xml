@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-        <variable
-            name="vm"
-            type="com.roh.dogdom.MainActivity" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.MainActivity" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
