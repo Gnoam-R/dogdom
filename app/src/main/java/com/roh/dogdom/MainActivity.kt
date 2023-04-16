@@ -38,6 +38,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         }
          */
+
+        // BottomNavigation 사용
+
     }
 
 }

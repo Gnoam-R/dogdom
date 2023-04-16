@@ -29,12 +29,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private val userViewModel:TodoListViewModel by viewModels()
 
     override fun init() {
-        moveNextScreen()
 
 //        binding.vm = userViewModel
 //        putData()
 //        readData()
-
+        binding.btLoginGetCaptcha.setOnClickListener {
+            moveNextScreen()
+        }
     }
 
     private fun putData() {
@@ -62,7 +63,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private fun moveNextScreen() {
         findNavController().navigate(
-            SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+            LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
         )
     }
 }

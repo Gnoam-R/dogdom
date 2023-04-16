@@ -26,6 +26,16 @@
         android:name="com.roh.dogdom.views.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login"
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_masterMainFragment"
+            app:destination="@id/masterMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/masterMainFragment"
+        android:name="com.roh.dogdom.views.main.MasterMainFragment"
+        android:label="MasterMainFragment"
+        tools:layout="@layout/fragment_master_main"
         />
 
 </navigation>
