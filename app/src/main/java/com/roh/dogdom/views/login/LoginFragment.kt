@@ -1,24 +1,16 @@
 package com.roh.dogdom.views.login
 
-import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.todo.Todo
 import com.roh.dogdom.databinding.FragmentLoginBinding
-import com.roh.dogdom.views.splash.SplashFragmentDirections
 import com.roh.dogdom.views.todo.TodoListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.flow.collect
 
 
 @AndroidEntryPoint
@@ -38,6 +30,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         }
     }
 
+    
     private fun putData() {
         val getName = "노형우"
         val getAge = "28"
