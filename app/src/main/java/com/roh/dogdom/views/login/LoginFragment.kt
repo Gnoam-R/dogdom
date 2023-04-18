@@ -30,7 +30,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         }
     }
 
-    
+
     private fun putData() {
         val getName = "노형우"
         val getAge = "28"
