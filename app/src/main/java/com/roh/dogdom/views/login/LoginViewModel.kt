@@ -2,7 +2,7 @@ package com.roh.dogdom.views.login
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.roh.dogdom.base.BaseViewModel
+import com.roh.dogdom.data.base.BaseViewModel
 import com.roh.dogdom.data.login.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

@@ -7,13 +7,19 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import com.roh.dogdom.base.BaseActivity
+import com.roh.dogdom.data.base.BaseActivity
 import com.roh.dogdom.databinding.ActivityMainBinding
 import com.roh.dogdom.module.AppModule.provideTOdoDatabase
+import com.roh.dogdom.navigator.AppNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initNavigation()

@@ -1,4 +1,4 @@
-package com.roh.dogdom.base
+package com.roh.dogdom.data.base
 
 import android.os.Build
 import android.os.Bundle

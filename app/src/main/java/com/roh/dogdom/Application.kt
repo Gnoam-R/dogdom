@@ -1,4 +1,4 @@
-package com.roh.dogdom.module.di
+package com.roh.dogdom
 
 import dagger.hilt.android.HiltAndroidApp
 import android.app.Application

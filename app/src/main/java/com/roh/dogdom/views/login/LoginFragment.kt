@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
-import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.base.BaseFragment
 import com.roh.dogdom.data.todo.Todo
 import com.roh.dogdom.databinding.FragmentLoginBinding
 import com.roh.dogdom.views.todo.TodoListViewModel
