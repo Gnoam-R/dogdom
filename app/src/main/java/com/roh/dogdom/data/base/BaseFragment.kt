@@ -1,5 +1,6 @@
 package com.roh.dogdom.data.base
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,9 @@ abstract class BaseFragment<B : ViewDataBinding>(
 ) : Fragment() {
     lateinit var binding: B
     protected lateinit var thisContext: Context
+
+    lateinit var mContext : Context
+    lateinit var mActivity : Activity
 
     override fun onCreateView(
         inflater: LayoutInflater,
