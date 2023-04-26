@@ -4,12 +4,17 @@ import android.Manifest
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.roh.dogdom.MainActivity
 import com.roh.dogdom.R
 import com.roh.dogdom.data.base.BaseFragment
 import com.roh.dogdom.data.permission.PermissionRepository
@@ -27,6 +32,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 //    private val viewModel: LocalPageViewModel by viewModel()
 
     private val userViewModel:TodoListViewModel by viewModels()
+    private val viewModel by viewModels<LoginViewModel>()
 
     private val repository: PermissionRepository = PermissionRepositoryImpl()
     private val permissionUnder13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA)
@@ -39,8 +45,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private var version13 = true
     private var versionUnder13 = false
 
+
+
     override fun init() {
+        mActivity = activity as MainActivity
         askPermission()
+        binding.vm = viewModel
         binding.btLoginGetCaptcha.setOnClickListener {
             moveNextScreen()
         }

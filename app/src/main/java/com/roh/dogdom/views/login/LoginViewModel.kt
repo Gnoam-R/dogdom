@@ -1,35 +1,29 @@
 package com.roh.dogdom.views.login
 
-import androidx.lifecycle.SavedStateHandle
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.roh.dogdom.data.base.BaseViewModel
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.data.login.LoginRepository
-import com.roh.dogdom.data.login.LoginRepositoryImpl
-import dagger.Provides
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import javax.inject.Singleton
-
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    @Singleton
-    private val loginRepository: LoginRepositoryImpl,
-    savedStateHandle: SavedStateHandle
-) : ViewModel() {
+    private val repository: LoginRepository
+) : ViewModel(){
 
+    init {
+        Log.e("LoginViewModel", "${repository.goEmailSignUp()}")
+    }
 
-//    fun goEmailSignUp() : Boolean {
-////        loginRepository.goEmailSignUp()
-//        return true
-//    }
-//
-//    fun goMasterLogin() : Boolean {
-////        loginRepository.goMasterLogin()
-//        return true
-//    }
-//
-//    fun onBackButtonClick() {
-////        _backClick.call()
-//    }
+    fun Log() {
+        Log.e("LoginViewModel", "check")
+    }
+
+    fun moveNextScreen() {
+        findNavController().navigate(
+            LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
+        )
+    }
 }

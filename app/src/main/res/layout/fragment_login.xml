@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.roh.dogdom.views.todo.TodoListViewModel" />
+            type="com.roh.dogdom.views.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +33,7 @@
             android:layout_width="319dp"
             android:layout_height="60dp"
             android:layout_marginTop="40dp"
+            android:onClick="@{()->vm.Log()}"
             android:background="@drawable/iv_login_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
