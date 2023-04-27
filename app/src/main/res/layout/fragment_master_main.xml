@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.roh.dogdom.views.todo.TodoListViewModel" />
+            type="com.roh.dogdom.views.main.MasterMainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,10 +31,11 @@
                 android:id="@+id/bt_tg_select"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="49dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:onClick="@{()->vm.goEx()}"
                 android:button="@drawable/bt_custom_select"
                 android:checked="true"
                 android:gravity="center"
@@ -42,12 +43,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
-
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/bt_tg_discover"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="49dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="112dp"
                 android:layout_marginBottom="10dp"

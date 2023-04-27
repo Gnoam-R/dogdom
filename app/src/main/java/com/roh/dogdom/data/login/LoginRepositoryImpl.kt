@@ -1,5 +1,7 @@
 package com.roh.dogdom.data.login
 
+import android.util.Log
+
 class LoginRepositoryImpl ()
   : LoginRepository {
     override fun kakaoLogin(): Boolean {
@@ -7,6 +9,7 @@ class LoginRepositoryImpl ()
     }
 
     override fun goEmailSignUp(): Boolean {
+        Log.e("LoginRepositoryImpl", "goEmailSignUp")
         return true
     }
 

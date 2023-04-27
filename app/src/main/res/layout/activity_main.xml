@@ -19,7 +19,7 @@
             android:id="@+id/main_fcv_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,27 @@
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/nav_graph"
                 />
+
         </androidx.fragment.app.FragmentContainerView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="34dp"
+            app:itemTextColor="@color/black"
+            app:elevation="0dp"
+            app:itemIconSize="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu" >
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

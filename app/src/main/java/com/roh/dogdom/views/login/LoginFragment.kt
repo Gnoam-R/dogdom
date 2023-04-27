@@ -12,7 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.MainActivity
 import com.roh.dogdom.R
@@ -31,7 +33,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
 //    private val viewModel: LocalPageViewModel by viewModel()
 
-    private val userViewModel:TodoListViewModel by viewModels()
     private val viewModel by viewModels<LoginViewModel>()
 
     private val repository: PermissionRepository = PermissionRepositoryImpl()
@@ -45,15 +46,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private var version13 = true
     private var versionUnder13 = false
 
-
-
     override fun init() {
         mActivity = activity as MainActivity
-        askPermission()
         binding.vm = viewModel
-        binding.btLoginGetCaptcha.setOnClickListener {
-            moveNextScreen()
-        }
+        askPermission()
+        initViewModelCallback()
     }
 
     private fun askPermission() {
@@ -76,7 +73,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 checkNotification =true
             }
         }
-        checkOverlay = repository.checkOverlay()
+//        checkOverlay = repository.checkOverlay()
     }
 
     private fun moveNextView() {
@@ -103,32 +100,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 //            Log.e(TAG,"permission version error")
         }
     }
-    private fun putData() {
-        val getName = "노형우"
-        val getAge = "28"
-        val todo= Todo(getName,getAge.toInt())
-        todo.id  = 1
-        userViewModel.insertTodo(todo)
-        Log.e("LoginFragmnet", "check userViewModel1 : ${todo}")
-    }
-    private fun readData() {
 
-        lifecycleScope.launch {
-//            userViewModel.getTodos().collect { todos ->
-//                // todo: 가져온 데이터 처리
-//                Log.e("LoginFragmnet", "check userViewModel : $todos")
-//            }
-//
-//            userViewModel.getTodos().collect { todos ->
-//                // todo: 가져온 데이터 처리
-//                Log.e("LoginFragmnet", "check userViewModel : $todos")
-//            }
+    private fun initViewModelCallback() {
+        with(viewModel) {
+            goMain.observe(viewLifecycleOwner, Observer {
+                val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
+                findNavController().navigate(direction)
+            })
+            goEmailSignUp.observe(viewLifecycleOwner, Observer {
+                goEmailSignUp()
+            })
         }
-    }
-
-    private fun moveNextScreen() {
-        findNavController().navigate(
-            LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
-        )
     }
 }
