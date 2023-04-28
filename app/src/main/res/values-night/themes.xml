@@ -14,16 +14,15 @@
 <!--        <item name="android:windowLightStatusBar" >@color/black</item>&ndash;&gt;-->
         <!-- Customize your theme here. -->
         <!-- Customize your theme here. -->
-        <item name="windowNoTitle">true</item>
+
         <item name="windowActionBar">false</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:minWidth">0dp</item>
+        <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
 
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowLightStatusBar">false</item>   <!-- 상태바 아이콘(true: 검정 / false: 흰색) -->
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
+<!--        <item name="android:windowLightNavigationBar">true</item>-->
+<!--        <item name="android:windowLightStatusBar">false</item>   &lt;!&ndash; 상태바 아이콘(true: 검정 / false: 흰색) &ndash;&gt;-->
+<!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
 
     </style>
 

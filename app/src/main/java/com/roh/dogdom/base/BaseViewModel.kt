@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.base
+package com.roh.dogdom.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -7,11 +7,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
-import com.roh.dogdom.data.base.BaseFragment
+import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.main.MainPost
 import com.roh.dogdom.databinding.FragmentMasterMainBinding
 import com.roh.dogdom.navigator.AppNavigator
 import com.roh.dogdom.navigator.Screens
+import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import com.roh.dogdom.views.login.LoginFragmentDirections
 import com.roh.dogdom.views.login.LoginViewModel
@@ -35,6 +36,7 @@ class MasterMainFragment : BaseFragment<FragmentMasterMainBinding>(R.layout.frag
     private val buttonsFragment = ButtonsFragment()
 
     override fun init() {
+        SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
         replaceFragment(1, masterMainContentsFirstFragment)
         replaceFragment(2, masterMainContentsSecondFragment)
         initViewModelCallback()

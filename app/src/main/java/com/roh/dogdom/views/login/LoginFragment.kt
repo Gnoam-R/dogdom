@@ -2,30 +2,21 @@ package com.roh.dogdom.views.login
 
 import android.Manifest
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.roh.dogdom.MainActivity
+import com.roh.dogdom.views.startup.MainActivity
 import com.roh.dogdom.R
-import com.roh.dogdom.data.base.BaseFragment
+import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.permission.PermissionRepository
 import com.roh.dogdom.data.permission.PermissionRepositoryImpl
-import com.roh.dogdom.data.todo.Todo
 import com.roh.dogdom.databinding.FragmentLoginBinding
-import com.roh.dogdom.views.todo.TodoListViewModel
+import com.roh.dogdom.util.enumUiColorPos
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -47,6 +38,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private var versionUnder13 = false
 
     override fun init() {
+        SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
         mActivity = activity as MainActivity
         binding.vm = viewModel
         askPermission()
@@ -104,6 +96,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private fun initViewModelCallback() {
         with(viewModel) {
             goMain.observe(viewLifecycleOwner, Observer {
+                // 바텀 네비게이션 설정
+                setBottomNav()
                 val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
                 findNavController().navigate(direction)
             })
