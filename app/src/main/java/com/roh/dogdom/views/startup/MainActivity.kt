@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,31 +25,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val viewModel by viewModels<MainViewModel>()
 
+    private var navHostFragment: Fragment? = null
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initNavHost()
         initBottomMenu()
+//        setBottomNavigation()
         initViewModelCallback()
     }
 
+    private fun initNavHost() {
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host)
+        navController = navHostFragment!!.findNavController()
+    }
+
     private fun initBottomMenu() {
-        viewModel.initBottomMenu(binding.root, findNavController(R.id.main_nav_host))
+        viewModel.initBottomMenu(binding.root, navController)
+        viewModel.setBottomMenu()
     }
 
     private fun initViewModelCallback() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host)
-        val navController = navHostFragment?.findNavController()
-
-        navController!!.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.masterMainFragment -> {
-                    binding.bottomNavigation.visibility = View.VISIBLE
-                }
-                else -> {
-                    binding.bottomNavigation.visibility = View.GONE
-                }
-            }
-        }
 
         with(viewModel) {
 //            goMain.observe(viewLifecycleOwner, Observer {
@@ -59,6 +58,48 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 Log.e("MainActivity", "goEx")
                 goEx()
             })
+        }
+    }
+
+    fun setBottomNavigation() {
+        // 바텀 네비게이션 && jetpack 네비게이션
+
+        binding.bottomNavigation.setupWithNavController(navController)
+        // 기본 아이콘 틴트 색상 제거
+        binding.bottomNavigation.itemIconTintList = null
+        binding.bottomNavigation.visibility = View.VISIBLE
+        binding.bottomNavigation.setOnItemSelectedListener  { MenuItem ->
+            when(MenuItem.itemId) {
+                R.id.main_nav_host -> {
+                    Log.e("BottomMenuRepositoryImpl", "main_nav_host")
+                    true
+                }
+                R.id.main_circle -> {
+//                    navController.navigate(R.id.action_masterGoogleMapFragment_to_reQuest_mission_fragment)
+                    Log.e("BottomMenuRepositoryImpl", "main_circle")
+                    true
+                }
+                R.id.main_release -> {
+//                    navController.navigate(R.id.action_masterGoogleMapFragment_to_giftShop_fragment)
+                    Log.e("BottomMenuRepositoryImpl", "main_release")
+                    true
+                }
+                R.id.main_message -> {
+//                    navController.navigate(R.id.action_masterGoogleMapFragment_to_myPage_fragment)
+                    Log.e("BottomMenuRepositoryImpl", "main_message")
+                    true
+                }
+                R.id.main_user -> {
+                    Log.e("BottomMenuRepositoryImpl", "${MenuItem.itemId}")
+//                    navController.navigate(R.id.action_masterGoogleMapFragment_to_myPage_fragment)
+                    true
+                }
+                else -> {
+                    Log.e("BottomMenuRepositoryImpl", "${MenuItem.itemId}")
+                    false
+                }
+
+            }
         }
     }
 }

@@ -27,5 +27,7 @@ class MainViewModel @Inject constructor(
     fun initBottomMenu(view : View, navController: NavController) {
         bottomMenuRepository.initBottomNavigation(view, navController)
     }
-
+    fun setBottomMenu() {
+        bottomMenuRepository.setBottomNavigation()
+    }
 }
