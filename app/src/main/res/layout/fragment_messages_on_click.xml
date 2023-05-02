@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.views.login.LoginViewModel" />-->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/appCompatImageButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="18dp"
+                android:src="@drawable/ic_title_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/appCompatImageButton2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="123dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_name_ex1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_phone"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/icon_iphone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_vertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_vertical"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="18dp"
+                android:src="@drawable/ic_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="339dp"
+            android:layout_height="44dp"
+            android:background="@drawable/iv_input_messages"
+            android:layout_marginBottom="44dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="The input information"
+                android:textSize="13sp"
+                android:layout_marginStart="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
