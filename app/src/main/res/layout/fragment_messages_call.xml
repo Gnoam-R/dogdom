@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.views.login.LoginViewModel" />-->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_message_call"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="44dp"
+            android:src="@drawable/ic_message_narrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="259dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/bg_message_call2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_call"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="48dp"
+                android:src="@drawable/ic_hang_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/bt_switch_camera"
+                app:layout_constraintStart_toEndOf="@+id/bt_switch_voice"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_switch_voice"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="48dp"
+                android:src="@drawable/ic_switch_voice"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_switch_camera"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="48dp"
+                android:src="@drawable/ic_switch_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                android:layout_width="112dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Switch Voice"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_switch_voice" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="112dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Hang up"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatTextView2"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toBottomOf="@+id/bt_call" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="112dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Switch Camera"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_switch_camera" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
