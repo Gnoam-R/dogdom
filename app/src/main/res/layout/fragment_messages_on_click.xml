@@ -37,31 +37,29 @@
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/appCompatImageButton2"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="123dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_name_ex1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_name_ex1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_phone"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/icon_iphone"
+                android:background="@drawable/icon_iphone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/iv_vertical"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_vertical"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
-                android:src="@drawable/ic_vertical"
+                android:background="@drawable/ic_vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
