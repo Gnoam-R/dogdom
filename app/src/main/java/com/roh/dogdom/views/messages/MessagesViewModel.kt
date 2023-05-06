@@ -18,8 +18,6 @@ class MessagesViewModel @Inject constructor(
     private val _goMain = SingleLiveEvent<Unit>()
     val goMain: LiveData<Unit> get() = _goMain
 
-    
-
     private val _goEmailSignUp = SingleLiveEvent<Unit>()
     val goEmailSignUp: LiveData<Unit> get() = _goEmailSignUp
 
@@ -33,4 +31,5 @@ class MessagesViewModel @Inject constructor(
 //        bottomMenuRepository.setBottomNavigation()
     }
 
+    
 }
