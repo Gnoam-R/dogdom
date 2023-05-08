@@ -1,6 +1,5 @@
-package com.roh.dogdom.views.main
+package com.roh.dogdom.views.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.roh.dogdom.data.main.MasterMainRepository
@@ -10,7 +9,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class MasterMainViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val repository: MasterMainRepository
 ) : ViewModel() {
     private val _goEx = SingleLiveEvent<Unit>()

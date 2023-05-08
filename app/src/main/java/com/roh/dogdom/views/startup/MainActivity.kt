@@ -5,19 +5,13 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseActivity
 import com.roh.dogdom.databinding.ActivityMainBinding
-import com.roh.dogdom.views.main.MasterMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var navHostFragment: Fragment? = null
     private lateinit var navController: NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     private fun initBottomMenu() {
-        viewModel.initBottomMenu(binding.root, navController)
+        viewModel.initBottomMenu(activity = this, binding.root, navController)
         viewModel.setBottomMenu()
     }
 

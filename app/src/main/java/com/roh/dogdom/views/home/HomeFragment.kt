@@ -1,44 +1,40 @@
-package com.roh.dogdom.views.main
+package com.roh.dogdom.views.home
 
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.main.MainPost
-import com.roh.dogdom.databinding.FragmentMasterMainBinding
+import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
 import com.roh.dogdom.navigator.Screens
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
-import com.roh.dogdom.views.login.LoginFragmentDirections
-import com.roh.dogdom.views.login.LoginViewModel
-import com.roh.dogdom.views.splash.SplashFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MasterMainFragment : BaseFragment<FragmentMasterMainBinding>(R.layout.fragment_master_main){
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
     @Inject
     lateinit var navigator: AppNavigator
 
-    private lateinit var masterMainAdapter : MasterMainAdapter
+    private lateinit var homeAdapter : HomeAdapter
     private lateinit var mainPost : MainPost
 
-    private val viewModel by viewModels<MasterMainViewModel>()
+    private val viewModel by viewModels<HomeViewModel>()
 
-    private val masterMainContentsFirstFragment = MasterMainContentsFirstFragment()
-    private val masterMainContentsSecondFragment = MasterMainContentsSecondFragment()
+    private val homeContentsFirstFragment = HomeContentsFirstFragment()
+    private val homeContentsSecondFragment = HomeContentsSecondFragment()
     private val buttonsFragment = ButtonsFragment()
 
     override fun init() {
+
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
-        replaceFragment(1, masterMainContentsFirstFragment)
-        replaceFragment(2, masterMainContentsSecondFragment)
+        replaceFragment(1, homeContentsFirstFragment)
+        replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
 
         binding.btTgAlarm.setOnClickListener {

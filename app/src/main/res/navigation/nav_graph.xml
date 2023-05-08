@@ -33,9 +33,19 @@
     </fragment>
     <fragment
         android:id="@+id/masterMainFragment"
-        android:name="com.roh.dogdom.views.main.MasterMainFragment"
+        android:name="com.roh.dogdom.views.home.HomeFragment"
         android:label="MasterMainFragment"
-        tools:layout="@layout/fragment_master_main"
+        tools:layout="@layout/fragment_home"
+        >
+        <action
+            android:id="@+id/action_masterMainFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.roh.dogdom.views.messages.MessagesFragment"
+        android:label="MessagesFragment"
+        tools:layout="@layout/fragment_messages"
         />
 
 </navigation>

@@ -1,6 +1,5 @@
-package com.roh.dogdom.views.main
+package com.roh.dogdom.views.home
 
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
@@ -10,14 +9,14 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MasterMainContentsSecondFragment :
+class HomeContentsSecondFragment :
     BaseFragment<FragmentMasterMainSecondContentsBinding>(R.layout.fragment_master_main_second_contents){
 
     private var ItemList = MainPost()
-    private lateinit var MyAdapter : MasterMainAdapter
+    private lateinit var MyAdapter : HomeAdapter
 
     override fun init() {
-        MyAdapter = MasterMainAdapter(ItemList)
+        MyAdapter = HomeAdapter(ItemList)
         binding.mainVtRvContainer.adapter = MyAdapter
         binding.mainVtRvContainer.layoutManager = LinearLayoutManager(this.context)
     }

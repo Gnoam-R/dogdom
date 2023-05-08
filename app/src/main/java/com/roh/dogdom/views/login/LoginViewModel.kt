@@ -32,7 +32,8 @@ class LoginViewModel @Inject constructor(
     }
     fun setBottomNav() {
         Log.e("LoginViewModel", "setBottomNav")
-//        bottomMenuRepository.setBottomNavigation()
+        bottomMenuRepository.setBottomNavigation()
     }
+
 
 }

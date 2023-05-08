@@ -1,15 +1,13 @@
-package com.roh.dogdom.views.main
+package com.roh.dogdom.views.home
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roh.dogdom.data.main.MainPost
 import com.roh.dogdom.databinding.ItemMasterMainVerticalSecondRecyclerBinding
 
-class MasterMainAdapter(var AdapterItem: MainPost)
-    : RecyclerView.Adapter<MasterMainAdapter.ViewHolder> () {
+class HomeAdapter(var AdapterItem: MainPost)
+    : RecyclerView.Adapter<HomeAdapter.ViewHolder> () {
 
     private var listener : OnItemClickListener? = null
 

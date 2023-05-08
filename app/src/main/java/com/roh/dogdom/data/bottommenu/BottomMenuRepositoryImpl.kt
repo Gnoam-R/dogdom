@@ -1,27 +1,35 @@
 package com.roh.dogdom.data.bottommenu
 
+import android.app.Activity
 import android.util.Log
 import android.view.View
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.roh.dogdom.R
+import com.roh.dogdom.views.home.HomeFragmentDirections
 
 class BottomMenuRepositoryImpl() : BottomMenuRepository {
 
-
+    private lateinit var mActivity : Activity
     private lateinit var mView : View
     private lateinit var mNavController : NavController
     private lateinit var mNavView : BottomNavigationView
 
-    override fun initBottomNavigation(view: View, navController: NavController){
+    override fun initBottomNavigation(activity : Activity, view: View, navController: NavController){
+        mActivity = activity
         mView = view
         mNavController = navController
         mNavView = mView.findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
+        // navigation view를 보여줄 fragment를 추가
         navController!!.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.masterMainFragment -> {
+                    mNavView.visibility = View.VISIBLE
+                }
+                R.id.messagesFragment -> {
                     mNavView.visibility = View.VISIBLE
                 }
                 else -> {
@@ -56,6 +64,8 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                 R.id.main_message -> {
 //                    navController.navigate(R.id.action_masterGoogleMapFragment_to_myPage_fragment)
                     Log.e("BottomMenuRepositoryImpl", "main_message")
+                    val direction: NavDirections = HomeFragmentDirections.actionMasterMainFragmentToMessagesFragment()
+                    mNavController.navigate(direction)
                     true
                 }
                 R.id.main_user -> {

@@ -1,5 +1,6 @@
 package com.roh.dogdom.views.startup
 
+import android.app.Activity
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -24,8 +25,8 @@ class MainViewModel @Inject constructor(
         _goEx.call()
     }
 
-    fun initBottomMenu(view : View, navController: NavController) {
-        bottomMenuRepository.initBottomNavigation(view, navController)
+    fun initBottomMenu(activity: Activity, view : View, navController: NavController) {
+        bottomMenuRepository.initBottomNavigation(activity, view, navController)
     }
     fun setBottomMenu() {
         bottomMenuRepository.setBottomNavigation()
