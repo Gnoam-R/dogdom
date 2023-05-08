@@ -4,13 +4,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.main.MainPost
-import com.roh.dogdom.databinding.FragmentMasterMainSecondContentsBinding
+import com.roh.dogdom.databinding.FragmentHomeSecondContentsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class HomeContentsSecondFragment :
-    BaseFragment<FragmentMasterMainSecondContentsBinding>(R.layout.fragment_master_main_second_contents){
+    BaseFragment<FragmentHomeSecondContentsBinding>(R.layout.fragment_home_second_contents){
 
     private var ItemList = MainPost()
     private lateinit var MyAdapter : HomeAdapter

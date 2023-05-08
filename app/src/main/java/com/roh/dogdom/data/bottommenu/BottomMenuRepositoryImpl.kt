@@ -8,7 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.roh.dogdom.R
-import com.roh.dogdom.views.home.HomeFragmentDirections
+import com.roh.dogdom.views.login.LoginFragmentDirections
 
 class BottomMenuRepositoryImpl() : BottomMenuRepository {
 
@@ -47,8 +47,10 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
         mNavView.itemIconTintList = null
         mNavView.setOnItemSelectedListener  { MenuItem ->
             when(MenuItem.itemId) {
-                R.id.main_nav_host -> {
-                    Log.e("BottomMenuRepositoryImpl", "main_nav_host")
+                R.id.main_home -> {
+                    Log.e("BottomMenuRepositoryImpl", "main_home")
+                    val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
+                    mNavController.navigate(direction)
                     true
                 }
                 R.id.main_circle -> {
@@ -64,7 +66,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                 R.id.main_message -> {
 //                    navController.navigate(R.id.action_masterGoogleMapFragment_to_myPage_fragment)
                     Log.e("BottomMenuRepositoryImpl", "main_message")
-                    val direction: NavDirections = HomeFragmentDirections.actionMasterMainFragmentToMessagesFragment()
+                    val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToMessagesFragment()
                     mNavController.navigate(direction)
                     true
                 }

@@ -2,13 +2,13 @@ package com.roh.dogdom.views.home
 
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.databinding.FragmentMasterMainFirstContentsBinding
+import com.roh.dogdom.databinding.FragmentHomeFirstContentsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class HomeContentsFirstFragment :
-    BaseFragment<FragmentMasterMainFirstContentsBinding>(R.layout.fragment_master_main_first_contents) {
+    BaseFragment<FragmentHomeFirstContentsBinding>(R.layout.fragment_home_first_contents) {
 
     override fun init() {
 

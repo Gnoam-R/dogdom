@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roh.dogdom.data.main.MainPost
-import com.roh.dogdom.databinding.ItemMasterMainVerticalSecondRecyclerBinding
+import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
 
 class HomeAdapter(var AdapterItem: MainPost)
     : RecyclerView.Adapter<HomeAdapter.ViewHolder> () {
@@ -18,7 +18,7 @@ class HomeAdapter(var AdapterItem: MainPost)
         this.listener = listener
     }
 
-    inner class ViewHolder(private val binding: ItemMasterMainVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         val ivPost = binding.ivPost
         val ivProfile = binding.ivProfile
 
@@ -48,7 +48,7 @@ class HomeAdapter(var AdapterItem: MainPost)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemMasterMainVerticalSecondRecyclerBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup, false)
+        val binding = ItemHomeVerticalSecondRecyclerBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup, false)
         return ViewHolder(binding)
     }
 

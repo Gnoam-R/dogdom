@@ -98,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-            tools:layout="@layout/item_master_main_horizontal_recycler1" />
+            tools:layout="@layout/item_home_horizontal_recycler1" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_fragment_container2"
@@ -109,7 +109,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_container1"
-            tools:layout="@layout/fragment_master_main_second_contents"></androidx.fragment.app.FragmentContainerView>
+            tools:layout="@layout/fragment_home_second_contents"></androidx.fragment.app.FragmentContainerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
