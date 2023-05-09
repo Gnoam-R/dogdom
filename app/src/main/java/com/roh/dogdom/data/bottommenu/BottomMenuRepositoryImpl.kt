@@ -57,28 +57,30 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
         Log.e("BottomMenuRepositoryImpl", "setBottomNavigation")
         mNavView.setupWithNavController(mNavController)
         // 기본 아이콘 틴트 색상 제거
-        mNavView.itemIconTintList = null
+        val direction : NavDirections = ActionOnlyNavDirections(actionId = R.id.messagesFragment)
+        Log.e("setBottomNavigation", "${direction}")
+
         mNavView.setOnItemSelectedListener  { MenuItem ->
-            mNavCurrentPos = mNavController.currentDestination!!.id
+//            mNavCurrentPos = mNavController.currentDestination!!.id
             when(MenuItem.itemId) {
                 R.id.main_home -> {
-                    checkFragmentId(mNavCurrentPos, nextFragmentId.HOME)
+                    checkFragmentId(nextFragmentId.HOME)
                     true
                 }
                 R.id.main_circle -> {
-                    checkFragmentId(mNavCurrentPos, nextFragmentId.HOME)
+                    checkFragmentId(nextFragmentId.HOME)
                     true
                 }
                 R.id.main_release -> {
-                    checkFragmentId(mNavCurrentPos, nextFragmentId.HOME)
+                    checkFragmentId(nextFragmentId.HOME)
                     true
                 }
                 R.id.main_message -> {
-                    checkFragmentId(mNavCurrentPos, nextFragmentId.MESSAGE)
+                    checkFragmentId(nextFragmentId.MESSAGE)
                     true
                 }
                 R.id.main_user -> {
-                    checkFragmentId(mNavCurrentPos, nextFragmentId.LOGIN)
+                    checkFragmentId(nextFragmentId.LOGIN)
                     true
                 }
                 else -> {
@@ -89,18 +91,12 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
         }
     }
 
-    private fun checkFragmentId(mNavCurrentPos: Int, mNavNextPos: Int) {
+    private fun checkFragmentId(mNavNextPos: Int) {
 
         var nextFragment : Int = -1
         var currentFragment : Int = -1
         var mvFragment : Int = -1
 
-        when(mNavCurrentPos) {
-            currentFragmentId.HomeId -> currentFragment = 1
-            currentFragmentId.MessageId -> currentFragment = 4
-            currentFragmentId.Loginid -> currentFragment = 6
-            else -> Log.e("checkFragmentId", "check current Fragment Id again")
-        }
         when (mNavNextPos) {
             nextFragmentId.HOME -> nextFragment = 1
             nextFragmentId.CIRCLE -> nextFragment = 2
@@ -110,22 +106,23 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.LOGIN -> nextFragment = 6
             else -> Log.e("checkFragmentId", "check next Fragment Id again")
         }
-        if(currentFragment == nextFragment)
-            Log.e("checkFragmentId", "locate current fragement")
-        else {
-            mvFragment = nextFragment
-            moveFragment(mvFragment)
-        }
-
+        mvFragment = nextFragment
+        moveFragment(mvFragment)
+//        if(currentFragment == nextFragment)
+//            Log.e("checkFragmentId", "locate current fragement")
+//        else {
+//            mvFragment = nextFragment
+//            moveFragment(mvFragment)
+//        }
     }
 
     private fun moveFragment(nextFragment : Int) {
         val direction: NavDirections = when (nextFragment) {
             nextFragmentId.HOME -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
-//            nextFragmentId.CIRCLE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
+            nextFragmentId.CIRCLE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.MESSAGE -> ActionOnlyNavDirections(actionId= mvFragment.MessageId)
-//            nextFragmentId.USER -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
-//            nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
+            nextFragmentId.USER -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
+            nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.LOGIN -> ActionOnlyNavDirections(actionId= mvFragment.Loginid)
             else -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
         }

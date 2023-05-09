@@ -101,7 +101,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             goMain.observe(viewLifecycleOwner, Observer {
                 // 바텀 네비게이션 설정
                 setBottomNav()
-                val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToMasterMainFragment()
+                val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                 findNavController().navigate(direction)
             })
             goEmailSignUp.observe(viewLifecycleOwner, Observer {
