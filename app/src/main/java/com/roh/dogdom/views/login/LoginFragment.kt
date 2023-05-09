@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.NotificationManager
 import android.content.Intent
 import android.provider.Settings
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -43,6 +44,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         binding.vm = viewModel
         askPermission()
         initViewModelCallback()
+
+        Log.e("LoginFragment","${findNavController().currentDestination?.id}")
     }
 
     private fun askPermission() {

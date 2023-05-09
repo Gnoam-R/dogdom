@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.roh.dogdom.data.bottommenu.BottomMenuRepository
-import com.roh.dogdom.data.main.MasterMainRepository
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

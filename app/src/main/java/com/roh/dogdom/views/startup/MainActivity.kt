@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.roh.dogdom.R
@@ -21,7 +22,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var navHostFragment: Fragment? = null
     private lateinit var navController: NavController
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         binding.bottomNavigation.setOnItemSelectedListener  { MenuItem ->
             when(MenuItem.itemId) {
                 R.id.main_nav_host -> {
-                    Log.e("BottomMenuRepositoryImpl", "main_nav_host")
+                    navController.navigate(R.id.action_splashFragment_to_loginFragment)
                     true
                 }
                 R.id.main_circle -> {

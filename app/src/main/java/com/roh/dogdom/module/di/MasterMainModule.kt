@@ -1,7 +1,7 @@
 package com.roh.dogdom.module.di
 
-import com.roh.dogdom.data.main.MasterMainRepository
-import com.roh.dogdom.data.main.MasterMainRepositoryImpl
+import com.roh.dogdom.data.main.HomeRepository
+import com.roh.dogdom.data.main.HomeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ class MasterMainModule {
     @Singleton
     @Provides
     fun provideMasterMainRepository(
-    ) : MasterMainRepository {
-        return MasterMainRepositoryImpl()
+    ) : HomeRepository {
+        return HomeRepositoryImpl()
     }
 }

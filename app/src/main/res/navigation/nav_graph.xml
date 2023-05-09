@@ -29,22 +29,35 @@
         >
         <action
             android:id="@+id/action_loginFragment_to_masterMainFragment"
-            app:destination="@id/masterMainFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
+            />
     </fragment>
     <fragment
-        android:id="@+id/masterMainFragment"
+        android:id="@+id/homeFragment"
         android:name="com.roh.dogdom.views.home.HomeFragment"
         android:label="MasterMainFragment"
         tools:layout="@layout/fragment_home"
-        />
+        >
+        <action
+            android:id="@+id/action_masterMainFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messagesFragment"
         android:name="com.roh.dogdom.views.messages.MessagesFragment"
         android:label="MessagesFragment"
         tools:layout="@layout/fragment_messages"
-        />
+        >
+        <action
+            android:id="@+id/action_messagesFragment_to_masterMainFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_messagesFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 </navigation>
