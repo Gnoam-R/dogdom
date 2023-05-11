@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.main
+package com.roh.dogdom.data.home
 
 import com.roh.dogdom.R
 

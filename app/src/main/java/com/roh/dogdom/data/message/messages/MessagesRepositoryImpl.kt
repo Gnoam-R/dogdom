@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.messages
+package com.roh.dogdom.data.message.messages
 
 import android.util.Log
 

@@ -10,8 +10,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.roh.dogdom.R
 import com.roh.dogdom.data.navigation.*
-import com.roh.dogdom.views.home.HomeFragmentDirections
-import com.roh.dogdom.views.messages.MessagesFragmentDirections
 
 
 class BottomMenuRepositoryImpl() : BottomMenuRepository {
@@ -42,7 +40,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                 R.id.homeFragment -> {
                     mNavView.visibility = View.VISIBLE
                 }
-                R.id.messagesFragment -> {
+                R.id.messageFragment -> {
                     mNavView.visibility = View.VISIBLE
                 }
                 else -> {

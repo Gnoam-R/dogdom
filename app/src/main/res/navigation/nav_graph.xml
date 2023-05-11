@@ -45,21 +45,18 @@
         >
 
         <action
-            android:id="@+id/action_homeFragment_to_messagesFragment2"
-            app:destination="@id/messagesFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_personalFragment"
             app:destination="@id/personalFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
     </fragment>
     <fragment
         android:id="@+id/messagesFragment"
-        android:name="com.roh.dogdom.views.messages.MessagesFragment"
+        android:name="com.roh.dogdom.views.message.messages.MessagesFragment"
         android:label="MessagesFragment"
         tools:layout="@layout/fragment_messages"
         >
-        <action
-            android:id="@+id/action_messagesFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_messagesFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
@@ -87,7 +84,7 @@
         />
     <fragment
         android:id="@+id/messagesOnClickFragment"
-        android:name="com.roh.dogdom.views.messages.MessagesOnClickFragment"
+        android:name="com.roh.dogdom.views.message.messages.MessagesOnClickFragment"
         android:label="MessagesOnClickFragment"
         tools:layout="@layout/fragment_messages_on_click">
         <action
@@ -96,8 +93,17 @@
     </fragment>
     <fragment
         android:id="@+id/messagesCallFragment2"
-        android:name="com.roh.dogdom.views.messages.MessagesCallFragment"
+        android:name="com.roh.dogdom.views.message.messages.MessagesCallFragment"
         android:label="MessagesCallFragment"
         tools:layout="@layout/fragment_messages_call"/>
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.roh.dogdom.views.message.MessageFragment"
+        android:label="MessageFragment"
+        tools:layout="@layout/fragment_message">
+        <action
+            android:id="@+id/action_messageFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
 
 </navigation>

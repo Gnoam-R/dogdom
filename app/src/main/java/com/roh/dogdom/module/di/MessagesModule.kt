@@ -1,7 +1,7 @@
 package com.roh.dogdom.module.di
 
-import com.roh.dogdom.data.messages.MessagesRepository
-import com.roh.dogdom.data.messages.MessagesRepositoryImpl
+import com.roh.dogdom.data.message.messages.MessagesRepository
+import com.roh.dogdom.data.message.messages.MessagesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

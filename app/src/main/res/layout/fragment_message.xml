@@ -7,7 +7,7 @@
     <data>
         <variable
             name="vm"
-            type="com.roh.dogdom.views.messages.MessagesViewModel" />
+            type="com.roh.dogdom.views.message.MessageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

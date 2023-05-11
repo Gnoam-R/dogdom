@@ -3,7 +3,7 @@ package com.roh.dogdom.views.home
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.main.MainPost
+import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeSecondContentsBinding
 import dagger.hilt.android.AndroidEntryPoint
 

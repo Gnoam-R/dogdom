@@ -1,10 +1,9 @@
-package com.roh.dogdom.views.messages
+package com.roh.dogdom.views.message.messages
 
 import androidx.fragment.app.viewModels
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.databinding.FragmentMessagesCallBinding
-import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

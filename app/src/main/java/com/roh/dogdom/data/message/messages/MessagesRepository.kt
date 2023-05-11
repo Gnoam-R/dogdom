@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.messages
+package com.roh.dogdom.data.message.messages
 
 interface MessagesRepository {
     fun kakaoLogin() : Boolean

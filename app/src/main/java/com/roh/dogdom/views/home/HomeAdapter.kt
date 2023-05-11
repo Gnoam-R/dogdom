@@ -3,7 +3,7 @@ package com.roh.dogdom.views.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.roh.dogdom.data.main.MainPost
+import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
 
 class HomeAdapter(var AdapterItem: MainPost)

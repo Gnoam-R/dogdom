@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    >
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/iv_message_item_1"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="313dp"
-        android:layout_marginBottom="33dp"
-        android:background="@drawable/iv_dog1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <data>
+        <variable
+            name="vm"
+            type="com.roh.dogdom.views.message.MessageViewModel" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_message_title"
-        style="@style/ShapeAppearance.Material3.Corner.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:textSize="16sp"
-        android:text="@string/message_item_text1"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/iv_message_item_1"
-        app:layout_constraintTop_toTopOf="@+id/iv_message_item_1" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_message_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="4dp"
-        android:text="02/07"
-        android:textSize="11sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_message_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_message_title" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_message_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/message_item_text2"
-        android:textSize="13sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/iv_message_item_1"
-        app:layout_constraintTop_toBottomOf="@+id/tv_message_title" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/iv_message_item_1"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="313dp"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/iv_dog1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_message_title"
+            style="@style/ShapeAppearance.Material3.Corner.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textSize="16sp"
+            android:text="@string/message_item_text1"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/iv_message_item_1"
+            app:layout_constraintTop_toTopOf="@+id/iv_message_item_1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_message_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="93dp"
+            android:layout_marginTop="4dp"
+            android:text="02/07"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_message_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_message_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_message_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/message_item_text2"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toEndOf="@+id/iv_message_item_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_message_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

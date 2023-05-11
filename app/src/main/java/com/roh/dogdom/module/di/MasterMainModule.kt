@@ -1,7 +1,7 @@
 package com.roh.dogdom.module.di
 
-import com.roh.dogdom.data.main.HomeRepository
-import com.roh.dogdom.data.main.HomeRepositoryImpl
+import com.roh.dogdom.data.home.HomeRepository
+import com.roh.dogdom.data.home.HomeRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

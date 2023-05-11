@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.main.MainPost
+import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
 import com.roh.dogdom.navigator.Screens

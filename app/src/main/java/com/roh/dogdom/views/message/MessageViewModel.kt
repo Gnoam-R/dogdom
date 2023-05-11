@@ -1,17 +1,15 @@
-package com.roh.dogdom.views.messages
+package com.roh.dogdom.views.message
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.roh.dogdom.data.bottommenu.BottomMenuRepository
-import com.roh.dogdom.data.login.LoginRepository
-import com.roh.dogdom.data.messages.MessagesRepository
+import com.roh.dogdom.data.message.messages.MessagesRepository
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MessagesViewModel @Inject constructor(
+class MessageViewModel @Inject constructor(
     private val messagesRepository: MessagesRepository
 ) : ViewModel(){
 
