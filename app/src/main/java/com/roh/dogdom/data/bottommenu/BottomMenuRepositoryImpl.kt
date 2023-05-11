@@ -74,7 +74,8 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                     true
                 }
                 R.id.main_message -> {
-                    checkFragmentId(nextFragmentId.MESSAGE)
+                    mNavController.navigate(R.id.action_homeFragment_to_messageFragment)
+//                    checkFragmentId(nextFragmentId.MESSAGE)
                     true
                 }
                 R.id.main_user -> {
