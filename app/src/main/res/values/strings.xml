@@ -15,8 +15,13 @@
     <string name="see_all_logs">SEE ALL LOGS</string>
     <string name="delete_logs">Delete Logs</string>
 
+    <!--message-->
+    <string name="message_title">Message</string>
+    <string name="message_item_text1">Love dog little assistant</string>
+    <string name="message_item_text2">Congratulations! Your article was recommended by\ndog lovers to feature</string>
 
-<!--Personal-->
+
+    <!--Personal-->
     <string name="profile_name">Kelly Goldsmith</string>
     <string name="profile_description">Golden Retriever · Mobile </string>
     <string name="profile_praise">Praise</string>
@@ -29,5 +34,18 @@
     <string name="personal_collections">Collections</string>
     <string name="personal_order">Order</string>
     <string name="personal_darkmode">Dark Mode</string>
+
+
+<!-- Settings-->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account_and_security">Account and Security</string>
+    <string name="settings_dark_mode">Dark mode</string>
+    <string name="settings_new_message_notification">New message notification</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_general">General</string>
+    <string name="settings_help_and_feedback">Help and Feedback</string>
+    <string name="settings_about_dogdom">About Dogdom</string>
+    <string name="settings_switch_account">Switch Account</string>
+    <string name="settings_log_out">Log out</string>
 
 </resources>

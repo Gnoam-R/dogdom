@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_messagesFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_messagesFragment_to_messagesOnClickFragment"
+            app:destination="@id/messagesOnClickFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalFragment"
@@ -72,6 +75,29 @@
         <action
             android:id="@+id/action_personalFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_personalFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.roh.dogdom.views.personal.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_settings"
+        />
+    <fragment
+        android:id="@+id/messagesOnClickFragment"
+        android:name="com.roh.dogdom.views.messages.MessagesOnClickFragment"
+        android:label="MessagesOnClickFragment"
+        tools:layout="@layout/fragment_messages_on_click">
+        <action
+            android:id="@+id/action_messagesOnClickFragment_to_messagesCallFragment2"
+            app:destination="@id/messagesCallFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesCallFragment2"
+        android:name="com.roh.dogdom.views.messages.MessagesCallFragment"
+        android:label="MessagesCallFragment"
+        tools:layout="@layout/fragment_messages_call"/>
 
 </navigation>
