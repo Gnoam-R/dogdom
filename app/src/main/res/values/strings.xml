@@ -7,11 +7,27 @@
     <string name="password_to_login_text">Password to Login</string>
 
 
+
     <string name="buttons_welcome">Please interact with the buttons, we\'ll track your clicks!</string>
     <string name="button_1">Button 1</string>
     <string name="button_2">Button 2</string>
     <string name="button_3">Button 3</string>
     <string name="see_all_logs">SEE ALL LOGS</string>
     <string name="delete_logs">Delete Logs</string>
+
+
+<!--Personal-->
+    <string name="profile_name">Kelly Goldsmith</string>
+    <string name="profile_description">Golden Retriever · Mobile </string>
+    <string name="profile_praise">Praise</string>
+    <string name="profile_dynamic">Dynamic</string>
+    <string name="profile_share">Share</string>
+
+
+    <string name="personal_followers">Followers</string>
+    <string name="personal_following">Following</string>
+    <string name="personal_collections">Collections</string>
+    <string name="personal_order">Order</string>
+    <string name="personal_darkmode">Dark Mode</string>
 
 </resources>

@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_homeFragment_to_messagesFragment2"
             app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_personalFragment"
+            app:destination="@id/personalFragment" />
     </fragment>
     <fragment
         android:id="@+id/messagesFragment"
@@ -59,6 +62,15 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_messagesFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalFragment"
+        android:name="com.roh.dogdom.views.personal.PersonalFragment"
+        android:label="PersonalFragment"
+        tools:layout="@layout/fragment_personal">
+        <action
+            android:id="@+id/action_personalFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 
