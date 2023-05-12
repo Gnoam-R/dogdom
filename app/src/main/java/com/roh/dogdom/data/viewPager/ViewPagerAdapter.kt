@@ -24,10 +24,10 @@ class ViewPagerAdapter (var AdapterItem: MainPost) : RecyclerView.Adapter<ViewPa
     }
 
     class ViewHolder(val binding: ItemHomeVerticalSecondRecyclerBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
-        val ImageMember = binding.ivPost
+//        val ImageMember = binding.
 
         fun bind(item: MainPost, position: Int) {
-            ImageMember.setImageResource(item.getImagesMembers()[position])
+//            ImageMember.setImageResource(item.getImagesMembers()[position])
         }
     }
 
