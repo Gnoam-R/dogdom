@@ -18,7 +18,6 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
     private lateinit var mView : View
     private lateinit var mNavController : NavController
     private lateinit var mNavView : BottomNavigationView
-
     private lateinit var currentFragmentId : CurrentFragmentId
     private lateinit var nextFragmentId : NextFragmentId
     private lateinit var mvFragment : MvFragment
@@ -37,12 +36,9 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
         // navigation view를 보여줄 fragment를 추가
         navController!!.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> {
-                    mNavView.visibility = View.VISIBLE
-                }
-                R.id.messageFragment -> {
-                    mNavView.visibility = View.VISIBLE
-                }
+                mvFragment.HomeId     -> mNavView.visibility = View.VISIBLE
+                mvFragment.PersonalId -> mNavView.visibility = View.VISIBLE
+                mvFragment.MessageId  -> mNavView.visibility = View.VISIBLE
                 else -> {
                     mNavView.visibility = View.GONE
                 }
@@ -70,16 +66,16 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                     true
                 }
                 R.id.main_release -> {
-                    checkFragmentId(nextFragmentId.HOME)
+                    checkFragmentId(nextFragmentId.LOGIN)
                     true
                 }
                 R.id.main_message -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_messageFragment)
+                    checkFragmentId(nextFragmentId.MESSAGE)
 //                    checkFragmentId(nextFragmentId.MESSAGE)
                     true
                 }
                 R.id.main_user -> {
-                    checkFragmentId(nextFragmentId.LOGIN)
+                    checkFragmentId(nextFragmentId.PERSONAL)
                     true
                 }
                 else -> {
@@ -101,7 +97,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.CIRCLE -> nextFragment = 2
             nextFragmentId.RELEASE -> nextFragment = 3
             nextFragmentId.MESSAGE -> nextFragment = 4
-            nextFragmentId.USER -> nextFragment = 5
+            nextFragmentId.PERSONAL -> nextFragment = 5
             nextFragmentId.LOGIN -> nextFragment = 6
             else -> Log.e("checkFragmentId", "check next Fragment Id again")
         }
@@ -120,7 +116,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.HOME -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.CIRCLE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.MESSAGE -> ActionOnlyNavDirections(actionId= mvFragment.MessageId)
-            nextFragmentId.USER -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
+            nextFragmentId.PERSONAL -> ActionOnlyNavDirections(actionId= mvFragment.PersonalId)
             nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.LOGIN -> ActionOnlyNavDirections(actionId= mvFragment.Loginid)
             else -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)

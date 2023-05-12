@@ -13,7 +13,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
 
 
@@ -29,8 +28,7 @@
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/bt_tg_select"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="49dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="10dp"
@@ -45,14 +43,13 @@
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/bt_tg_discover"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="49dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="112dp"
                 android:layout_marginBottom="10dp"
-                android:button="@drawable/bt_custom_select"
-                android:checked="false"
+                android:button="@drawable/bt_custom_discover"
+                android:checked="true"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,20 +70,48 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_width="339dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bt_search_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-            <androidx.appcompat.widget.AppCompatImageButton
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="2dp"
                 style="@style/Widget.AppCompat.Button.Borderless"
+                android:hint="@string/search_bar_text"
+                android:textSize="13sp"
+                android:gravity="start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_voice"
+                app:layout_constraintStart_toEndOf="@+id/iv_search"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bt_search_bar_smaple"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/ic_voice"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -95,6 +120,7 @@
             android:id="@+id/main_fragment_container1"
             android:layout_width="match_parent"
             android:layout_height="78dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
@@ -109,7 +135,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_container1"
-            tools:layout="@layout/fragment_home_second_contents"></androidx.fragment.app.FragmentContainerView>
+            tools:layout="@layout/fragment_home_second_contents">
+
+        </androidx.fragment.app.FragmentContainerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

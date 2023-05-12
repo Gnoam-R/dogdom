@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_homeFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_releaseFragment"
+            app:destination="@id/releaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/messagesFragment"
@@ -105,5 +108,10 @@
             android:id="@+id/action_messageFragment_to_messagesFragment"
             app:destination="@id/messagesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/releaseFragment"
+        android:name="com.roh.dogdom.views.release.ReleaseFragment"
+        android:label="ReleaseFragment"
+        tools:layout="@layout/fragment_release"/>
 
 </navigation>

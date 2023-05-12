@@ -15,10 +15,20 @@
     <string name="see_all_logs">SEE ALL LOGS</string>
     <string name="delete_logs">Delete Logs</string>
 
+    <!--home-->
+    <string name="search_bar_text">Send the sample</string>
+
     <!--message-->
     <string name="message_title">Message</string>
     <string name="message_item_text1">Love dog little assistant</string>
-    <string name="message_item_text2">Congratulations! Your article was recommended by\ndog lovers to feature</string>
+    <string name="message_item_text2">Congratulations! Your article was recommended by dog lovers to feature</string>
+
+    <!--Release-->
+    <string name="release_title">Release something new</string>
+    <string name="release_desription">What you are thinking right now...</string>
+    <string name="release_cancle">Cancle</string>
+    <string name="release_release">Release</string>
+    <string name="release_next">Next</string>
 
 
     <!--Personal-->

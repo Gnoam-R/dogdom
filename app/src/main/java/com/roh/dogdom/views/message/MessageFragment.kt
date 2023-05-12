@@ -21,7 +21,6 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(R.layout.fragment_m
 
     private val viewModel by viewModels<MessageViewModel>()
 
-
     private lateinit var msgHzAdapter: MessageHorizontalAdapter
     private lateinit var msgVtAdapter: MessageVerticalAdapter
     private var msgHzPost = MessageHorizontalPost()
@@ -33,12 +32,25 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(R.layout.fragment_m
         binding.vm = viewModel
         var navController: NavController = findNavController()
 
+        Log.e("MessageFragment","${findNavController().currentDestination?.id}")
+
         msgHzAdapter = MessageHorizontalAdapter(msgHzPost)
         msgVtAdapter = MessageVerticalAdapter(msgVtPost)
 
         binding.rvMessageHorizontal.adapter = msgHzAdapter
         binding.rvMessageVertical.adapter = msgVtAdapter
-        binding.rvMessageHorizontal.layoutManager = LinearLayoutManager(mContext)
+        binding.rvMessageHorizontal.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         binding.rvMessageVertical.layoutManager = LinearLayoutManager(mContext)
+
+        msgHzAdapter.setOnItemClickListener(object : MessageHorizontalAdapter.OnItemClickListener {
+            override fun onItemClick(pos: Int) {
+                Log.e("msgHzAdapter", "pos : $pos")
+            }
+        })
+        msgVtAdapter.setOnItemClickListener(object : MessageVerticalAdapter.OnItemClickListener {
+            override fun onItemClick(pos: Int) {
+                Log.e("msgVtAdapter", "pos : $pos")
+            }
+        })
     }
 }

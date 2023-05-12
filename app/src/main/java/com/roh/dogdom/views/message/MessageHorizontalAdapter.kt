@@ -10,6 +10,7 @@ class MessageHorizontalAdapter(var AdapterItem: MessageHorizontalPost)
     : RecyclerView.Adapter<MessageHorizontalAdapter.ViewHolder> () {
 
     private var listener : OnItemClickListener? = null
+
     interface OnItemClickListener {
         fun onItemClick (pos : Int)
     }
@@ -18,7 +19,7 @@ class MessageHorizontalAdapter(var AdapterItem: MessageHorizontalPost)
     }
 
     inner class ViewHolder(private val binding: ItemMessageHorizontalRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        val ivPost = binding.btRanking
+        val ivPost = binding.ivMessageHorizontal
 
         fun bind(AdapterItem: MessageHorizontalPost) {
             val pos = adapterPosition

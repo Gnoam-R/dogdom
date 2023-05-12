@@ -1,9 +1,12 @@
 package com.roh.dogdom.data.navigation
 
+import com.roh.dogdom.R
+
 data class MvFragment (
-    val Loginid: Int = 2131230988,
-    val HomeId: Int = 2131231293,
-    val MessageId: Int = 2131231288,
+    val Loginid: Int = R.id.loginFragment,
+    val HomeId: Int = R.id.homeFragment,
+    val MessageId: Int = R.id.messageFragment,
+    val PersonalId: Int = R.id.personalFragment,
 )
 
 data class NextFragmentId (
@@ -11,6 +14,6 @@ data class NextFragmentId (
     val CIRCLE: Int = 2,
     val RELEASE: Int = 3,
     val MESSAGE: Int = 4,
-    val USER: Int = 5,
+    val PERSONAL: Int = 5,
     val LOGIN: Int = 6,
 )
