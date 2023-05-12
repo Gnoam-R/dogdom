@@ -3,6 +3,7 @@ package com.roh.dogdom.views.home
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.home.HomeItem
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeSecondContentsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeContentsSecondFragment :
     BaseFragment<FragmentHomeSecondContentsBinding>(R.layout.fragment_home_second_contents){
 
+    val datas = mutableListOf<Int>()
+
     private var ItemList = MainPost()
     private lateinit var MyAdapter : HomeAdapter
 
@@ -19,11 +22,13 @@ class HomeContentsSecondFragment :
         MyAdapter = HomeAdapter(ItemList)
         binding.mainVtRvContainer.adapter = MyAdapter
         binding.mainVtRvContainer.layoutManager = LinearLayoutManager(this.context)
+
     }
 
     private fun moveNextScreen() {
 //        findNavController().navigate(
 //            SplashFragmentDirections.actionSplashFragmentToLoginFragment()
 //        )
+
     }
 }

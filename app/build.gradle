@@ -85,5 +85,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
+    //viewpager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
 
 }

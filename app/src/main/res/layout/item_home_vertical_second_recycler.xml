@@ -76,17 +76,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/iv_card_2"
+<!--             activity_screen_slide.xml -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/id_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_post"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_post" />
 
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:id="@+id/iv_post"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:src="@drawable/iv_card_2"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_post" />-->
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout11"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:layout_marginTop="10dp"

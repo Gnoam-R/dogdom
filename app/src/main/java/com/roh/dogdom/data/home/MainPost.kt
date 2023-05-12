@@ -3,6 +3,18 @@ package com.roh.dogdom.data.home
 import com.roh.dogdom.R
 
 class MainPost () {
+
+    public fun getItemViewType(): ArrayList<ItemType> {
+        return arrayListOf<ItemType>(
+            ItemType.IMAGE,
+            ItemType.IMAGES,
+            ItemType.IMAGE,
+            ItemType.IMAGES,
+            ItemType.VIDEO,
+            ItemType.VIDEO,
+        )
+    }
+
     public fun getImageMembers(): ArrayList<Int> {
         return arrayListOf<Int>(
             R.drawable.iv_card_2,
@@ -12,6 +24,17 @@ class MainPost () {
             R.drawable.iv_card_6,
             R.drawable.iv_card_7,
             )
+    }
+
+    public fun getImagesMembers(): ArrayList<Int> {
+        return arrayListOf<Int>(
+            R.drawable.iv_images_card1,
+            R.drawable.iv_images_card2,
+            R.drawable.iv_images_card3,
+            R.drawable.iv_images_card4,
+            R.drawable.iv_images_card5,
+            R.drawable.iv_images_card6,
+        )
     }
 
     public fun getProfileMembers(): ArrayList<Int> {
@@ -80,7 +103,6 @@ class MainPost () {
             "356",
             "5233",
             "828",
-
         )
     }
 }
