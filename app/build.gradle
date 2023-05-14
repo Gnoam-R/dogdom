@@ -92,4 +92,6 @@ dependencies {
 //    implementation 'com.tbuonomo: dotsindicator:4.2'
     implementation("com.tbuonomo:dotsindicator:4.3")
 
+//    skydoves TransformationLayout
+    implementation("com.github.skydoves:transformationlayout:1.1.2")
 }

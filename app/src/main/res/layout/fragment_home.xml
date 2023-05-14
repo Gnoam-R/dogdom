@@ -79,19 +79,29 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
 
-
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.skydoves.transformationlayout.TransformationLayout
+                android:id="@+id/transformationLayout"
                 android:layout_width="0dp"
                 android:layout_height="34dp"
                 android:layout_marginStart="2dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:hint="@string/search_bar_text"
-                android:textSize="13sp"
-                android:gravity="start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/iv_voice"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/iv_search"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:transformation_duration="450"
+                app:transformation_targetView="@+id/menu_home">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_search"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="@string/search_bar_text"
+                    android:textSize="13sp" />
+
+            </com.skydoves.transformationlayout.TransformationLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_search"
@@ -138,6 +148,16 @@
             tools:layout="@layout/fragment_home_second_contents">
 
         </androidx.fragment.app.FragmentContainerView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/menu_home"
+            android:layout_width="240dp"
+            android:layout_height="312dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
