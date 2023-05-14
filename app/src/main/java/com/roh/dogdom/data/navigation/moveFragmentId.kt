@@ -7,6 +7,7 @@ data class MvFragment (
     val HomeId: Int = R.id.homeFragment,
     val MessageId: Int = R.id.messageFragment,
     val PersonalId: Int = R.id.personalFragment,
+    val ReleaseId: Int = R.id.releaseFragment,
 )
 
 data class NextFragmentId (

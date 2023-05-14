@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent" >
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/appCompatImageButton4"
+                android:id="@+id/bt_release_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
@@ -72,16 +72,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/bt_release_dynamic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/iv_dynamic"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/appCompatImageButton5"
-                app:layout_constraintStart_toEndOf="@+id/appCompatImageButton4"
+                app:layout_constraintEnd_toStartOf="@+id/bt_release_video"
+                app:layout_constraintStart_toEndOf="@+id/bt_release_article"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/appCompatImageButton5"
+                android:id="@+id/bt_release_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="36dp"

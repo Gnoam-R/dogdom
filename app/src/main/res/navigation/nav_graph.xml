@@ -112,6 +112,26 @@
         android:id="@+id/releaseFragment"
         android:name="com.roh.dogdom.views.release.ReleaseFragment"
         android:label="ReleaseFragment"
-        tools:layout="@layout/fragment_release"/>
+        tools:layout="@layout/fragment_release">
+        <action
+            android:id="@+id/action_releaseFragment_to_releaseArticleFragment"
+            app:destination="@id/releaseArticleFragment" />
+        <action
+            android:id="@+id/action_releaseFragment_to_releaseDynamicFragment"
+            app:destination="@id/releaseDynamicFragment" />
+        <action
+            android:id="@+id/action_releaseFragment_to_releaseArticleFragment2"
+            app:destination="@id/releaseArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/releaseArticleFragment"
+        android:name="com.roh.dogdom.views.release.ReleaseArticleFragment"
+        android:label="ReleaseArticleFragment"
+        tools:layout="@layout/fragment_release_article"/>
+    <fragment
+        android:id="@+id/releaseDynamicFragment"
+        android:name="com.roh.dogdom.views.release.ReleaseDynamicFragment"
+        android:label="ReleaseDynamicFragment"
+        tools:layout="@layout/fragment_release_dynamic"/>
 
 </navigation>

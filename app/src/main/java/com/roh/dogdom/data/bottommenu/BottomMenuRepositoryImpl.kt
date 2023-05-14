@@ -66,7 +66,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                     true
                 }
                 R.id.main_release -> {
-                    checkFragmentId(nextFragmentId.LOGIN)
+                    checkFragmentId(nextFragmentId.RELEASE)
                     true
                 }
                 R.id.main_message -> {
@@ -117,7 +117,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.CIRCLE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
             nextFragmentId.MESSAGE -> ActionOnlyNavDirections(actionId= mvFragment.MessageId)
             nextFragmentId.PERSONAL -> ActionOnlyNavDirections(actionId= mvFragment.PersonalId)
-            nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
+            nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.ReleaseId)
             nextFragmentId.LOGIN -> ActionOnlyNavDirections(actionId= mvFragment.Loginid)
             else -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
         }
