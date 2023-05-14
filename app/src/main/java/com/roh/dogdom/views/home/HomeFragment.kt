@@ -44,7 +44,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 //            replaceFragment(3, buttonsFragment)
             navigator.navigateTo(Screens.BUTTONS)
         }
-        binding.etSearch.setOnClickListener {
+        binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
         }
     }
