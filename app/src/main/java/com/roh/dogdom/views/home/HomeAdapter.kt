@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.arad_january.ViewPagerAdapter
+import com.example.arad_january.ViewPagerAdapterTypeImage
+import com.example.arad_january.ViewPagerAdapterTypeImages
+import com.example.arad_january.ViewPagerAdapterTypeVideo
 import com.roh.dogdom.R
 import com.roh.dogdom.data.home.ItemType
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class HomeAdapter(var AdapterItem: MainPost)
     : RecyclerView.Adapter<RecyclerView.ViewHolder> () {
@@ -37,18 +40,22 @@ class HomeAdapter(var AdapterItem: MainPost)
     }
 
     inner class ImageViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        val ivPost = binding.ivPost
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
         val tvLike = binding.tvLike
         val tvMessage = binding.tvMessage
         val tvShare = binding.tvShare
+        val idViewPager2 = binding.idViewPager2
+
+        var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem)
 
         fun bind(AdapterItem: MainPost) {
             Log.e("ImageViewHolder", "ImageViewHolder: " )
 
+            idViewPager2.adapter = pagerAdapter
+
             val pos = adapterPosition
-            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
+//            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
 
             tvName.text = AdapterItem.getNameMembers()[pos]
@@ -66,20 +73,22 @@ class HomeAdapter(var AdapterItem: MainPost)
     }
 
     inner class ImagesViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        val ivPost = binding.ivPost
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
         val tvLike = binding.tvLike
         val tvMessage = binding.tvMessage
         val tvShare = binding.tvShare
-//        val idViewPager = binding.idViewPager
+        val idViewPager2 = binding.idViewPager2
 
+        var pagerAdapter = ViewPagerAdapterTypeImages(AdapterItem)
+        val dotsIndicator = binding.dotsIndicator
 
         fun bind(AdapterItem: MainPost) {
             Log.e("ImagesViewHolder", "ImagesViewHolder: " )
             val pos = adapterPosition
-            ivPost.visibility = View.GONE
-//            idViewPager.visibility = View.VISIBLE
+            idViewPager2.adapter = pagerAdapter
+            dotsIndicator.attachTo(idViewPager2)
+
 
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
             tvName.text = AdapterItem.getNameMembers()[pos]
@@ -99,18 +108,22 @@ class HomeAdapter(var AdapterItem: MainPost)
 
 
     inner class VideoViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        val ivPost = binding.ivPost
+
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
         val tvLike = binding.tvLike
         val tvMessage = binding.tvMessage
         val tvShare = binding.tvShare
+        val idViewPager2 = binding.idViewPager2
+
+        var pagerAdapter = ViewPagerAdapterTypeVideo(AdapterItem)
 
         fun bind(AdapterItem: MainPost) {
             Log.e("VideoViewHolder", "VideoViewHolder: " )
 
             val pos = adapterPosition
-            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
+            idViewPager2.adapter = pagerAdapter
+
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
 
             tvName.text = AdapterItem.getNameMembers()[pos]
@@ -134,6 +147,8 @@ class HomeAdapter(var AdapterItem: MainPost)
         // Instantiate a ViewPager2 and a PagerAdapter.
 //        viewPager = View.f(R.id.viewPager_winter)
 //        viewPager.setPageTransformer(TutorialZoomOutPageTransformer())
+
+//        return ImagesViewHolder(multiBinding)
 
         return when(viewType) {
             0 -> ImageViewHolder(singleBinding)

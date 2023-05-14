@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-        <variable
-            name="vm"
-            type="com.roh.dogdom.views.todo.TodoListViewModel" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.views.todo.TodoListViewModel" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,34 +77,66 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 <!--&lt;!&ndash;             activity_screen_slide.xml &ndash;&gt;-->
-<!--            <androidx.viewpager2.widget.ViewPager2-->
-<!--                android:id="@+id/id_view_pager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/iv_post"-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="70dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toTopOf="@+id/bg_ic_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_post">
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/id_view_pager2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                    android:id="@+id/dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:dotsColor="#D1CCCC"
+                    app:dotsCornerRadius="8dp"
+                    app:dotsSize="7dp"
+                    app:dotsSpacing="4dp"
+                    app:dotsWidthFactor="2.5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:progressMode="true"
+                    app:selectedDotColor="#EEEEEE" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:id="@+id/iv_post"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:src="@drawable/iv_card_2"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"-->
 <!--                app:layout_constraintEnd_toEndOf="parent"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
 <!--                app:layout_constraintTop_toBottomOf="@+id/tv_post" />-->
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/iv_card_2"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_post" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout11"
+                android:id="@+id/bg_ic_info"
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_post">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ic_like"

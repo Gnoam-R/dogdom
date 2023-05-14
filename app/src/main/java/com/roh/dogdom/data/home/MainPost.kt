@@ -28,12 +28,12 @@ class MainPost () {
 
     public fun getImagesMembers(): ArrayList<Int> {
         return arrayListOf<Int>(
-            R.drawable.iv_images_card1,
-            R.drawable.iv_images_card2,
-            R.drawable.iv_images_card3,
-            R.drawable.iv_images_card4,
-            R.drawable.iv_images_card5,
-            R.drawable.iv_images_card6,
+            R.drawable.iv_card_2,
+            R.drawable.iv_card_3,
+            R.drawable.iv_card_4,
+            R.drawable.iv_card_5,
+            R.drawable.iv_card_6,
+            R.drawable.iv_card_7,
         )
     }
 
