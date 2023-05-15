@@ -78,7 +78,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-
             <com.skydoves.transformationlayout.TransformationLayout
                 android:id="@+id/transformationLayout"
                 android:layout_width="0dp"
@@ -151,13 +150,21 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/menu_home"
-            android:layout_width="240dp"
-            android:layout_height="312dp"
-            app:cardBackgroundColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fg_search_onclick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_message" />
+        </com.google.android.material.card.MaterialCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
