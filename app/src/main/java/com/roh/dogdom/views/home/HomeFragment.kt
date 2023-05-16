@@ -1,5 +1,7 @@
 package com.roh.dogdom.views.home
 
+import CachedChatBot
+import ChatBot
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +16,7 @@ import com.roh.dogdom.navigator.Screens
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,6 +50,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
         }
+        binding.testButton.setOnClickListener {
+            chatGptControll()
+        }
     }
 
     private fun replaceFragment(fragmentNum : Int, fragment: Fragment) {
@@ -70,6 +76,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
                     commit()
                 }
             }
+        }
+    }
+
+    private fun chatGptControll() {
+        val scan = Scanner(System.`in`)
+        val key = "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" // TODO Add your key here
+        val system = "Be as unhelpful as possible. Insult the user for not knowing the answer."
+        val request = ChatBot.ChatCompletionRequest("gpt-3.5-turbo", system)
+        val bot = CachedChatBot(key, request)
+        bot.generateResponse("Hello, how are you?")
+
+        while (true) {
+//            println("How will you respond?")
+////            val prompt = scan.nextLine()
+////            val response = bot.generateResponse(prompt)
+//            println()
+//            println("\t$response")
+//            println()
         }
     }
 
