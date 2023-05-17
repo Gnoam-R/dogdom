@@ -81,12 +81,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
     private fun chatGptControll() {
         val scan = Scanner(System.`in`)
-        val key = "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" // TODO Add your key here
+        val key = "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" // TODO Add your key here
         val system = "Be as unhelpful as possible. Insult the user for not knowing the answer."
         val request = ChatBot.ChatCompletionRequest("gpt-3.5-turbo", system)
         val bot = CachedChatBot(key, request)
-        bot.generateResponse("Hello, how are you?")
-
+        val test = bot.generateResponse("Hello, how are you?")
+        Log.e("test", test)
         while (true) {
 //            println("How will you respond?")
 ////            val prompt = scan.nextLine()

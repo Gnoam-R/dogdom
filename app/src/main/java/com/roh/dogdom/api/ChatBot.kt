@@ -1,3 +1,4 @@
+import android.util.Log
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -34,12 +35,14 @@ open class ChatBot(private val apiKey: String) {
     fun generateResponse(request: ChatCompletionRequest): ChatCompletionResponse {
         val json = gson.toJson(request)
         val body: RequestBody = json.toRequestBody(mediaType)
+        Log.e("ChatBot", "generateResponse : ${apiKey}" )
         val httpRequest: Request = Request.Builder()
-            .url("https://api.openai.com/v1/chat/completions")
+            .url("https://api.openai.com/v1/completions")
             .addHeader("Content-Type", "application/json")
-            .addHeader("Authorization", "Bearer $apiKey")
+            .header("Authorization", "Bearer "+apiKey)
             .post(body)
             .build()
+
 
         // Block the thread and wait for OpenAI's json response
         val response = client.newCall(httpRequest).execute()
