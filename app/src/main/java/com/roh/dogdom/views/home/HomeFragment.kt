@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 import com.roh.dogdom.R
+import com.roh.dogdom.api.*
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
@@ -17,17 +18,23 @@ import com.roh.dogdom.navigator.Screens
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+//import okhttp3.Callback
+import retrofit2.Callback
+import retrofit2.Retrofit
 import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
+
+    // retrofit2 test
+    private lateinit var retrofitService: RetrofitService
+    private lateinit var retrofit : Retrofit
 
     @Inject
     lateinit var navigator: AppNavigator
@@ -54,6 +61,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
 
+        initRetrofit()
+
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
@@ -66,38 +75,57 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         val etQuestion = binding.etSearch
         binding.testButton.setOnClickListener {
             val question = etQuestion.text.toString()
-            chatGptControll(question) { response ->
-                mActivity.runOnUiThread{
-                    Log.e("HomeFragment", "response : $response")
-                }
-            }
+
+            if(question != "")
+                getSearchList(question)
+
+            //okttp3로 하는 방법
+//            chatGptControll(question) { response ->
+//                mActivity.runOnUiThread{
+//                    Log.e("HomeFragment", "response : $response")
+//                }
+//            }
 
         }
     }
 
-    public data class ChatCompletionRequest(
-        val model: String, // recommend: "gpt-3.5-turbo"
-        val messages: MutableList<ChatMessage>,
-        val temperature: Float = 1.0f,
-        @SerializedName("top_p") val topP: Float = 1.0f,
-        val n: Int = 1,
-        val stream: Boolean = false,
-        val stop: String? = null,
-        @SerializedName("max_tokens") val maxTokens: Int? = null, // default is 4096
-        @SerializedName("presence_penalty") val presencePenalty: Float = 0.0f,
-        @SerializedName("frequency_penalty") val frequencyPenalty: Float = 0.0f,
-        @SerializedName("logit_bias") val logitBias: JsonObject? = null,
-        val user: String? = null
-    ) {
-        constructor(model: String, systemContent: String) : this(
-            model,
-            arrayListOf(ChatMessage("system", systemContent))
-        )
+    private fun getSearchList(question: String) {
+        Log.e("HomeFragment", "getSearchList")
+        retrofitService.getChatCompletion(
+            requestBody = ChatGptRequest(
+                model = "gpt-3.5-turbo",
+                messages = listOf(ChatMessage("user", "$question")),
+                temperature = 1,
+                max_tokens = 512,
+                top_p = 1,
+                frequency_penalty = 0,
+                presence_penalty = 0
+            )
+        ).enqueue(object : Callback<ChatGptResponse> {
+            override fun onResponse(
+                call: retrofit2.Call<ChatGptResponse>,
+                response: retrofit2.Response<ChatGptResponse>
+            ) {
+                val message = response.body()?.choices?.get(0)?.message?.content
+                Log.e("HomeFragment", "response : ${response}")
+            }
+
+            override fun onFailure(call: retrofit2.Call<ChatGptResponse>, t: Throwable) {
+                Log.e("HomeFragment", "t : $t")
+            }
+
+        })
     }
 
+    private fun initRetrofit() {
+        retrofit = RetrofitClient.getInstance()
+        retrofitService = retrofit.create(RetrofitService::class.java)
+    }
+
+    // okttp3 로 하는 방법
     fun chatGptControll(question: String, param: (Any) -> Unit) {
-        val apikey = "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"
-        val apikey2 = "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"
+//        val apikey = "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"
+//        val apikey2 = "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"
         val godskey = "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"
 //        val url = "https://api.openai.com/v1/chat/completions"
         val url = "https://api.openai.com/v1/chat/completions"
@@ -114,7 +142,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             "temperature": 1,
             "max_tokens": 512,
             "top_p": 1,
-            "temperature": 0.5,
             "frequency_penalty": 0,
             "presence_penalty": 0 
             }
@@ -130,35 +157,35 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             .post(requestBody.toRequestBody())
             .build()
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: okhttp3.Call, e: java.io.IOException) {
-                Log.e("HomeFragment", "error : ${e.message}")
-            }
-
-            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                val body = response.body?.string()
-                if(body != null){
-                    Log.e("HomeFragment", "body : $body")
-                }
-                else
-                    Log.e("HomeFragment", "body is null")
-
-                val jsonObject = JSONObject(body!!)
-                val jsonArray:JSONArray=jsonObject.getJSONArray("choices")
-                Log.e("HomeFragment", "jsonArray : $jsonArray")
-                val textResult = jsonArray.getJSONObject(0).getString("message")
-                Log.e("HomeFragment", "textResult : $textResult")
-            }
-        })
+//        client.newCall(request).enqueue(object : Callback {
+//            override fun onFailure(call: okhttp3.Call, e: java.io.IOException) {
+//                Log.e("HomeFragment", "error : ${e.message}")
+//            }
+//
+//            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+//                val body = response.body?.string()
+//                if(body != null){
+//                    Log.e("HomeFragment", "body : $body")
+//                }
+//                else
+//                    Log.e("HomeFragment", "body is null")
+//
+//                val jsonObject = JSONObject(body!!)
+//                val jsonArray:JSONArray=jsonObject.getJSONArray("choices")
+//                Log.e("HomeFragment", "jsonArray : $jsonArray")
+//                val textResult = jsonArray.getJSONObject(0).getString("message")
+//                Log.e("HomeFragment", "textResult : $textResult")
+//            }
+//        })
 
     }
 
-    public data class ChatMessage(val role: String, val content: String) {
-        constructor(json: JsonObject) : this(
-            json["role"].asString,
-            json["content"].asString
-        )
-    }
+//    public data class ChatMessage(val role: String, val content: String) {
+//        constructor(json: JsonObject) : this(
+//            json["role"].asString,
+//            json["content"].asString
+//        )
+//    }
 
     private fun replaceFragment(fragmentNum : Int, fragment: Fragment) {
         // 현 Activity 에 연결된 Fragment 관리하는 supportFragmentManager 를 통해 Fragment 전환
@@ -199,3 +226,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         }
     }
 }
+

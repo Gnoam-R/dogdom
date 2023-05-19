@@ -58,4 +58,7 @@
     <string name="settings_switch_account">Switch Account</string>
     <string name="settings_log_out">Log out</string>
 
+
+<!--    API Key-->
+    <string name="gods_api_key">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</string>
 </resources>
