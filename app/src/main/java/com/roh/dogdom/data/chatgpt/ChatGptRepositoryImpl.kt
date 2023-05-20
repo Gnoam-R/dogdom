@@ -11,8 +11,7 @@ class ChatGptRepositoryImpl : ChatGptRepository{
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
 
-    private fun getSearchList(question: String) {
-        Log.e("HomeFragment", "getSearchList")
+    override fun requestChatGpt(question: String) {
         retrofitService.getChatCompletion(
             requestBody = ChatGptRequest(
                 model = "gpt-3.5-turbo",
@@ -31,15 +30,13 @@ class ChatGptRepositoryImpl : ChatGptRepository{
                 val message = response.body()?.choices?.get(0)?.message?.content
                 Log.e("HomeFragment", "response : ${response}")
             }
-
             override fun onFailure(call: retrofit2.Call<ChatGptResponse>, t: Throwable) {
                 Log.e("HomeFragment", "t : $t")
             }
-
         })
     }
 
-    private fun initRetrofit() {
+    override fun initChatGpt() {
         retrofit = RetrofitClient.getInstance()
         retrofitService = retrofit.create(RetrofitService::class.java)
     }

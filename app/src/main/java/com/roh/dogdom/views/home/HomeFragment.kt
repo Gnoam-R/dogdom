@@ -32,6 +32,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
+
+
     // retrofit2 test
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
@@ -54,7 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val client = OkHttpClient()
 
     override fun init() {
-
 
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
         replaceFragment(1, homeContentsFirstFragment)
