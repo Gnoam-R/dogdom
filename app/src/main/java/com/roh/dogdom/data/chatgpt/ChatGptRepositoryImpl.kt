@@ -10,9 +10,9 @@ class ChatGptRepositoryImpl : ChatGptRepository{
     // retrofit2 test
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
+    private var result : ChatGptResponse? = null
 
-    override fun requestChatGpt(question: String) {
-        Log.e("HomeFragment", "check  ")
+    override fun requestChatGpt(question: String) : ChatGptResponse? {
         retrofitService.getChatCompletion(
             requestBody = ChatGptRequest(
                 model = "gpt-3.5-turbo",
@@ -28,14 +28,22 @@ class ChatGptRepositoryImpl : ChatGptRepository{
                 call: retrofit2.Call<ChatGptResponse>,
                 response: retrofit2.Response<ChatGptResponse>
             ) {
+                result = response.body()!!
                 val message = response.body()?.choices?.get(0)?.message?.content
-                Log.e("HomeFragment", "response : ${response}")
+                Log.e("HomeFragment", "response : ${message}")
             }
             override fun onFailure(call: retrofit2.Call<ChatGptResponse>, t: Throwable) {
                 Log.e("HomeFragment", "t : $t")
+                result = null
             }
         })
+        return result
     }
+
+//    override fun responseChatGpt() : ChatGptResponse {
+//        Log.e("HomeFragment", "responseChatGpt")
+//        val message = response.body()?.choices?.get(0)?.message?.content
+//    }
 
     override fun initChatGpt() {
         retrofit = RetrofitClient.getInstance()

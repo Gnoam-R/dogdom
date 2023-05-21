@@ -3,6 +3,7 @@ package com.roh.dogdom.views.message.messages
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.roh.dogdom.api.ChatGptResponse
 import com.roh.dogdom.data.chatgpt.ChatGptRepository
 import com.roh.dogdom.data.message.messages.MessagesRepository
 import com.roh.dogdom.util.SingleLiveEvent
@@ -27,8 +28,8 @@ class MessagesOnClickViewModel @Inject constructor(
     fun initChatGpt() {
         chatGptRepository.initChatGpt()
     }
-    fun requestChatGpt(question : String){
-        chatGptRepository.requestChatGpt(question)
+    fun requestChatGpt(question : String) : ChatGptResponse? {
+        return chatGptRepository.requestChatGpt(question)
     }
     fun setBottomNav() {
         Log.e("LoginViewModel", "setBottomNav")
