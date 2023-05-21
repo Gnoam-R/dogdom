@@ -11,6 +11,7 @@ class ChatGptRepositoryImpl : ChatGptRepository{
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
     private var result : ChatGptResponse? = null
+    private var aa = 0
 
     override fun requestChatGpt(question: String) : ChatGptResponse? {
         retrofitService.getChatCompletion(
@@ -29,7 +30,7 @@ class ChatGptRepositoryImpl : ChatGptRepository{
                 response: retrofit2.Response<ChatGptResponse>
             ) {
                 result = response.body()!!
-                val message = response.body()?.choices?.get(0)?.message?.content
+                val message = response.body()?.choices?.get(aa++)?.message?.content
                 Log.e("HomeFragment", "response : ${message}")
             }
             override fun onFailure(call: retrofit2.Call<ChatGptResponse>, t: Throwable) {
