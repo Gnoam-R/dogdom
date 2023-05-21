@@ -26,5 +26,7 @@ class MessagesFragment : BaseFragment<FragmentMessagesBinding>(R.layout.fragment
         binding.appCompatImageButton.setOnClickListener {
 
         }
+//        binding.rvMessagesUser.adapter = MessagesAdapter()
+//        binding.rvMessagesMessage.adapter = MessagesAdpater()
     }
 }

@@ -12,6 +12,7 @@ class ChatGptRepositoryImpl : ChatGptRepository{
     private lateinit var retrofit : Retrofit
 
     override fun requestChatGpt(question: String) {
+        Log.e("HomeFragment", "check  ")
         retrofitService.getChatCompletion(
             requestBody = ChatGptRequest(
                 model = "gpt-3.5-turbo",

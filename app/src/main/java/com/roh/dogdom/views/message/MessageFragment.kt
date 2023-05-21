@@ -45,6 +45,16 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(R.layout.fragment_m
         msgHzAdapter.setOnItemClickListener(object : MessageHorizontalAdapter.OnItemClickListener {
             override fun onItemClick(pos: Int) {
                 Log.e("msgHzAdapter", "pos : $pos")
+                when(pos) {
+                    0 -> {
+                    }
+                    1 -> {
+                        val direction = MessageFragmentDirections.actionMessageFragmentToMessagesOnClickFragment()
+                        findNavController().navigate(direction)
+                    }
+
+
+                }
             }
         })
         msgVtAdapter.setOnItemClickListener(object : MessageVerticalAdapter.OnItemClickListener {

@@ -1,9 +1,12 @@
 package com.roh.dogdom.views.startup
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -29,6 +32,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initBottomMenu()
 //        setBottomNavigation()
         initViewModelCallback()
+
+
     }
 
     private fun initNavHost() {

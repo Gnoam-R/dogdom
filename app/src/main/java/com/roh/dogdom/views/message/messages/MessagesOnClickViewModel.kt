@@ -27,8 +27,8 @@ class MessagesOnClickViewModel @Inject constructor(
     fun initChatGpt() {
         chatGptRepository.initChatGpt()
     }
-    fun requestChatGpt() {
-        chatGptRepository.requestChatGpt("hello")
+    fun requestChatGpt(question : String){
+        chatGptRepository.requestChatGpt(question)
     }
     fun setBottomNav() {
         Log.e("LoginViewModel", "setBottomNav")

@@ -76,9 +76,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         val etQuestion = binding.etSearch
         binding.testButton.setOnClickListener {
             val question = etQuestion.text.toString()
-
-            if(question != "")
-                getSearchList(question)
+//
+//            if(question != "")
+//                getSearchList(question)
 
             //okttp3로 하는 방법
 //            chatGptControll(question) { response ->

@@ -63,9 +63,6 @@
         <action
             android:id="@+id/action_messagesFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_messagesFragment_to_messagesOnClickFragment"
-            app:destination="@id/messagesOnClickFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalFragment"
@@ -105,8 +102,8 @@
         android:label="MessageFragment"
         tools:layout="@layout/fragment_message">
         <action
-            android:id="@+id/action_messageFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
+            android:id="@+id/action_messageFragment_to_messagesOnClickFragment"
+            app:destination="@id/messagesOnClickFragment" />
     </fragment>
     <fragment
         android:id="@+id/releaseFragment"
