@@ -28,7 +28,7 @@ abstract class BaseActivity<B : ViewDataBinding>(
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
         setSystemStatusBarLayout()
-        SystemUiChangeColor(enumUiColorPos.navigationUiBarBlack,this)
+//        SystemUiChangeColor(enumUiColorPos.navigationUiBarBlack,this)
 //        lottieDialog = LottieDialogFragment.newInstance()
     }
 
@@ -41,15 +41,14 @@ abstract class BaseActivity<B : ViewDataBinding>(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
         }
-        // 상태 표시줄만 투명으로 사용
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//            window.statusBarColor = 0x00000000  // transparent
-//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            val flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-//            window.addFlags(flags)
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = 0x00000000  // transparent
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            window.addFlags(flags)
+        }
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     }
 

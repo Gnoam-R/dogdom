@@ -7,7 +7,6 @@
     <string name="password_to_login_text">Password to Login</string>
 
 
-
     <string name="buttons_welcome">Please interact with the buttons, we\'ll track your clicks!</string>
     <string name="button_1">Button 1</string>
     <string name="button_2">Button 2</string>
@@ -47,7 +46,7 @@
     <string name="personal_darkmode">Dark Mode</string>
 
 
-<!-- Settings-->
+    <!-- Settings-->
     <string name="settings_title">Settings</string>
     <string name="settings_account_and_security">Account and Security</string>
     <string name="settings_dark_mode">Dark mode</string>
@@ -60,6 +59,6 @@
     <string name="settings_log_out">Log out</string>
 
 
-<!--    API Key-->
+    <!--    API Key-->
     <string name="gods_api_key">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</string>
 </resources>

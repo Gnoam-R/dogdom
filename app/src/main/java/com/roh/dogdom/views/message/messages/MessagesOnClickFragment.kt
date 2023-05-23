@@ -52,17 +52,17 @@ class MessagesOnClickFragment : BaseFragment<FragmentMessagesOnClickBinding>(R.l
             }
         }
     }
-
-    fun hideKeyboard(v : View) {
-        if(v != null) {
-            imm?.hideSoftInputFromWindow(v.windowToken, 0)
-        }
-    }
-    fun showKeyboard(v : View) {
-        if(v != null) {
-            imm?.showSoftInput(etChattext!!, 0)
-        }
-    }
+//
+//    fun hideKeyboard(v : View) {
+//        if(v != null) {
+//            imm?.hideSoftInputFromWindow(v.windowToken, 0)
+//        }
+//    }
+//    fun showKeyboard(v : View) {
+//        if(v != null) {
+//            imm?.showSoftInput(etChattext!!, 0)
+//        }
+//    }
 
     private fun initViewModelCallback() {
         with(viewModel) {
