@@ -27,7 +27,6 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>(R.layout.fragment_m
     private var msgVtPost = MessageVerticalPost()
 
     override fun init() {
-        SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
         mActivity = activity as MainActivity
         binding.vm = viewModel
         var navController: NavController = findNavController()

@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.roh.dogdom.util.enumUiColorPos
@@ -27,12 +28,14 @@ abstract class BaseActivity<B : ViewDataBinding>(
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
-        setSystemStatusBarLayout()
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)      // 다크 모드 비활성화
+//        setSystemStatusBarLayout()
 //        SystemUiChangeColor(enumUiColorPos.navigationUiBarBlack,this)
 //        lottieDialog = LottieDialogFragment.newInstance()
     }
 
-    private fun setSystemStatusBarLayout() {
+    protected fun setSystemStatusBarLayout() {
         // 시스템바와 싱테 표시줄 모두 layout으로 설정
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val w: Window = window
@@ -40,16 +43,26 @@ abstract class BaseActivity<B : ViewDataBinding>(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
+
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = 0x00000000  // transparent
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-            window.addFlags(flags)
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//            window.statusBarColor = 0x00000000  // transparent
+//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            val flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+//            window.addFlags(flags)
+//        }
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+    }
+
+    private fun clearSystemStatusBarLayout() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w: Window = window
+            w.clearFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
     }
 
     fun SystemUiChangeColor(ChPos : enumUiColorPos, activity : Activity) {

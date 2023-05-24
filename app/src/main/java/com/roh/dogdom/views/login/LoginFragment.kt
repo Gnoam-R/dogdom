@@ -39,6 +39,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private var versionUnder13 = false
 
     override fun init() {
+        setSystemStatusBarLayout()
         SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
         mActivity = activity as MainActivity
         binding.vm = viewModel

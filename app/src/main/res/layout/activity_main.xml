@@ -40,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="34dp"
             app:itemTextColor="@color/black"
             android:visibility="gone"
             app:elevation="0dp"

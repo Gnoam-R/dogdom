@@ -34,11 +34,12 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"
+
             />
+<!--        app:enterAnim="@anim/from_right"-->
+<!--        app:exitAnim="@anim/to_left"-->
+<!--        app:popEnterAnim="@anim/from_left"-->
+<!--        app:popExitAnim="@anim/to_right"-->
     </fragment>
     <fragment
         android:id="@+id/homeFragment"

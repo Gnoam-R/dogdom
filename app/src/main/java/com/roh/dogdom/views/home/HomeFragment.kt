@@ -56,8 +56,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val client = OkHttpClient()
 
     override fun init() {
-
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
+        clearSystemStatusBarLayout()
         replaceFragment(1, homeContentsFirstFragment)
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
@@ -74,20 +74,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             binding.transformationLayout.startTransform()
         }
         val etQuestion = binding.etSearch
-        binding.testButton.setOnClickListener {
-            val question = etQuestion.text.toString()
+//        binding.testButton.setOnClickListener {
+//            val question = etQuestion.text.toString()
+////
+////            if(question != "")
+////                getSearchList(question)
 //
-//            if(question != "")
-//                getSearchList(question)
-
-            //okttp3로 하는 방법
-//            chatGptControll(question) { response ->
-//                mActivity.runOnUiThread{
-//                    Log.e("HomeFragment", "response : $response")
-//                }
-//            }
-
-        }
+//            //okttp3로 하는 방법
+////            chatGptControll(question) { response ->
+////                mActivity.runOnUiThread{
+////                    Log.e("HomeFragment", "response : $response")
+////                }
+////            }
+//
+//        }
     }
 
     private fun getSearchList(question: String) {

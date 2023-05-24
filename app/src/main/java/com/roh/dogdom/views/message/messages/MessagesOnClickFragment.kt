@@ -2,6 +2,7 @@ package com.roh.dogdom.views.message.messages
 
 import android.content.Context
 import android.graphics.Rect
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -16,8 +17,12 @@ import androidx.fragment.app.viewModels
 import com.roh.dogdom.R
 import com.roh.dogdom.api.ChatGptResponse
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.chatgpt.ChatGptInfo
+import com.roh.dogdom.data.chatgpt.ChatGptMyInfo
+import com.roh.dogdom.data.chatgpt.ChatGptYourInfo
 import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import com.roh.dogdom.util.enumUiColorPos
+import com.roh.dogdom.views.home.HomeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,6 +31,13 @@ class MessagesOnClickFragment : BaseFragment<FragmentMessagesOnClickBinding>(R.l
     private val viewModel by viewModels<MessagesOnClickViewModel>()
     private var imm : InputMethodManager? = null
     private var gptResponse : ChatGptResponse? = null
+    private var chatGptInfo = ChatGptInfo()
+
+    lateinit var MyAdapter : MessageChatGptAdapter
+
+//    var chatGptMyInfoList = mutableListOf(ChatGptMyInfo())
+//    var chatGptYourInfoList = mutableListOf(ChatGptYourInfo())
+//    private lateinit var MyAdapter : MessageChatGptAdapter
 
     var etChattext : EditText? = null
     override fun init() {
@@ -34,35 +46,30 @@ class MessagesOnClickFragment : BaseFragment<FragmentMessagesOnClickBinding>(R.l
         viewModel.initChatGpt()
 
         etChattext = binding.etChat
-        val etMyMessage = binding.tvMyMessage.text.toString()
-        val etYourMessage = binding.tvYourMessage.text.toString()
-//        val window = requireActivity().window
-//        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        binding.etChat.setSelection(binding.etChat.length())
+//
+        MyAdapter = MessageChatGptAdapter(this, chatGptInfo.setData())
+        binding.rvChatGpt.adapter = MyAdapter
 
-//        mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+//        chatGptMyInfoList.removeAt(0)   // init
+//        chatGptInfo.add(ChatGptMyInfo("roh","hello world",R.drawable.iv_boy1))
 
         binding.sendButton.setOnClickListener {
             if(etChattext!!.text.toString() != ""){
-                Log.e("inside", "inside")
-                gptResponse = viewModel.requestChatGpt(etChattext!!.text.toString())
+                var myMessage = etChattext!!.text.toString()
+                chatGptInfo.addData("roh", myMessage, R.drawable.iv_boy1 , 0)
+                MyAdapter.notifyDataSetChanged()
+                gptResponse = viewModel.requestChatGpt(myMessage)       // gpt에 전달해주는 코드
             }
             if(gptResponse != null) {
-                Log.e("gptResponse", gptResponse!!.choices.get(0).message.content)
-                binding.tvYourMessage.text = gptResponse!!.choices.get(0).message.content
+//                Log.e("gptResponse", gptResponse!!.choices.get(0).message.content)
+                var yourMessage = gptResponse!!.choices.get(0).message.content
+                
+//                chatGptYourInfoList.add(ChatGptYourInfo("JY", yourMessage, R.drawable.iv_article))
+//                binding.tvYourMessage.text = gptResponse!!.choices.get(0).message.content
             }
         }
     }
-//
-//    fun hideKeyboard(v : View) {
-//        if(v != null) {
-//            imm?.hideSoftInputFromWindow(v.windowToken, 0)
-//        }
-//    }
-//    fun showKeyboard(v : View) {
-//        if(v != null) {
-//            imm?.showSoftInput(etChattext!!, 0)
-//        }
-//    }
 
     private fun initViewModelCallback() {
         with(viewModel) {

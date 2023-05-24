@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.databinding.FragmentSplashBinding
+import com.roh.dogdom.util.enumUiColorPos
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
@@ -16,6 +17,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_spl
     private lateinit var job : Job
 
     override fun init() {
+        setSystemStatusBarLayout()
+        SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
         showSplashImage()
     }
 

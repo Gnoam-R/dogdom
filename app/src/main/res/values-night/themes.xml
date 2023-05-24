@@ -3,8 +3,12 @@
     <style name="Theme.Dogdom" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <!--상태바 색상-->
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorRed</item>
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -15,8 +19,9 @@
         <!-- Customize your theme here. -->
         <!-- Customize your theme here. -->
 
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/colorRed</item>
         <!-- Customize your theme here. -->
 
 <!--        <item name="android:windowLightNavigationBar">true</item>-->
