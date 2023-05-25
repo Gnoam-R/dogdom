@@ -14,12 +14,11 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
 import androidx.core.view.ViewCompat.getRootWindowInsets
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.api.ChatGptResponse
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.chatgpt.ChatGptInfo
-import com.roh.dogdom.data.chatgpt.ChatGptMyInfo
-import com.roh.dogdom.data.chatgpt.ChatGptYourInfo
 import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.home.HomeAdapter
@@ -48,26 +47,37 @@ class MessagesOnClickFragment : BaseFragment<FragmentMessagesOnClickBinding>(R.l
         etChattext = binding.etChat
         binding.etChat.setSelection(binding.etChat.length())
 //
-        MyAdapter = MessageChatGptAdapter(this, chatGptInfo.setData())
-        binding.rvChatGpt.adapter = MyAdapter
+
+
+//        MyAdapter = MessageChatGptAdapter(mContext, chatGptInfo.setData())
+
+//        binding.rvChatGpt.adapter = MyAdapter
 
 //        chatGptMyInfoList.removeAt(0)   // init
 //        chatGptInfo.add(ChatGptMyInfo("roh","hello world",R.drawable.iv_boy1))
 
+//        chatGptInfo.addData("roh", "ex", R.drawable.iv_boy1 , 0)
+//        chatGptInfo.addData("roh", "easdfafddfx", R.drawable.iv_boy1 , 1)
+//        chatGptInfo.addData("roh", "esfsfsx", R.drawable.iv_boy1 , 1)
+
+        MyAdapter = MessageChatGptAdapter(mContext, chatGptInfo.getData())
+        binding.rvChatGpt.adapter = MyAdapter
+        binding.rvChatGpt.layoutManager = LinearLayoutManager(this.context)
+
         binding.sendButton.setOnClickListener {
             if(etChattext!!.text.toString() != ""){
                 var myMessage = etChattext!!.text.toString()
-                chatGptInfo.addData("roh", myMessage, R.drawable.iv_boy1 , 0)
-                MyAdapter.notifyDataSetChanged()
+                chatGptInfo.addData("roh", myMessage, R.drawable.iv_boy1 , 1)
                 gptResponse = viewModel.requestChatGpt(myMessage)       // gpt에 전달해주는 코드
             }
             if(gptResponse != null) {
 //                Log.e("gptResponse", gptResponse!!.choices.get(0).message.content)
                 var yourMessage = gptResponse!!.choices.get(0).message.content
-                
+                chatGptInfo.addData("yun", yourMessage, R.drawable.iv_boy1 , 0)
 //                chatGptYourInfoList.add(ChatGptYourInfo("JY", yourMessage, R.drawable.iv_article))
 //                binding.tvYourMessage.text = gptResponse!!.choices.get(0).message.content
             }
+            MyAdapter.notifyDataSetChanged()
         }
     }
 

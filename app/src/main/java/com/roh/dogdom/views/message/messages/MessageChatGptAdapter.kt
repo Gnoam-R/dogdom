@@ -30,7 +30,6 @@ class MessageChatGptAdapter(private var context : Context, var AdapterItem: Muta
     }
 
     override fun getItemViewType(position: Int): Int {
-
         return AdapterItem[position].viewType
 
 //        return when (AdapterItem.setData()) {
@@ -43,29 +42,16 @@ class MessageChatGptAdapter(private var context : Context, var AdapterItem: Muta
     }
 
     inner class ChatLeftViewHolder(private val binding: ItemMessageChatGptRecycler2Binding) : RecyclerView.ViewHolder(binding.root) {
-        val ivProfile = binding.appCompatImageView3
-        val tvName = binding.tvName
-        val tvLike = binding.tvLike
-        val tvMessage = binding.tvMessage
-        val tvShare = binding.tvShare
-        val idViewPager2 = binding.idViewPager2
+        val ivProfile = binding.ivProfileImage
+        val tvMessage = binding.tvMessageYour
 
-        var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem)
-
-        fun bind(AdapterItem: MainPost) {
+        fun bind(AdapterItem: MutableList<ChatGptDataSource>) {
             Log.e("ImageViewHolder", "ImageViewHolder: " )
-
-            idViewPager2.adapter = pagerAdapter
 
             val pos = adapterPosition
 //            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
-            ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
-
-            tvName.text = AdapterItem.getNameMembers()[pos]
-            tvLike.text = AdapterItem.getLikeMembers()[pos]
-            tvMessage.text = AdapterItem.getMessageMembers()[pos]
-            tvShare.text = AdapterItem.getShareMembers()[pos]
-
+            ivProfile.setImageResource(AdapterItem[pos].imageResourceId)
+            tvMessage.text = AdapterItem[pos].stringMessage
 
             if(pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
@@ -76,29 +62,14 @@ class MessageChatGptAdapter(private var context : Context, var AdapterItem: Muta
     }
 
     inner class ChatRightViewHolder(private val binding: ItemMessageChatGptRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        val ivProfile = binding.ivProfile
-        val tvName = binding.tvName
-        val tvLike = binding.tvLike
-        val tvMessage = binding.tvMessage
-        val tvShare = binding.tvShare
-        val idViewPager2 = binding.idViewPager2
+//        val ivProfile = binding.ivProfileImage
+        val tvMessage = binding.tvMessageMine
 
-        var pagerAdapter = ViewPagerAdapterTypeImages(AdapterItem)
-        val dotsIndicator = binding.dotsIndicator
-
-        fun bind(AdapterItem: MainPost) {
-            Log.e("ImagesViewHolder", "ImagesViewHolder: " )
+        fun bind(AdapterItem: MutableList<ChatGptDataSource>) {
             val pos = adapterPosition
-            idViewPager2.adapter = pagerAdapter
-            dotsIndicator.attachTo(idViewPager2)
 
-            ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
-            tvName.text = AdapterItem.getNameMembers()[pos]
-            tvLike.text = AdapterItem.getLikeMembers()[pos]
-            tvMessage.text = AdapterItem.getMessageMembers()[pos]
-            tvShare.text = AdapterItem.getShareMembers()[pos]
-
-//            idViewPager.adapter = ViewPagerAdapter(AdapterItem)
+//            ivProfile.setImageResource(AdapterItem[pos].imageResourceId)
+            tvMessage.text = AdapterItem[pos].stringMessage
 
             if(pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
@@ -127,7 +98,8 @@ class MessageChatGptAdapter(private var context : Context, var AdapterItem: Muta
     }
 
     override fun getItemCount(): Int {
-        return AdapterItem.getNameMembers().size
+//        return AdapterItem.getNameMembers().size
+        return AdapterItem.size
     }
 
 //    fun addItem(check : Check) {

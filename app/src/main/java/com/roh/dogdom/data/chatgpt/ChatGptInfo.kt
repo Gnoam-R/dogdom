@@ -17,29 +17,29 @@ import androidx.annotation.StringRes
 
 class ChatGptInfo {
     companion object {
-        var mName : String? = null
-        var mMessage : String? = null
-        var mImage : Int? = null
-        var mViewType : Int? = null
+        val dataList: MutableList<ChatGptDataSource> = mutableListOf()
     }
 
-    fun setData(): MutableList<ChatGptDataSource> {
-        return mutableListOf<ChatGptDataSource>(
-            ChatGptDataSource(mName!!, mMessage!! ,mImage!!, mViewType!!),
-        )
+//    companion object {
+//        var mName : String? = null
+//        var mMessage : String? = null
+//        var mImage : Int? = null
+//        var mViewType : Int? = null
+//    }
+
+    fun getData(): MutableList<ChatGptDataSource> {
+        return dataList
     }
 
-    fun addData(name: String, message : String, image: Int, viewType: Int)  {
-        mName = name
-        mMessage = message
-        mImage =image
-        mViewType = viewType
+    fun addData(name: String, message: String, image: Int, viewType: Int) {
+        val data = ChatGptDataSource(name, message, image, viewType)
+        dataList.add(data)
     }
 }
 
 
 data class ChatGptDataSource(
-    val stringId: String,
+    val stringName: String,
     val stringMessage: String,
     @DrawableRes val imageResourceId: Int,
     val viewType: Int
