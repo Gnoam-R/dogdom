@@ -10,7 +10,8 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 
 interface ChatGptRepository {
-    fun requestChatGpt(question: String) : ChatGptResponse?
-//    fun responseChatGpt()
+    fun requestChatGpt(question: String)
+    fun responseChatGpt() : ChatGptResponse
     fun initChatGpt()
+    fun setCompletionCallback(callback: ResponseChatGptListener?)
 }

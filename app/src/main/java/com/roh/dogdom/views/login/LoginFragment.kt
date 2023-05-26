@@ -105,9 +105,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                 findNavController().navigate(direction)
             })
-            goEmailSignUp.observe(viewLifecycleOwner, Observer {
-                goEmailSignUp()
-            })
+
         }
     }
 }

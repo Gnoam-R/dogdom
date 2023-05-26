@@ -67,16 +67,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <!--FCFCFD-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_chat_gpt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:fitsSystemWindows="true"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout13"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
-
-<!--FCFCFD-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout13"
@@ -85,7 +87,8 @@
             android:background="#FCFCFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_chat_gpt">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/my_layout"
@@ -116,10 +119,10 @@
                     android:id="@+id/send_button"
                     android:layout_width="35dp"
                     android:layout_height="34dp"
-                    android:onClick="@{()-> vm.sendMessage()}"
                     android:layout_alignParentRight="true"
                     android:layout_marginEnd="4dp"
                     android:background="@drawable/iv_send"
+                    android:onClick="@{()-> vm.sendMessage()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

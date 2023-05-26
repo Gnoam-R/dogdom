@@ -12,9 +12,15 @@ class ChatGptRepositoryImpl : ChatGptRepository{
     private lateinit var retrofit : Retrofit
     private var result : ChatGptResponse? = null
     private var aa = 0
+    private lateinit var mResponse: retrofit2.Response<ChatGptResponse>
 
-    override fun requestChatGpt(question: String) : ChatGptResponse? {
+    private var callback: ResponseChatGptListener? = null
 
+    override fun setCompletionCallback(callback: ResponseChatGptListener?) {
+        this.callback = callback
+    }
+
+    override fun requestChatGpt(question: String) {
         retrofitService.getChatCompletion(
             requestBody = ChatGptRequest(
                 model = "gpt-3.5-turbo",
@@ -31,23 +37,24 @@ class ChatGptRepositoryImpl : ChatGptRepository{
                 response: retrofit2.Response<ChatGptResponse>
             ) {
                 if(response.isSuccessful) {
-                    result = response.body()!!
-                    val message = response.body()?.choices?.get(0)?.message?.content
+                    mResponse = response
+//                    result = response.body()!!
+                    val message = mResponse.body()?.choices?.get(0)?.message?.content
                     Log.e("HomeFragment", "response : ${message}")
+                    callback?.onResponseDoneChatGpt(mResponse.body())
                 }
             }
             override fun onFailure(call: retrofit2.Call<ChatGptResponse>, t: Throwable) {
                 Log.e("HomeFragment", "t : $t")
-                result = null
+                callback?.onResponseFailChatGpt(t)
             }
         })
-        return result
     }
 
-//    override fun responseChatGpt() : ChatGptResponse {
-//        Log.e("HomeFragment", "responseChatGpt")
-//        val message = response.body()?.choices?.get(0)?.message?.content
-//    }
+    override fun responseChatGpt() : ChatGptResponse {
+        val result = mResponse.body()!!
+        return result
+    }
 
     override fun initChatGpt() {
         retrofit = RetrofitClient.getInstance()

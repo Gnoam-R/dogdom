@@ -37,6 +37,7 @@ class MessagesOnClickFragment : BaseFragment<FragmentMessagesOnClickBinding>(R.l
     private var chatGptInfo = ChatGptInfo()
     private var gptResponse : ChatGptResponse? = null
 
+
     override fun init() {
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
         binding.vm = viewModel

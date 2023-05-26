@@ -15,6 +15,7 @@ import com.roh.dogdom.R
 import com.roh.dogdom.api.ChatGptResponse
 import com.roh.dogdom.data.chatgpt.ChatGptInfo
 import com.roh.dogdom.data.chatgpt.ChatGptRepository
+import com.roh.dogdom.data.chatgpt.ResponseChatGptListener
 import com.roh.dogdom.data.message.messages.MessagesRepository
 import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import com.roh.dogdom.util.SingleLiveEvent
@@ -25,7 +26,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MessagesOnClickViewModel @Inject constructor(
     private val chatGptRepository: ChatGptRepository
-) : ViewModel(){
+) : ViewModel() , ResponseChatGptListener {
 
 //    var etChattext : EditText? = null
     lateinit var chatGptInfo : ChatGptInfo
@@ -36,6 +37,10 @@ class MessagesOnClickViewModel @Inject constructor(
     private val _sendMessage = SingleLiveEvent<Unit>()
     val sendMessage: LiveData<Unit> get() = _sendMessage
 
+    fun sendMessage() {
+        _sendMessage.call()
+    }
+
     fun goMain() {
         Log.e("MessagesOnClickViewModel", "goMain")
         _goMain.call()
@@ -44,6 +49,7 @@ class MessagesOnClickViewModel @Inject constructor(
     fun initChatGpt(chatGptInfo: ChatGptInfo) {
         this.chatGptInfo = chatGptInfo
         chatGptRepository.initChatGpt()
+        chatGptRepository.setCompletionCallback(this)
     }
 
     fun sendChatGptMessage(binding: FragmentMessagesOnClickBinding, adapter: MessageChatGptAdapter) {
@@ -62,35 +68,34 @@ class MessagesOnClickViewModel @Inject constructor(
         }
     }
 
-    private suspend fun requestChatGpt(question : String) {
-        val resultDeferred = viewModelScope.async(Dispatchers.IO) {
-            chatGptRepository.requestChatGpt(question)
-        }
-        val result = try {
-            resultDeferred.await()
-        } catch (e: Exception) {
-            Log.e("ChatGptViewModel", "requestChatGpt: ${e.message}")
-            null
-        }
-        resultDeferred.invokeOnCompletion {
-            Log.e("ChatGptViewModel", "requestChatGpt: invokeOnCompletion")
-            if (result != null) {
-                Log.e("ChatGptViewModel", "requestChatGpt: check")
-                var yourMessage = result.choices.get(0).message.content
-                chatGptInfo.addData("yun", yourMessage, R.drawable.iv_boy1, 0)
-                myAdapter!!.notifyDataSetChanged()
+    private fun responseChatGpt(chatGptResponse: ChatGptResponse?)  {
+        chatGptInfo.addData("yun", chatGptResponse?.choices?.get(0)?.message?.content!!, R.drawable.iv_boy1 , 0)
+        myAdapter!!.notifyDataSetChanged()
+    }
+
+    private  fun requestChatGpt(question : String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                chatGptRepository.requestChatGpt(question)
+            }catch (e: Exception) {
+                Log.e("ChatGptViewModel", "requestChatGpt: ${e.message}")
             }
         }
     }
-    fun sendMessage() {
-        _sendMessage.call()
+
+    // callback
+    override fun onResponseDoneChatGpt(chatGptResponse: ChatGptResponse?) {
+        Log.e("onResponseDoneChatGpt", ":" + chatGptResponse)
+        responseChatGpt(chatGptResponse)
+    }
+
+    override fun onResponseFailChatGpt(t: Throwable) {
+        Log.e("onResponseFailChatGpt", ":" + t)
     }
 
     fun setBottomNav() {
 //        bottomMenuRepository.setBottomNavigation()
     }
-
-
 
     
 }

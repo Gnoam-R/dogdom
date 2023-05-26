@@ -27,8 +27,11 @@ class LoginViewModel @Inject constructor(
     fun goMain() {
         _goMain.call()
     }
-    fun goEmailSignUp() {
-        loginRepository.goEmailSignUp()
+    fun goGoogleLogin() {
+        loginRepository.googleLogin()
+    }
+    fun goKakaoLogin() {
+        loginRepository.kakaoLogin()
     }
     fun setBottomNav() {
         Log.e("LoginViewModel", "setBottomNav")

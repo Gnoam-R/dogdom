@@ -10,6 +10,33 @@
             type="com.roh.dogdom.views.login.LoginViewModel" />
     </data>
 
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btn_start_kakao_login"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:layout_marginBottom="17dp"-->
+<!--        android:background="@drawable/kakao_social_login"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btn_start_google_login"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btn_start_google_login"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="16dp"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        android:background="@drawable/google_social_login"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,52 +49,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="157dp"
+            android:onClick="@{()->vm.goMain()}"
             android:src="@drawable/ic_dogdom_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bt_login_phone_number"
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/bt_kakao_login"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="319dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:onClick="@{()->vm.goEmailSignUp()}"
-            android:background="@drawable/iv_login_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:background="@drawable/iv_kakao_login"
+            android:onClick="@{()->vm.goKakaoLogin()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2">
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/bt_login_get_captcha"
+            android:id="@+id/bt_google_login"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="@{()->vm.goMain()}"
-            android:background="@drawable/iv_login_captcha"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/iv_google_login"
+            android:onClick="@{()->vm.goGoogleLogin()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_login_phone_number" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_password_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="241dp"
-            android:gravity="center"
-            android:text="@string/password_to_login_text"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bt_login_get_captcha" />
+            app:layout_constraintTop_toBottomOf="@+id/bt_kakao_login" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
