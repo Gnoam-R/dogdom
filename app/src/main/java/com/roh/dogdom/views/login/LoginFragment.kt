@@ -1,15 +1,20 @@
 package com.roh.dogdom.views.login
 
 import android.Manifest
+import android.app.Activity
 import android.app.NotificationManager
 import android.content.Intent
 import android.provider.Settings
 import android.util.Log
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.tasks.Task
 import com.roh.dogdom.views.startup.MainActivity
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
@@ -43,6 +48,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
         mActivity = activity as MainActivity
         binding.vm = viewModel
+        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            // 정상적으로 결과가 받아들여지면 조건문 실행
+            if (result.resultCode == Activity.RESULT_OK){
+                val task: Task<GoogleSignInAccount> =
+                    com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                viewModel.handleSignInResult(task)
+                viewModel.goMain()
+            }
+        }
+        viewModel.setLogin(mActivity,mContext,resultLauncher)
         askPermission()
         initViewModelCallback()
 
@@ -95,6 +110,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         else {
 //            Log.e(TAG,"permission version error")
         }
+    }
+
+    fun setResultSignUP() {
+
     }
 
     private fun initViewModelCallback() {
