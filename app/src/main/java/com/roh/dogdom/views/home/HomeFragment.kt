@@ -11,6 +11,9 @@ import com.google.gson.annotations.SerializedName
 import com.roh.dogdom.R
 import com.roh.dogdom.api.*
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.db.BaseDb
+import com.roh.dogdom.data.db.BaseLocalDataSource
+import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
@@ -36,6 +39,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
 
+    @Inject lateinit var baseDb: BaseLocalDataSource
+
+
     @Inject
     lateinit var navigator: AppNavigator
 
@@ -50,20 +56,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val homeContentsSecondFragment = HomeContentsSecondFragment()
     private val buttonsFragment = ButtonsFragment()
 
+    private fun initDB(aa : Int) {
+        baseDb.addLog("test : ${aa}" )
+        baseDb.getAllLogs { it ->
+            Log.e("initDB ", it[aa].msg)
+        }
+    }
+
+    var aa = 0
+
     override fun init() {
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
         clearSystemStatusBarLayout()
         replaceFragment(1, homeContentsFirstFragment)
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
-
         initRetrofit()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
+            initDB(aa++)
 //            replaceFragment(3, buttonsFragment)
-            navigator.navigateTo(Screens.BUTTONS)
+//            navigator.navigateTo(Screens.BUTTONS)
         }
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
