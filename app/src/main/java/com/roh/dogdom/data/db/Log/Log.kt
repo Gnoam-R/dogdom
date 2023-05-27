@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.db
+package com.roh.dogdom.data.db.Log
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

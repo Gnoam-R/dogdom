@@ -89,7 +89,6 @@ class HomeAdapter(var AdapterItem: MainPost)
             idViewPager2.adapter = pagerAdapter
             dotsIndicator.attachTo(idViewPager2)
 
-
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
             tvName.text = AdapterItem.getNameMembers()[pos]
             tvLike.text = AdapterItem.getLikeMembers()[pos]

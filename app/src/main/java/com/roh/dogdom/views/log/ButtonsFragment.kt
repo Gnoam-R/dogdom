@@ -25,7 +25,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 
 import com.roh.dogdom.R
-import com.roh.dogdom.data.db.LoggerLocalDataSource
+import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.navigator.AppNavigator
 import com.roh.dogdom.navigator.Screens
 import dagger.hilt.android.AndroidEntryPoint

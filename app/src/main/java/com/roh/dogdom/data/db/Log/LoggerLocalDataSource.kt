@@ -1,7 +1,9 @@
-package com.roh.dogdom.data.db
+package com.roh.dogdom.data.db.Log
 
 import android.os.Handler
 import android.os.Looper
+import com.roh.dogdom.data.db.Log.Log
+import com.roh.dogdom.data.db.Log.LogDao
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Inject

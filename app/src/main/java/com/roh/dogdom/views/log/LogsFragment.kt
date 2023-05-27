@@ -26,8 +26,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.roh.dogdom.R
-import com.roh.dogdom.data.db.Log
-import com.roh.dogdom.data.db.LoggerLocalDataSource
+import com.roh.dogdom.data.db.Log.Log
+import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
