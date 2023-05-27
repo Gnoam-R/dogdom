@@ -8,10 +8,10 @@ import com.roh.dogdom.data.db.Log.Log
 @Dao
 interface BaseDao {
     @Query ("SELECT * FROM Base ORDER BY id DESC")
-    fun getAll(): List<Log>
+    fun getAll(): List<BaseEntity>
 
     @Insert
-    fun insertAll(vararg Base: Log)
+    fun insertAll(vararg Base: BaseEntity)
 
     @Query("DELETE FROM Base")
     fun nukeTable()

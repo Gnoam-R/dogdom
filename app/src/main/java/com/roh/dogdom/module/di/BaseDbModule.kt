@@ -23,7 +23,7 @@ object BaseDbModule {
         return Room.databaseBuilder(
             appContext,
             BaseDb::class.java,
-            "logging.db"
+            "base.db"
         ).build()
     }
 
