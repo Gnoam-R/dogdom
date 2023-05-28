@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 import com.roh.dogdom.R
@@ -56,10 +60,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val homeContentsSecondFragment = HomeContentsSecondFragment()
     private val buttonsFragment = ButtonsFragment()
 
+   lateinit var fbDatabase : FirebaseDatabase
+   lateinit var fbDatabaseRef : DatabaseReference
+    private fun initFB() {
+        fbDatabase = Firebase.database
+        fbDatabaseRef = fbDatabase.getReference("roh/test")
+        fbDatabaseRef.setValue("Hello, World!")
+        fbDatabaseRef = fbDatabase.getReference("roh/test2")
+        fbDatabaseRef.setValue("goodbye, world!")
+    }
     private fun initDB(aa : Int) {
+        Log.e("initDB ", "${aa}")
         baseDb.addLog("test : ${aa}" )
         baseDb.getAllLogs { it ->
-            Log.e("initDB ", it[aa].msg)
+            Log.e("initDB ", "${it}")
         }
     }
 
@@ -72,10 +86,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
         initRetrofit()
+        initFB()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
+            Log.e("HomeFragment","${aa}")
             initDB(aa++)
 //            replaceFragment(3, buttonsFragment)
 //            navigator.navigateTo(Screens.BUTTONS)
@@ -83,10 +99,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
         }
+        binding.btTgDiscover.setOnClickListener {
+            baseDb.removeLogs()
+        }
         val etQuestion = binding.etSearch
     }
 
-    private fun getSearchList(question: String) {
+/*    private fun getSearchList(question: String) {
         Log.e("HomeFragment", "getSearchList")
         retrofitService.getChatCompletion(
             requestBody = ChatGptRequest(
@@ -113,7 +132,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
         })
     }
-
+*/
     private fun initRetrofit() {
         retrofit = RetrofitClient.getInstance()
         retrofitService = retrofit.create(RetrofitService::class.java)
