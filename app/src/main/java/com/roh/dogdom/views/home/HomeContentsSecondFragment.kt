@@ -5,6 +5,7 @@ import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.home.HomeItem
 import com.roh.dogdom.data.home.MainPost
+import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.FragmentHomeSecondContentsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,10 +17,12 @@ class HomeContentsSecondFragment :
     val datas = mutableListOf<Int>()
 
     private var ItemList = MainPost()
+    private var ItemList2 = MainPost2()
     private lateinit var MyAdapter : HomeAdapter
 
+
     override fun init() {
-        MyAdapter = HomeAdapter(ItemList)
+        MyAdapter = HomeAdapter(ItemList2)
         binding.mainVtRvContainer.adapter = MyAdapter
         binding.mainVtRvContainer.layoutManager = LinearLayoutManager(this.context)
 

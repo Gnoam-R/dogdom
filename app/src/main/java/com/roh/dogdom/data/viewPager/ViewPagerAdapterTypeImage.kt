@@ -1,14 +1,22 @@
-package com.example.arad_january
+package com.roh.dogdom.data.viewPager
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.roh.dogdom.data.firebase.FirebaseRepository
+import com.roh.dogdom.data.firebase.FirebaseRepositoryImpl
 import com.roh.dogdom.data.home.MainPost
+import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.ItemHomeViewpagerBinding
+import com.roh.dogdom.views.home.HomeFragment
 
 
-class ViewPagerAdapterTypeImage (var AdapterItem: MainPost) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
+class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
+
+
+    private val repositoryFB: FirebaseRepository = FirebaseRepositoryImpl()
+    private val HomeFragment = HomeFragment()
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
@@ -23,8 +31,9 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost) : RecyclerView.Adapt
     inner class ViewHolder(val binding: ItemHomeViewpagerBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
         val ImageMember = binding.ivViewPager
 
-        fun bind(item: MainPost, position: Int) {
-            ImageMember.setImageResource(item.getImageMembers()[position])
+        fun bind(item: MainPost2, position: Int) {
+            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position + ".jpeg")
+//            ImageMember.setImageResource(item.getImageMembers()[position])
         }
     }
 

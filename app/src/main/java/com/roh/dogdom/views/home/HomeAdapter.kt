@@ -6,21 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.arad_january.ViewPagerAdapterTypeImage
-import com.example.arad_january.ViewPagerAdapterTypeImages
-import com.example.arad_january.ViewPagerAdapterTypeVideo
+import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImage
+import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImages
+import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeVideo
+import com.google.firebase.storage.FirebaseStorage
 import com.roh.dogdom.R
+import com.roh.dogdom.data.firebase.FirebaseRepository
+import com.roh.dogdom.data.firebase.FirebaseRepositoryImpl
 import com.roh.dogdom.data.home.ItemType
 import com.roh.dogdom.data.home.MainPost
+import com.roh.dogdom.data.home.MainPost2
+import com.roh.dogdom.data.permission.PermissionRepository
+import com.roh.dogdom.data.permission.PermissionRepositoryImpl
 import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
-class HomeAdapter(var AdapterItem: MainPost)
+class HomeAdapter(var AdapterItem: MainPost2)
     : RecyclerView.Adapter<RecyclerView.ViewHolder> () {
 
     private var listener : OnItemClickListener? = null
-
     private lateinit var viewPager: ViewPager2
+
 
     interface OnItemClickListener {
         fun onItemClick (pos : Int)
@@ -39,6 +45,8 @@ class HomeAdapter(var AdapterItem: MainPost)
         }
     }
 
+
+
     inner class ImageViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
@@ -49,7 +57,9 @@ class HomeAdapter(var AdapterItem: MainPost)
 
         var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem)
 
-        fun bind(AdapterItem: MainPost) {
+        val storageReference = FirebaseStorage.getInstance()
+
+        fun bind(AdapterItem: MainPost2) {
             Log.e("ImageViewHolder", "ImageViewHolder: " )
 
             idViewPager2.adapter = pagerAdapter
@@ -83,7 +93,7 @@ class HomeAdapter(var AdapterItem: MainPost)
         var pagerAdapter = ViewPagerAdapterTypeImages(AdapterItem)
         val dotsIndicator = binding.dotsIndicator
 
-        fun bind(AdapterItem: MainPost) {
+        fun bind(AdapterItem: MainPost2) {
             Log.e("ImagesViewHolder", "ImagesViewHolder: " )
             val pos = adapterPosition
             idViewPager2.adapter = pagerAdapter
@@ -115,10 +125,12 @@ class HomeAdapter(var AdapterItem: MainPost)
         val tvShare = binding.tvShare
         val idViewPager2 = binding.idViewPager2
 
+
         var pagerAdapter = ViewPagerAdapterTypeVideo(AdapterItem)
 
-        fun bind(AdapterItem: MainPost) {
+        fun bind(AdapterItem: MainPost2) {
             Log.e("VideoViewHolder", "VideoViewHolder: " )
+
 
             val pos = adapterPosition
             idViewPager2.adapter = pagerAdapter

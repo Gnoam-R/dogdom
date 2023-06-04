@@ -1,6 +1,7 @@
 package com.roh.dogdom.views.home
 
 
+import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -10,6 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 import com.roh.dogdom.R
@@ -21,17 +23,9 @@ import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
-import com.roh.dogdom.navigator.Screens
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
-import org.json.JSONObject
-//import okhttp3.Callback
-import retrofit2.Callback
 import retrofit2.Retrofit
 import java.util.*
 import javax.inject.Inject
@@ -62,12 +56,54 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
    lateinit var fbDatabase : FirebaseDatabase
    lateinit var fbDatabaseRef : DatabaseReference
+   lateinit var fbStorage : FirebaseStorage
+
+   public fun provideContext() : Context {
+       return mContext
+   }
+
+   private fun upLoadFB() {
+       fbStorage = FirebaseStorage.getInstance()
+       // Create a storage reference from our app
+       val storageRef = fbStorage.reference
+       // Create a reference to "mountains.jpg"
+       val mountainsRef = storageRef.child("mountains.jpg")
+       // Create a reference to 'images/mountains.jpg'
+       val mountainImagesRef = storageRef.child("0604_file/mountains.jpg")
+       // While the file names are the same, the references point to different files
+       mountainsRef.name == mountainImagesRef.name // true
+       mountainsRef.path == mountainImagesRef.path // false
+   }
+    private fun downLoadFB() {
+        // Create a storage reference from our app
+        val storageRef = fbStorage.reference
+
+        // Create a reference with an initial file path and name
+        val pathReference = storageRef.child("0604_file/0604_image1")
+
+        // Create a reference to a file from a Google Cloud Storage URI
+        val gsReference = fbStorage.getReferenceFromUrl("gs://bucket/images/stars.jpg")
+
+        // Create a reference from an HTTPS URL
+        // Note that in the URL, characters are URL escaped!
+        val httpsReference = fbStorage.getReferenceFromUrl(
+            "https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg",
+        )
+    }
+
     private fun initFB() {
         fbDatabase = Firebase.database
         fbDatabaseRef = fbDatabase.getReference("roh/test")
         fbDatabaseRef.setValue("Hello, World!")
         fbDatabaseRef = fbDatabase.getReference("roh/test2")
         fbDatabaseRef.setValue("goodbye, world!")
+        fbDatabaseRef.setValue("safsdfa")
+        fbDatabaseRef = fbDatabase.getReference("roh/test3")
+//        upLoadFB()
+
+//        fbStorage.reference.child("0604_file").downloadUrl.addOnSuccessListener {
+//            Log.e("HomeFragment", "fbStorage : ${it}")
+//        }
     }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
@@ -75,6 +111,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         baseDb.getAllLogs { it ->
             Log.e("initDB ", "${it}")
         }
+
     }
 
     var aa = 0

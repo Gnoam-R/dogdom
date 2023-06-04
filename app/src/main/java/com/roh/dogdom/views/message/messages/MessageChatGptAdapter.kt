@@ -6,16 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.example.arad_january.ViewPagerAdapterTypeImage
-import com.example.arad_january.ViewPagerAdapterTypeImages
-import com.example.arad_january.ViewPagerAdapterTypeVideo
-import com.roh.dogdom.R
 import com.roh.dogdom.data.chatgpt.ChatGptDataSource
-import com.roh.dogdom.data.chatgpt.ChatGptInfo
 import com.roh.dogdom.databinding.ItemMessageChatGptRecycler2Binding
 import com.roh.dogdom.databinding.ItemMessageChatGptRecyclerBinding
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class MessageChatGptAdapter(private var context : Context, var AdapterItem: MutableList<ChatGptDataSource>)
     : RecyclerView.Adapter<RecyclerView.ViewHolder> () {

@@ -1,14 +1,15 @@
-package com.example.arad_january
+package com.roh.dogdom.data.viewPager
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roh.dogdom.data.home.MainPost
+import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.ItemHomeViewpagerBinding
 
 
-class ViewPagerAdapterTypeImages (var AdapterItem: MainPost) : RecyclerView.Adapter<ViewPagerAdapterTypeImages.ViewHolder>() {
+class ViewPagerAdapterTypeImages (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImages.ViewHolder>() {
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
@@ -23,7 +24,7 @@ class ViewPagerAdapterTypeImages (var AdapterItem: MainPost) : RecyclerView.Adap
     inner class ViewHolder(val binding: ItemHomeViewpagerBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
         val ImageMember = binding.ivViewPager
 
-        fun bind(item: MainPost, position: Int) {
+        fun bind(item: MainPost2, position: Int) {
             ImageMember.setImageResource(item.getImagesMembers()[position])
         }
     }
