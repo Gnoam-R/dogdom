@@ -1,22 +1,14 @@
 package com.roh.dogdom.views.message.messages
 
-import android.content.Context
 import android.util.Log
-import android.view.View
-import android.widget.EditText
-import androidx.annotation.DrawableRes
-import androidx.annotation.LayoutRes
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
-import com.roh.dogdom.api.ChatGptResponse
+import com.roh.dogdom.api.chatGpt.ChatGptResponse
 import com.roh.dogdom.data.chatgpt.ChatGptInfo
 import com.roh.dogdom.data.chatgpt.ChatGptRepository
 import com.roh.dogdom.data.chatgpt.ResponseChatGptListener
-import com.roh.dogdom.data.message.messages.MessagesRepository
 import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

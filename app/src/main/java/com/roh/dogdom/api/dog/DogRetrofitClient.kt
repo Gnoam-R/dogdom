@@ -1,14 +1,14 @@
-package com.roh.dogdom.api
+package com.roh.dogdom.api.dog
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitClient {
+object DogRetrofitClient {
     private var instance: Retrofit? = null
     private var gson = GsonBuilder().setLenient().create()
     // 서버 주소
-    private const val BASE_URL = "https://api.openai.com"
+    private const val BASE_URL = "https://dog.ceo/dog-api/"
 
     // SingleTon
     fun getInstance() : Retrofit {
@@ -20,14 +20,4 @@ object RetrofitClient {
         }
         return instance!!
     }
-
-    val request = ChatGptRequest(
-        model = "gpt-3.5-turbo",
-        messages = listOf(ChatMessage("user", "Say this is a test!")),
-        temperature = 1,
-        max_tokens = 512,
-        top_p = 1,
-        frequency_penalty = 0,
-        presence_penalty = 0
-    )
 }

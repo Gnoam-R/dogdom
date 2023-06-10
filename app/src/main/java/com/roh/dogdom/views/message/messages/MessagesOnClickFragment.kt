@@ -1,31 +1,15 @@
 package com.roh.dogdom.views.message.messages
 
 import android.content.Context
-import android.graphics.Rect
-import android.os.Message
-import android.util.Log
-import android.view.View
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
-import androidx.core.view.ViewCompat.getRootWindowInsets
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
-import com.roh.dogdom.api.ChatGptResponse
+import com.roh.dogdom.api.chatGpt.ChatGptResponse
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.chatgpt.ChatGptInfo
 import com.roh.dogdom.databinding.FragmentMessagesOnClickBinding
 import com.roh.dogdom.util.enumUiColorPos
-import com.roh.dogdom.views.home.HomeAdapter
-import com.roh.dogdom.views.login.LoginFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

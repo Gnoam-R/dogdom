@@ -12,14 +12,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.JsonObject
-import com.google.gson.annotations.SerializedName
 import com.roh.dogdom.R
-import com.roh.dogdom.api.*
+import com.roh.dogdom.api.chatGpt.ChatMessage
+import com.roh.dogdom.api.chatGpt.RetrofitClient
+import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.db.BaseDb
 import com.roh.dogdom.data.db.BaseLocalDataSource
-import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
@@ -27,7 +25,6 @@ import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Retrofit
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,6 +49,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
     private val homeContentsFirstFragment = HomeContentsFirstFragment()
     private val homeContentsSecondFragment = HomeContentsSecondFragment()
+    private val homeSearchFragment = HomeSearchFragment()
     private val buttonsFragment = ButtonsFragment()
 
    lateinit var fbDatabase : FirebaseDatabase
@@ -135,6 +133,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         }
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
+            replaceFragment(3, homeSearchFragment)
         }
         binding.btTgDiscover.setOnClickListener {
             baseDb.removeLogs()
@@ -192,7 +191,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             }
             3 -> {
                 childFragmentManager.beginTransaction().apply {
-                    replace(R.id.main_fragment_container2, fragment)
+                    replace(R.id.fg_search_onclick, fragment)
                     commit()
                 }
             }

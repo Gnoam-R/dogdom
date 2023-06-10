@@ -1,6 +1,7 @@
 package com.roh.dogdom.data.viewPager
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +15,7 @@ import com.roh.dogdom.views.home.HomeFragment
 
 class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
 
-
     private val repositoryFB: FirebaseRepository = FirebaseRepositoryImpl()
-    private val HomeFragment = HomeFragment()
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
@@ -32,7 +31,9 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adap
         val ImageMember = binding.ivViewPager
 
         fun bind(item: MainPost2, position: Int) {
-            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position + ".jpeg")
+            Log.e("ViewPagerAdapterTypeImage", "test : ${position}")
+            var position2 = position + 1
+            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position2 + ".jpeg")
 //            ImageMember.setImageResource(item.getImageMembers()[position])
         }
     }

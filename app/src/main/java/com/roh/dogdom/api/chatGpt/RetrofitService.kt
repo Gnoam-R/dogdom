@@ -1,7 +1,5 @@
-package com.roh.dogdom.api
+package com.roh.dogdom.api.chatGpt
 
-import android.content.Context
-import com.roh.dogdom.R
 import retrofit2.Call
 import retrofit2.http.*
 

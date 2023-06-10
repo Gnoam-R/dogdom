@@ -13,6 +13,8 @@ import com.roh.dogdom.databinding.FragmentReleaseBinding
 import com.roh.dogdom.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.bumptech.glide.Glide
+import com.roh.dogdom.data.dogimage.DogImageRepository
+import com.roh.dogdom.data.dogimage.DogImageRepositoryImpl
 import java.io.ByteArrayOutputStream
 
 @AndroidEntryPoint
@@ -21,10 +23,14 @@ class ReleaseFragment : BaseFragment<FragmentReleaseBinding>(R.layout.fragment_r
 //    private val viewModel by viewModels<LoginViewModel>()
 
     private val repository: PermissionRepository = PermissionRepositoryImpl()
+    private val dogImageRepository: DogImageRepository = DogImageRepositoryImpl()
 
     private fun downLoadFB2() {
         // Reference to an image file in Cloud Storage
         val imageView = binding.imageView
+
+//        dogImageRepository.initDogApi()
+//        dogImageRepository.requestDogAPi()
 
         val ref = FirebaseStorage.getInstance().getReference("0604_file/0604_image3.jpeg")
         ref.downloadUrl.addOnCompleteListener {task ->

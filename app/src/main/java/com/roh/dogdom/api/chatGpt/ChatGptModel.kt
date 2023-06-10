@@ -1,4 +1,4 @@
-package com.roh.dogdom.api
+package com.roh.dogdom.api.chatGpt
 
 import com.google.gson.annotations.SerializedName
 
