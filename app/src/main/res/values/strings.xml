@@ -17,6 +17,12 @@
     <!--home-->
     <string name="search_bar_text">Send the sample</string>
 
+    <!--circle-->
+    <string name="Circle_title">Circle</string>
+    <string name="Circle_item_text1">Popular circle</string>
+    <string name="Circle_item_text2">The circle to join</string>
+    <string name="Circle_chat_input_hint">The input information</string>
+
     <!--message-->
     <string name="message_title">Message</string>
     <string name="message_item_text1">Love dog little assistant</string>

@@ -5,76 +5,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-        <variable
-            name="vm"
-            type="com.roh.dogdom.views.home.HomeViewModel" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.views.login.LoginViewModel" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/constraintLayout8"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="58dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/bt_tg_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="112dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:button="@drawable/bt_custom_select"
-                android:checked="true"
-                android:gravity="center"
-                android:onClick="@{()->vm.goEx()}"
-                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/bt_tg_discover"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_message_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="112dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="10dp"
-                android:button="@drawable/bt_custom_discover"
-                android:checked="true"
-                android:gravity="center"
+                android:text="@string/Circle_title"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/bt_tg_alarm"
+                android:id="@+id/iv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="13dp"
-                android:background="@drawable/icon_alarm"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/icon_scan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_vertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/icon_search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/bt_tg_discover"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_search_bar"
             android:layout_width="339dp"
             android:layout_height="36dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bt_search_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8">
 
             <com.skydoves.transformationlayout.TransformationLayout
                 android:id="@+id/transformationLayout"
@@ -123,50 +122,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_fragment_container1"
-            android:layout_width="match_parent"
-            android:layout_height="78dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_search_bar"
-            tools:layout="@layout/item_home_horizontal_recycler1" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_fragment_container2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_fragment_container1"
-            tools:layout="@layout/fragment_home_second_contents">
-
-        </androidx.fragment.app.FragmentContainerView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/menu_home"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_search_bar">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fg_search_onclick"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_home_search" />
-
-        </com.google.android.material.card.MaterialCardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </layout>
