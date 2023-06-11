@@ -22,6 +22,9 @@
     <string name="Circle_item_text1">Popular circle</string>
     <string name="Circle_item_text2">The circle to join</string>
     <string name="Circle_chat_input_hint">The input information</string>
+    <string name="Circle_item_title">I love Golden Retriever</string>
+    <string name="Circle_item_content">548 Members</string>
+
 
     <!--message-->
     <string name="message_title">Message</string>
