@@ -139,6 +139,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             baseDb.removeLogs()
         }
         val etQuestion = binding.etSearch
+//        val etQuestion = binding.etSearch
+//        val etQuestion = binding.etSearch
     }
 
 /*    private fun getSearchList(question: String) {
