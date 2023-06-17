@@ -1,5 +1,6 @@
 package com.roh.dogdom.views.home
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
@@ -16,7 +17,13 @@ class HomeSearchFragment :
     BaseFragment<FragmentHomeSearchBinding>(R.layout.fragment_home_search){
 
     override fun init() {
-
+        with(binding) {
+            btClose.setOnClickListener {
+                Log.e("HomeSearchFragment", "btClose")
+                var HomeFragment = HomeFragment()
+                HomeFragment.binding.transformationLayout.finishTransform()
+            }
+        }
     }
 
     private fun moveNextScreen() {

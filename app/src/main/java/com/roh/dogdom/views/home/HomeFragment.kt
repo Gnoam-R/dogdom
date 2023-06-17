@@ -56,6 +56,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
    lateinit var fbDatabaseRef : DatabaseReference
    lateinit var fbStorage : FirebaseStorage
 
+   companion object {
+       var transAni = R.layout.fragment_home
+   }
+
    public fun provideContext() : Context {
        return mContext
    }
