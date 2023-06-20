@@ -42,6 +42,7 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adap
         ViewPagerBinding = ItemHomeViewpagerBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return ViewHolder(ViewPagerBinding, context = parent.context)
     }
+
 //    =
 //        ViewHolder(
 //            ItemHomeViewpagerBinding.inflate(LayoutInflater.from(parent.context), parent, false),
