@@ -64,59 +64,89 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="299dp"
-            android:layout_height="62dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="58dp"
+            android:layout_marginEnd="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/iv_search_ex1"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView5"
+                testSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/iv_search_ex1"
+                android:background="@drawable/rounded_color_gray"
+                android:padding="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Spring outing"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/iv_search_ex2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/iv_search_ex2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/iv_search_ex3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="46dp"
-                android:background="@drawable/iv_search_ex5"
-                app:layout_constraintStart_toEndOf="@+id/iv_search_ex4"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/iv_search_ex4"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView6"
+                testSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:background="@drawable/iv_search_ex4"
-                app:layout_constraintStart_toEndOf="@+id/iv_search_ex1"
+                android:background="@drawable/rounded_color_gray"
+                android:padding="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Teddy"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView5"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/iv_search_ex5"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView7"
+                testSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/iv_search_ex1"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/rounded_color_gray"
+                android:padding="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Toy"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView6"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                testSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/rounded_color_gray"
+                android:padding="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Show MOE"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                testSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_color_gray"
+                android:padding="5dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Dogs don't like to eat"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView5" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

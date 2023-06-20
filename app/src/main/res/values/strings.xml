@@ -39,6 +39,10 @@
     <string name="release_release">Release</string>
     <string name="release_next">Next</string>
 
+    <!--Release-->
+    <string name="release_article_titlebar">Writing articles</string>
+    <string name="release_article_title">Enter the title</string>
+    <string name="release_article_content">The input text</string>
 
     <!--Personal-->
     <string name="profile_name">Kelly Goldsmith</string>
