@@ -1,21 +1,18 @@
-package com.roh.dogdom.data.firebase
+package com.roh.dogdom.data.firebase.comment
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.util.Log
 import android.widget.ImageView
-import androidx.databinding.ViewDataBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
-class FirebaseRepositoryImpl : FirebaseRepository {
+class CommentRepositoryImpl : CommentRepository {
 
 //    lateinit var mContext: Context
-
     override fun init(context: Context) {
 //        mContext = context
     }

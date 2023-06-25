@@ -2,7 +2,6 @@ package com.roh.dogdom.views.home
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -10,16 +9,9 @@ import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImage
 import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImages
 import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeVideo
 import com.google.firebase.storage.FirebaseStorage
-import com.roh.dogdom.R
-import com.roh.dogdom.data.firebase.FirebaseRepository
-import com.roh.dogdom.data.firebase.FirebaseRepositoryImpl
 import com.roh.dogdom.data.home.ItemType
-import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.data.home.MainPost2
-import com.roh.dogdom.data.permission.PermissionRepository
-import com.roh.dogdom.data.permission.PermissionRepositoryImpl
 import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class HomeAdapter(var AdapterItem: MainPost2)
     : RecyclerView.Adapter<RecyclerView.ViewHolder> () {

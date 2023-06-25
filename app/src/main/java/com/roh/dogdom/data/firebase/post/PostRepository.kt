@@ -1,9 +1,9 @@
-package com.roh.dogdom.data.firebase
+package com.roh.dogdom.data.firebase.post
 
 import android.content.Context
 import android.widget.ImageView
 
-interface FirebaseRepository {
+interface PostRepository {
     fun init(context: Context)
     fun downloadImage(image: ImageView, path: String)
     fun uploadImage(image: ImageView, path: String)

@@ -5,17 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.roh.dogdom.data.firebase.FirebaseRepository
-import com.roh.dogdom.data.firebase.FirebaseRepositoryImpl
-import com.roh.dogdom.data.home.MainPost
+import com.roh.dogdom.data.firebase.post.PostRepository
+import com.roh.dogdom.data.firebase.post.PostRepositoryImpl
 import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.ItemHomeViewpagerBinding
-import com.roh.dogdom.views.home.HomeFragment
 
 
 class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
 
-    private val repositoryFB: FirebaseRepository = FirebaseRepositoryImpl()
+    private val repositoryFB: PostRepository = PostRepositoryImpl()
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
