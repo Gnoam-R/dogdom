@@ -11,22 +11,26 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.roh.dogdom.data.firebase.FireBaseRepository
+import com.roh.dogdom.data.firebase.FireBaseRepositoryImpl
 import com.roh.dogdom.data.firebase.user.UserInfo
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
-class LikeRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): LikeRepository {
+class LikeRepositoryImpl : LikeRepository {
 
-    val UserInfoPah = "dogdom/like"
+    private var fireBaseRepository = FireBaseRepositoryImpl()
+
+    private val InfoPah = "dogdom/like"
     lateinit var fbDatabase : FirebaseDatabase
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {
         fbDatabase = fireBaseRepository.getFireBase()
-        fbDatabaseRef = fbDatabase.getReference(UserInfoPah)
+        fbDatabaseRef = fbDatabase.getReference(InfoPah)
     }
     override fun uploadToServer() {
-        fbDatabaseRef.setValue(UserInfo())
+        fbDatabaseRef.setValue(LikeInfo())
     }
     override fun downloadFromServer() {
         fbDatabaseRef.get().addOnSuccessListener {

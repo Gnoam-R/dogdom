@@ -21,34 +21,34 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object FireBaseModule {
-    @Singleton
-    @Provides
-    fun initializeFireBase(
-    ) : FireBaseRepository {
-        return FireBaseRepositoryImpl()
-    }
+//    @Singleton
+//    @Provides
+//    fun initializeFireBase(
+//    ) : FireBaseRepository {
+//        return FireBaseRepositoryImpl()
+//    }
     @Singleton
     @Provides
     fun provideUserRepository(
     ) : UserRepository {
-        return UserRepositoryImpl (FireBaseRepositoryImpl())
+        return UserRepositoryImpl ()
     }
     @Singleton
     @Provides
     fun provideCommentRepository(
     ) : CommentRepository {
-        return CommentRepositoryImpl (FireBaseRepositoryImpl())
+        return CommentRepositoryImpl ()
     }
     @Singleton
     @Provides
     fun provideLikeRepository(
     ) : LikeRepository {
-        return LikeRepositoryImpl (FireBaseRepositoryImpl())
+        return LikeRepositoryImpl ()
     }
     @Singleton
     @Provides
     fun providePostRepository(
     ) : PostRepository {
-        return PostRepositoryImpl (FireBaseRepositoryImpl())
+        return PostRepositoryImpl ()
     }
 }

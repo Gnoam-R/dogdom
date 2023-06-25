@@ -9,6 +9,7 @@ import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
 import com.roh.dogdom.data.firebase.user.UserRepository
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 class FireBaseRepositoryImpl : FireBaseRepository {

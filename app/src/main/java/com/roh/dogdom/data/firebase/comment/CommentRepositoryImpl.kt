@@ -11,22 +11,25 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.roh.dogdom.data.firebase.FireBaseRepository
+import com.roh.dogdom.data.firebase.FireBaseRepositoryImpl
 import com.roh.dogdom.data.firebase.user.UserInfo
-import java.io.ByteArrayOutputStream
-import javax.inject.Inject
 
-class CommentRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): CommentRepository {
 
-    val UserInfoPah = "dogdom/comment"
+class CommentRepositoryImpl : CommentRepository {
+
+    private var fireBaseRepository = FireBaseRepositoryImpl()
+
+    private val InfoPah = "dogdom/comment"
     lateinit var fbDatabase : FirebaseDatabase
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {
+        Log.e("sdfd", "test")
         fbDatabase = fireBaseRepository.getFireBase()
-        fbDatabaseRef = fbDatabase.getReference(UserInfoPah)
+        fbDatabaseRef = fbDatabase.getReference(InfoPah)
     }
     override fun uploadToServer() {
-        fbDatabaseRef.setValue(UserInfo())
+        fbDatabaseRef.setValue(CommentInfo())
     }
     override fun downloadFromServer() {
         fbDatabaseRef.get().addOnSuccessListener {

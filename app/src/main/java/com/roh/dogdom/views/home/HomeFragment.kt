@@ -43,7 +43,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     @Inject lateinit var likeRepository: LikeRepository
     @Inject lateinit var postRepository: PostRepository
     @Inject lateinit var userRepository: UserRepository
-    @Inject lateinit var fireBaseRepository: FireBaseRepository
 
     private lateinit var homeAdapter : HomeAdapter
     private lateinit var mainPost : MainPost
@@ -104,6 +103,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         postRepository.init()
         userRepository.init()
     }
+    private fun uploadFB() {
+        userRepository.uploadToServer()
+        commentRepository.uploadToServer()
+        likeRepository.uploadToServer()
+        postRepository.uploadToServer()
+    }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
         baseDb.addLog("test : ${aa}" )
@@ -122,6 +127,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         initViewModelCallback()
         initRetrofit()
         initFB()
+        uploadFB()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 

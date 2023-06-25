@@ -9,19 +9,20 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.roh.dogdom.data.firebase.FireBaseRepository
 import com.roh.dogdom.data.firebase.FireBaseRepositoryImpl
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): UserRepository {
+class UserRepositoryImpl : UserRepository {
 
+    private var fireBaseRepository = FireBaseRepositoryImpl()
 
-
-    val UserInfoPah = "dogdom/user"
+    private val InfoPah = "dogdom/user"
     lateinit var fbDatabase : FirebaseDatabase
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {
         fbDatabase = fireBaseRepository.getFireBase()
-        fbDatabaseRef = fbDatabase.getReference(UserInfoPah)
+        fbDatabaseRef = fbDatabase.getReference(InfoPah)
     }
     override fun uploadToServer() {
         fbDatabaseRef.setValue(UserInfo())

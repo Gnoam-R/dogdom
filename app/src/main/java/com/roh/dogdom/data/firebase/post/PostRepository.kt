@@ -7,4 +7,6 @@ interface PostRepository {
     fun init()
     fun downloadImage(image: ImageView, path: String)
     fun uploadImage(image: ImageView, path: String)
+    fun uploadToServer()
+    fun downloadFromServer()
 }
