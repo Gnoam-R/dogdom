@@ -130,9 +130,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
-
-
-
         binding.btTgAlarm.setOnClickListener {
             Log.e("HomeFragment","${aa}")
             initDB(aa++)
