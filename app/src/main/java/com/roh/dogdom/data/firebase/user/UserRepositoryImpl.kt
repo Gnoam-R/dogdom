@@ -1,23 +1,21 @@
-package com.roh.dogdom.data.firebase.comment
+package com.roh.dogdom.data.firebase.user
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.util.Log
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.roh.dogdom.data.firebase.FireBaseRepository
-import com.roh.dogdom.data.firebase.user.UserInfo
-import java.io.ByteArrayOutputStream
+import com.roh.dogdom.data.firebase.FireBaseRepositoryImpl
 import javax.inject.Inject
 
-class CommentRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): CommentRepository {
+class UserRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): UserRepository {
 
-    val UserInfoPah = "dogdom/comment"
+
+
+    val UserInfoPah = "dogdom/user"
     lateinit var fbDatabase : FirebaseDatabase
     lateinit var fbDatabaseRef : DatabaseReference
 

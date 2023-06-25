@@ -13,7 +13,7 @@ import com.roh.dogdom.databinding.ItemHomeViewpagerBinding
 
 class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
 
-    private val repositoryFB: PostRepository = PostRepositoryImpl()
+//    private val repositoryFB: PostRepository = PostRepositoryImpl()
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
@@ -31,7 +31,7 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adap
         fun bind(item: MainPost2, position: Int) {
             Log.e("ViewPagerAdapterTypeImage", "test : ${position}")
             var position2 = position + 1
-            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position2 + ".jpeg")
+//            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position2 + ".jpeg")
 //            ImageMember.setImageResource(item.getImageMembers()[position])
         }
     }

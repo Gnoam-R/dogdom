@@ -7,10 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.roh.dogdom.R
 import com.roh.dogdom.api.chatGpt.ChatMessage
@@ -18,6 +14,12 @@ import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.db.BaseLocalDataSource
+import com.roh.dogdom.data.firebase.FireBaseRepository
+import com.roh.dogdom.data.firebase.comment.CommentRepository
+import com.roh.dogdom.data.firebase.like.LikeRepository
+import com.roh.dogdom.data.firebase.post.PostRepository
+import com.roh.dogdom.data.firebase.user.UserRepositoryImpl
+import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding
 import com.roh.dogdom.navigator.AppNavigator
@@ -30,16 +32,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
-    
     // retrofit2 test
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
 
     @Inject lateinit var baseDb: BaseLocalDataSource
+    @Inject lateinit var navigator: AppNavigator
 
-
-    @Inject
-    lateinit var navigator: AppNavigator
+    @Inject lateinit var commentRepository: CommentRepository
+    @Inject lateinit var likeRepository: LikeRepository
+    @Inject lateinit var postRepository: PostRepository
+    @Inject lateinit var userRepository: UserRepository
+    @Inject lateinit var fireBaseRepository: FireBaseRepository
 
     private lateinit var homeAdapter : HomeAdapter
     private lateinit var mainPost : MainPost
@@ -53,10 +57,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val homeSearchFragment = HomeSearchFragment()
     private val buttonsFragment = ButtonsFragment()
 
-   lateinit var fbDatabase : FirebaseDatabase
-   lateinit var fbDatabaseRef : DatabaseReference
    lateinit var fbStorage : FirebaseStorage
-
    companion object {
        var transAni = R.layout.fragment_home
    }
@@ -76,6 +77,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
        // While the file names are the same, the references point to different files
        mountainsRef.name == mountainImagesRef.name // true
        mountainsRef.path == mountainImagesRef.path // false
+
    }
     private fun downLoadFB() {
         // Create a storage reference from our app
@@ -93,20 +95,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             "https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg",
         )
     }
-
     private fun initFB() {
-        fbDatabase = Firebase.database
-        fbDatabaseRef = fbDatabase.getReference("roh/test")
-        fbDatabaseRef.setValue("Hello, World!")
-        fbDatabaseRef = fbDatabase.getReference("roh/test2")
-        fbDatabaseRef.setValue("goodbye, world!")
-        fbDatabaseRef.setValue("safsdfa")
-        fbDatabaseRef = fbDatabase.getReference("roh/test3")
-//        upLoadFB()
-
-//        fbStorage.reference.child("0604_file").downloadUrl.addOnSuccessListener {
-//            Log.e("HomeFragment", "fbStorage : ${it}")
-//        }
+//        userRepository.init()
+//        userRepository.uploadToServer()
+//        userRepository.init()
+        commentRepository.init()
+        likeRepository.init()
+        postRepository.init()
+        userRepository.init()
     }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
@@ -114,7 +110,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         baseDb.getAllLogs { it ->
             Log.e("initDB ", "${it}")
         }
-
     }
 
     var aa = 0

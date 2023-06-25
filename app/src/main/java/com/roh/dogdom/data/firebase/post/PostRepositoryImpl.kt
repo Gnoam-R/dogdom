@@ -7,19 +7,23 @@ import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.roh.dogdom.data.firebase.FireBaseRepository
 import java.io.ByteArrayOutputStream
+import javax.inject.Inject
 
-class PostRepositoryImpl : PostRepository {
+class PostRepositoryImpl @Inject constructor(var fireBaseRepository : FireBaseRepository): PostRepository {
 
-//    lateinit var mContext: Context
-    override fun init(context: Context) {
-//        mContext = context
+    val UserInfoPah = "dogdom/post"
+    lateinit var fbDatabase : FirebaseDatabase
+    lateinit var fbDatabaseRef : DatabaseReference
+    override fun init() {
+        fbDatabase = fireBaseRepository.getFireBase()
+        fbDatabaseRef = fbDatabase.getReference(UserInfoPah)
     }
-//    val bitmap: Bitmap = BitmapFactory.decodeFile(absolutePath)
     override fun downloadImage(image: ImageView, path: String) {
-        // Reference to an image file in Cloud Storage
-//        val imageView = binding.imageView
 
         // 이미지뷰 크기에 맞춰 이미지 크기 조정
         val ref = FirebaseStorage.getInstance().getReference(path)
