@@ -17,6 +17,7 @@ class HomeViewModel @Inject constructor(
     private val _goEx = SingleLiveEvent<Unit>()
     val goEx: LiveData<Unit> get() = _goEx
 
+
     fun goEx() {
         _goEx.call()
     }

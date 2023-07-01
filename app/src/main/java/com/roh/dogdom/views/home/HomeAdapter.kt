@@ -47,16 +47,16 @@ class HomeAdapter(var AdapterItem: MainPost2)
         val tvShare = binding.tvShare
         val idViewPager2 = binding.idViewPager2
 
-        var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem)
 
         val storageReference = FirebaseStorage.getInstance()
 
         fun bind(AdapterItem: MainPost2) {
-            Log.e("ImageViewHolder", "ImageViewHolder: " )
-
+            val pos = adapterPosition
+            var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem, pos)
+            Log.e("ImageViewHolder", "ImageViewHolder: $pos" )
             idViewPager2.adapter = pagerAdapter
 
-            val pos = adapterPosition
+
 //            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
 
@@ -154,9 +154,12 @@ class HomeAdapter(var AdapterItem: MainPost2)
 //        return ImagesViewHolder(multiBinding)
 
         return when(viewType) {
+//            0 -> ImageViewHolder(singleBinding)
+//            1 -> ImagesViewHolder(multiBinding)
+//            2 -> VideoViewHolder(videoBinding)
             0 -> ImageViewHolder(singleBinding)
-            1 -> ImagesViewHolder(multiBinding)
-            2 -> VideoViewHolder(videoBinding)
+            1 -> ImageViewHolder(singleBinding)
+            2 -> ImageViewHolder(singleBinding)
             else -> throw IllegalArgumentException("Invalid view type $viewType")
         }
     }

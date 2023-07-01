@@ -9,11 +9,12 @@ import com.roh.dogdom.data.firebase.post.PostRepository
 import com.roh.dogdom.data.firebase.post.PostRepositoryImpl
 import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.ItemHomeViewpagerBinding
+import java.text.SimpleDateFormat
 
 
-class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
+class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2, var mainPosition : Int) : RecyclerView.Adapter<ViewPagerAdapterTypeImage.ViewHolder>() {
 
-//    private val repositoryFB: PostRepository = PostRepositoryImpl()
+    private val postRepository: PostRepository = PostRepositoryImpl()
 
     private var listener : OnItmeCLickListener? = null
     public lateinit var ViewPagerBinding : ItemHomeViewpagerBinding
@@ -30,8 +31,15 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2) : RecyclerView.Adap
 
         fun bind(item: MainPost2, position: Int) {
             Log.e("ViewPagerAdapterTypeImage", "test : ${position}")
+
+            val currentTime = System.currentTimeMillis()
+            val sdf = SimpleDateFormat("yyyy-MM-dd-hh-mm-ss")
+            val date = sdf.format(currentTime)
+
+            Log.e("ViewPagerAdapterTypeImage", "test : ${mainPosition}")
+            var position1 = mainPosition + 1
             var position2 = position + 1
-//            repositoryFB.downloadImage(ImageMember, "0604_file/0604_image" + position2 + ".jpeg")
+            postRepository.downloadImage(ImageMember, "file/img${position1}_$position2.jpeg")
 //            ImageMember.setImageResource(item.getImageMembers()[position])
         }
     }

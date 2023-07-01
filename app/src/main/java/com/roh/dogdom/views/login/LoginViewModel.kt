@@ -42,7 +42,6 @@ class LoginViewModel @Inject constructor(
     }
     fun goGoogleLogin() {
 //        loginRepository.googleLogin()
-
         googleLoginRepository.GoogleSignIn(resultLauncher)
         googleLoginRepository.GetCurrentUserProfile{ userInfo ->
             val InfoPah = "dogdom/user/user-google-${userInfo.userId}"

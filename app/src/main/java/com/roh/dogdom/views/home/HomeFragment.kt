@@ -105,9 +105,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     }
     private fun uploadFB() {
 //        userRepository.uploadToServer()
-        commentRepository.uploadToServer()
-        likeRepository.uploadToServer()
-        postRepository.uploadToServer()
+//        commentRepository.uploadToServer()
+//        likeRepository.uploadToServer()
+//        postRepository.uploadToServer()
     }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
@@ -126,7 +126,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
         initRetrofit()
-        initFB()
+//        initFB()
         uploadFB()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
