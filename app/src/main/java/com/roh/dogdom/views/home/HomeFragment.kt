@@ -65,19 +65,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
        return mContext
    }
 
-   private fun upLoadFB() {
-       fbStorage = FirebaseStorage.getInstance()
-       // Create a storage reference from our app
-       val storageRef = fbStorage.reference
-       // Create a reference to "mountains.jpg"
-       val mountainsRef = storageRef.child("mountains.jpg")
-       // Create a reference to 'images/mountains.jpg'
-       val mountainImagesRef = storageRef.child("0604_file/mountains.jpg")
-       // While the file names are the same, the references point to different files
-       mountainsRef.name == mountainImagesRef.name // true
-       mountainsRef.path == mountainImagesRef.path // false
-
-   }
+//   private fun upLoadFB() {
+//       fbStorage = FirebaseStorage.getInstance()
+//       // Create a storage reference from our app
+//       val storageRef = fbStorage.reference
+//       // Create a reference to "mountains.jpg"
+//       val mountainsRef = storageRef.child("mountains.jpg")
+//       // Create a reference to 'images/mountains.jpg'
+//       val mountainImagesRef = storageRef.child("0604_file/mountains.jpg")
+//       // While the file names are the same, the references point to different files
+//       mountainsRef.name == mountainImagesRef.name // true
+//       mountainsRef.path == mountainImagesRef.path // false
+//
+//   }
     private fun downLoadFB() {
         // Create a storage reference from our app
         val storageRef = fbStorage.reference
@@ -104,7 +104,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         userRepository.init()
     }
     private fun uploadFB() {
-        userRepository.uploadToServer()
+//        userRepository.uploadToServer()
         commentRepository.uploadToServer()
         likeRepository.uploadToServer()
         postRepository.uploadToServer()

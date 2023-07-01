@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResultLauncher
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
+import com.roh.dogdom.data.firebase.user.UserInfo
 
 interface GoogleLoginRepository {
 
@@ -15,6 +16,6 @@ interface GoogleLoginRepository {
     fun GoogleSignIn(resultLauncher: ActivityResultLauncher<Intent>)
     fun GoogleSignOut()
     fun revokeAccess()
-    fun GetCurrentUserProfile()
+    fun GetCurrentUserProfile(upload: (GoogleInfo) -> Unit)
 
 }

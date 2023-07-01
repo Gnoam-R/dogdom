@@ -32,7 +32,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     private val viewModel by viewModels<LoginViewModel>()
 
-    private val repository: PermissionRepository = PermissionRepositoryImpl()
+    private val permissionRepository: PermissionRepository = PermissionRepositoryImpl()
+
     private val permissionUnder13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA)
     private val permissionOver13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS)
 
@@ -58,21 +59,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             }
         }
         viewModel.setLogin(mActivity,mContext,resultLauncher)
-        askPermission()
+//        askPermission()
         initViewModelCallback()
-
         Log.e("LoginFragment","${findNavController().currentDestination?.id}")
     }
 
     private fun askPermission() {
-        if(repository.checkVersion()) {
-            repository.setPermissions( mActivity, permissionOver13, 1000)
-            repository.requestPermissions()
+        if(permissionRepository.checkVersion()) {
+            permissionRepository.setPermissions( mActivity, permissionOver13, 1000)
+            permissionRepository.requestPermissions()
             version13 = true
         }
         else {
-            repository.setPermissions(mActivity, permissionUnder13, 1000)
-            repository.requestPermissions()
+            permissionRepository.setPermissions(mActivity, permissionUnder13, 1000)
+            permissionRepository.requestPermissions()
             versionUnder13 = true
 
             val notificationManager = mActivity.getSystemService(NotificationManager::class.java)
@@ -93,7 +93,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grandResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grandResults)
-        checkPermission = repository.onRequestPermissionsResult(requestCode, permissions, grandResults)
+        checkPermission = permissionRepository.onRequestPermissionsResult(requestCode, permissions, grandResults)
 
         // 앱이 13버전의 위라면
         if(version13 == true){

@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.roh.dogdom.data.firebase.user.UserInfo
 
 
 class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
@@ -83,7 +84,7 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
 
             }
     }
-    override fun GetCurrentUserProfile() {
+    override fun GetCurrentUserProfile(upload: (GoogleInfo) -> Unit) {
         val curUser = com.google.android.gms.auth.api.signin.GoogleSignIn.getLastSignedInAccount(mContext)
         curUser?.let {
             val email = curUser.email.toString()
@@ -91,6 +92,15 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
             val givenName = curUser.givenName.toString()
             val displayName = curUser.displayName.toString()
             val photoUrl = curUser.photoUrl.toString()
+            val id = curUser.id.toString()
+
+            val userInfo = GoogleInfo()
+            userInfo.userId = id
+            userInfo.email = email
+            userInfo.name = displayName
+            userInfo.role = UserRole.NORMAL
+            userInfo.profileAddress = photoUrl
+            upload(userInfo)
 
             Log.e(TAG, "현재 로그인한 유저의 이메일 ${email}")
             Log.e(TAG, "현재 로그인한 유저의 성 ${familyName}")

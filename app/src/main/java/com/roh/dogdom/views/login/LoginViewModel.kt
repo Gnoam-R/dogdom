@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
 import com.roh.dogdom.data.bottommenu.BottomMenuRepository
+import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.login.LoginRepository
 import com.roh.dogdom.data.login.google.GoogleLoginRepository
 import com.roh.dogdom.util.SingleLiveEvent
@@ -21,15 +22,15 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
     private val bottomMenuRepository: BottomMenuRepository,
-    private val googleLoginRepository: GoogleLoginRepository
+    private val googleLoginRepository: GoogleLoginRepository,
+    private val userRepository: UserRepository
 ) : ViewModel(){
+
 
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
     lateinit var mActivity: Activity
-
     private val _goMain = SingleLiveEvent<Unit>()
     val goMain: LiveData<Unit> get() = _goMain
-
     private val _goEmailSignUp = SingleLiveEvent<Unit>()
     val goEmailSignUp: LiveData<Unit> get() = _goEmailSignUp
 
@@ -41,7 +42,12 @@ class LoginViewModel @Inject constructor(
     }
     fun goGoogleLogin() {
 //        loginRepository.googleLogin()
+
         googleLoginRepository.GoogleSignIn(resultLauncher)
+        googleLoginRepository.GetCurrentUserProfile{ userInfo ->
+            val InfoPah = "dogdom/user/user-google-${userInfo.userId}"
+            userRepository.uploadToServer(userInfo, InfoPah)
+        }
     }
     fun goKakaoLogin() {
         loginRepository.kakaoLogin()
