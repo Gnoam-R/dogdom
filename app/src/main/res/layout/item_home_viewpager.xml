@@ -15,7 +15,7 @@
             android:id="@+id/iv_view_pager"
             android:layout_width="339dp"
             android:layout_height="200dp"
-            android:src="@drawable/iv_card_4"
+            android:src="@drawable/square_color_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
