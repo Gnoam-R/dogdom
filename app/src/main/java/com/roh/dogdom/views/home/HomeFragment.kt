@@ -57,27 +57,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val buttonsFragment = ButtonsFragment()
 
    lateinit var fbStorage : FirebaseStorage
-   companion object {
-       var transAni = R.layout.fragment_home
-   }
 
-   public fun provideContext() : Context {
-       return mContext
-   }
-
-//   private fun upLoadFB() {
-//       fbStorage = FirebaseStorage.getInstance()
-//       // Create a storage reference from our app
-//       val storageRef = fbStorage.reference
-//       // Create a reference to "mountains.jpg"
-//       val mountainsRef = storageRef.child("mountains.jpg")
-//       // Create a reference to 'images/mountains.jpg'
-//       val mountainImagesRef = storageRef.child("0604_file/mountains.jpg")
-//       // While the file names are the same, the references point to different files
-//       mountainsRef.name == mountainImagesRef.name // true
-//       mountainsRef.path == mountainImagesRef.path // false
-//
-//   }
     private fun downLoadFB() {
         // Create a storage reference from our app
         val storageRef = fbStorage.reference
@@ -95,19 +75,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         )
     }
     private fun initFB() {
-//        userRepository.init()
-//        userRepository.uploadToServer()
-//        userRepository.init()
         commentRepository.init()
         likeRepository.init()
         postRepository.init()
         userRepository.init()
-    }
-    private fun uploadFB() {
-//        userRepository.uploadToServer()
-//        commentRepository.uploadToServer()
-//        likeRepository.uploadToServer()
-//        postRepository.uploadToServer()
     }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
@@ -127,7 +98,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         initViewModelCallback()
         initRetrofit()
 //        initFB()
-        uploadFB()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
@@ -145,8 +115,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             baseDb.removeLogs()
         }
         val etQuestion = binding.etSearch
-//        val etQuestion = binding.etSearch
-//        val etQuestion = binding.etSearch
+
     }
 
     private fun initRetrofit() {

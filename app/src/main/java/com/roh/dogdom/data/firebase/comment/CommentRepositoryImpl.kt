@@ -20,16 +20,17 @@ class CommentRepositoryImpl : CommentRepository {
     private var fireBaseRepository = FireBaseRepositoryImpl()
 
     private val InfoPah = "dogdom/comment"
-    lateinit var fbDatabase : FirebaseDatabase
+    var fbDatabase : FirebaseDatabase = fireBaseRepository.getFireBase()
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {
-        Log.e("sdfd", "test")
-        fbDatabase = fireBaseRepository.getFireBase()
-        fbDatabaseRef = fbDatabase.getReference(InfoPah)
+//        Log.e("sdfd", "test")
+//        fbDatabase = fireBaseRepository.getFireBase()
+//        fbDatabaseRef = fbDatabase.getReference(InfoPah)
     }
-    override fun uploadToServer() {
-        fbDatabaseRef.setValue(CommentInfo())
+    override fun uploadToServer(commentInfo: CommentInfo, path: String) {
+        fbDatabaseRef = fbDatabase.getReference(path)
+        fbDatabaseRef.setValue(commentInfo)
     }
     override fun downloadFromServer() {
         fbDatabaseRef.get().addOnSuccessListener {

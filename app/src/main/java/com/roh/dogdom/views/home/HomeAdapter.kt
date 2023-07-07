@@ -9,6 +9,10 @@ import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImage
 import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeImages
 import com.roh.dogdom.data.viewPager.ViewPagerAdapterTypeVideo
 import com.google.firebase.storage.FirebaseStorage
+import com.roh.dogdom.data.firebase.comment.CommentRepository
+import com.roh.dogdom.data.firebase.comment.CommentRepositoryImpl
+import com.roh.dogdom.data.firebase.post.PostRepository
+import com.roh.dogdom.data.firebase.post.PostRepositoryImpl
 import com.roh.dogdom.data.home.ItemType
 import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.ItemHomeVerticalSecondRecyclerBinding
@@ -19,6 +23,7 @@ class HomeAdapter(var AdapterItem: MainPost2)
     private var listener : OnItemClickListener? = null
     private lateinit var viewPager: ViewPager2
 
+    private val commentRepository: CommentRepository = CommentRepositoryImpl()
 
     interface OnItemClickListener {
         fun onItemClick (pos : Int)

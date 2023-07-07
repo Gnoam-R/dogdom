@@ -22,7 +22,7 @@ class LikeRepositoryImpl : LikeRepository {
     private var fireBaseRepository = FireBaseRepositoryImpl()
 
     private val InfoPah = "dogdom/like"
-    lateinit var fbDatabase : FirebaseDatabase
+    var fbDatabase : FirebaseDatabase = fireBaseRepository.getFireBase()
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {

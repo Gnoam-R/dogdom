@@ -5,6 +5,6 @@ import android.widget.ImageView
 
 interface CommentRepository {
     fun init()
-    fun uploadToServer()
+    fun uploadToServer(commentInfo: CommentInfo, path: String)
     fun downloadFromServer()
 }

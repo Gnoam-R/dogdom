@@ -41,11 +41,17 @@ class LoginViewModel @Inject constructor(
         _goMain.call()
     }
     fun goGoogleLogin() {
+
 //        loginRepository.googleLogin()
         googleLoginRepository.GoogleSignIn(resultLauncher)
         googleLoginRepository.GetCurrentUserProfile{ userInfo ->
-            val InfoPah = "dogdom/user/user-google-${userInfo.userId}"
-            userRepository.uploadToServer(userInfo, InfoPah)
+            val InfoPath = "dogdom/user/user-google-${userInfo.userId}"
+            userRepository.uploadToServer(userInfo, InfoPath)
+//            userInfo.userId = ""
+//            val InfoPath2 = "dogdom/user/user-google-${userInfo.userId}"
+//            userRepository.uploadToServer(userInfo, InfoPath2)
+//            val InfoPath3 = "dogdom/user/user-google-${userInfo.userId}"
+//            userRepository.uploadToServer(userInfo, InfoPath)
         }
     }
     fun goKakaoLogin() {
