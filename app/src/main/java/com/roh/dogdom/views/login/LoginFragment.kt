@@ -27,20 +27,14 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login){
-
 //    private val viewModel: LocalPageViewModel by viewModel()
-
     private val viewModel by viewModels<LoginViewModel>()
-
     private val permissionRepository: PermissionRepository = PermissionRepositoryImpl()
-
     private val permissionUnder13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA)
     private val permissionOver13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS)
-
     private var checkPermission = false
     private var checkOverlay = false
     private var checkNotification = false
-
     private var version13 = true
     private var versionUnder13 = false
 

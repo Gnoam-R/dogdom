@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.home.HomeItem
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.data.home.MainPost2
 import com.roh.dogdom.databinding.FragmentHomeSecondContentsBinding
