@@ -11,8 +11,8 @@
 
 ## 🛠️ 개발 도구 및 활용 기술
 
-- 개발 언어 : Kotlin
-- 개발 환경 : Android Studio
+- 개발 언어 : Kotlin
+- 개발 환경 : Android Studio
 - 디자인 툴 : Figma
 - 협업 도구 : Github, Notion
 - 사용 라이브러리 : Room, Hilt, ViewModel, databinding, Navigation, etc
