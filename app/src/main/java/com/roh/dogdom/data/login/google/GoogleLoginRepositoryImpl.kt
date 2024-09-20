@@ -17,12 +17,9 @@ import com.roh.dogdom.data.firebase.user.UserInfo
 
 
 class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
-
     private val TAG = "LoginRepositoryImpl"
-
     private lateinit var mActivity : Activity
     private lateinit var mContext : Context
-    private lateinit var mView : View
 
     // 구글 소셜 로그인
     lateinit var mGoogleSignInClient: GoogleSignInClient

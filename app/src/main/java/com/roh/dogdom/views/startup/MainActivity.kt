@@ -1,13 +1,11 @@
 package com.roh.dogdom.views.startup
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseActivity
 import com.roh.dogdom.databinding.ActivityMainBinding
@@ -23,7 +21,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         initNavHost()
         initBottomMenu()
-//        setBottomNavigation()
         initViewModelCallback()
     }
     private fun initNavHost() {
@@ -44,7 +41,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 //            })
 
             goEx.observe(this@MainActivity, Observer {
-                Log.e("MainActivity", "goEx")
                 goEx()
             })
         }

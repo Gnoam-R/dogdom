@@ -1,6 +1,5 @@
 package com.roh.dogdom.views.splash
 
-import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
@@ -13,7 +12,6 @@ import kotlinx.coroutines.*
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>(R.layout.fragment_splash) {
-
     private lateinit var job : Job
 
     override fun init() {

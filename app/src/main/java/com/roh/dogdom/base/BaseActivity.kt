@@ -14,9 +14,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.roh.dogdom.util.enumUiColorPos
 
-//import com.roh.petpeople.dialog.LottieDialogFragment
-//import io.reactivex.disposables.CompositeDisposable
-
 abstract class BaseActivity<B : ViewDataBinding>(
     @LayoutRes val layoutId: Int
 ) : AppCompatActivity() {

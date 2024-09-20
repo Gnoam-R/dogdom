@@ -1,6 +1,5 @@
 
 buildscript {
-
     // hilt
     ext.hilt_version = '2.44'
     dependencies {
