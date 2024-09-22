@@ -6,4 +6,4 @@ import com.roh.dogdom.api.chatGpt.ChatMessage
 data class DogImageRespond (
     @SerializedName("model") val model: String,
     @SerializedName("status") val status: String,
-        )
+)

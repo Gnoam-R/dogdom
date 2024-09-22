@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
 
-
     // Dagger hilt
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
@@ -24,7 +23,6 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -45,17 +43,8 @@ android {
 }
 
 dependencies {
-
     def lifecycle_version = "2.5.1"
     def jetpack_navigation_version = '2.5.3'
-
-
-
-//    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10'
-//    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.10'
-
-
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
@@ -64,14 +53,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-//    implementation 'io.reactivex.rxjava2:rxjava2:'
-//    implementation 'io.reactivex.rxjava2:rxandroid:2.x.x'
-
-
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
     // jetpack navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$jetpack_navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$jetpack_navigation_version"
@@ -79,8 +66,6 @@ dependencies {
     // Dagger hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-
-
 
     // Room components
     def room_version = "2.4.1"
@@ -95,7 +80,6 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
 
     // dotsindicator
-//    implementation 'com.tbuonomo: dotsindicator:4.2'
     implementation("com.tbuonomo:dotsindicator:4.3")
 
 //    skydoves TransformationLayout
@@ -113,10 +97,7 @@ dependencies {
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
-    // Add the dependency for the Realtime Database library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
-
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.4'

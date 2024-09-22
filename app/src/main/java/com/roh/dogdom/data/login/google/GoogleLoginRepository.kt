@@ -10,12 +10,10 @@ import com.google.android.gms.tasks.Task
 import com.roh.dogdom.data.firebase.user.UserInfo
 
 interface GoogleLoginRepository {
-
     fun setLogin(activity : Activity, context: Context, ) : Boolean     // kakao
     fun handleSignInResult(completedTask: Task<GoogleSignInAccount>)      // kakao
     fun GoogleSignIn(resultLauncher: ActivityResultLauncher<Intent>)
     fun GoogleSignOut()
     fun revokeAccess()
     fun GetCurrentUserProfile(upload: (GoogleInfo) -> Unit)
-
 }

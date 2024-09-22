@@ -41,8 +41,6 @@ class LoginViewModel @Inject constructor(
         _goMain.call()
     }
     fun goGoogleLogin() {
-
-//        loginRepository.googleLogin()
         googleLoginRepository.GoogleSignIn(resultLauncher)
         googleLoginRepository.GetCurrentUserProfile{ userInfo ->
             val InfoPath = "dogdom/user/user-google-${userInfo.userId}"
@@ -65,6 +63,7 @@ class LoginViewModel @Inject constructor(
         bottomMenuRepository.setBottomNavigation()
     }
     fun setLogin(activity : Activity, context: Context, resultLauncher: ActivityResultLauncher<Intent>) {
+        Log.e("LoginViewModel", "setLogin")
         this.resultLauncher = resultLauncher
         googleLoginRepository.setLogin(activity, context)
     }

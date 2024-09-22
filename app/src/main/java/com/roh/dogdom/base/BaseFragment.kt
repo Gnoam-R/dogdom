@@ -17,7 +17,6 @@ abstract class BaseFragment<B : ViewDataBinding>(
 ) : Fragment() {
     lateinit var binding: B
     protected lateinit var thisContext: Context
-
     lateinit var mContext : Context
     lateinit var mActivity : Activity
 
@@ -56,17 +55,7 @@ abstract class BaseFragment<B : ViewDataBinding>(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
-
         }
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//            window.statusBarColor = 0x00000000  // transparent
-//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            val flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-//            window.addFlags(flags)
-//        }
-//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     }
 
     fun clearSystemStatusBarLayout() {
@@ -75,7 +64,6 @@ abstract class BaseFragment<B : ViewDataBinding>(
             w.clearFlags(
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
             )
-
         }
     }
 
@@ -113,19 +101,4 @@ abstract class BaseFragment<B : ViewDataBinding>(
             // 21 버전 이상일 때
         }
     }
-
-//    fun showProgressDialog() {
-//        if (!lottieDialog.isAdded) {
-//            lottieDialog.show(
-//                requireActivity().supportFragmentManager,
-//                lottieDialog.tag
-//            )
-//        }
-//    }
-//
-//    fun hideProgressDialog() {
-//        if (lottieDialog.isAdded) {
-//            lottieDialog.dismissAllowingStateLoss()
-//        }
-//    }
 }

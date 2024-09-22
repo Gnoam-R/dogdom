@@ -16,14 +16,9 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
     private val _goEx = SingleLiveEvent<Unit>()
     val goEx: LiveData<Unit> get() = _goEx
-
-    init {
-    }
-
     fun goEx() {
         _goEx.call()
     }
-
     fun initBottomMenu(activity: Activity, view : View, navController: NavController) {
         bottomMenuRepository.initBottomNavigation(activity, view, navController)
     }

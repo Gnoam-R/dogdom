@@ -1,7 +1,5 @@
 package com.roh.dogdom.views.home
 
-
-import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,11 +12,9 @@ import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.db.BaseLocalDataSource
-import com.roh.dogdom.data.firebase.FireBaseRepository
 import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
-import com.roh.dogdom.data.firebase.user.UserRepositoryImpl
 import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.home.MainPost
 import com.roh.dogdom.databinding.FragmentHomeBinding

@@ -2,7 +2,6 @@
     <string name="app_name">dogdom</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="login_text">By signing in, you agree to the User Agreement\nand Privacy Terms.</string>
     <string name="password_to_login_text">Password to Login</string>
 
@@ -70,7 +69,6 @@
     <string name="settings_about_dogdom">About Dogdom</string>
     <string name="settings_switch_account">Switch Account</string>
     <string name="settings_log_out">Log out</string>
-
 
     <!--    API Key-->
     <string name="gods_api_key">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</string>

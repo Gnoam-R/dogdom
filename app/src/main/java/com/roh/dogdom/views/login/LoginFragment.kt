@@ -6,11 +6,9 @@ import android.app.NotificationManager
 import android.content.Intent
 import android.provider.Settings
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -27,20 +25,14 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login){
-
 //    private val viewModel: LocalPageViewModel by viewModel()
-
     private val viewModel by viewModels<LoginViewModel>()
-
     private val permissionRepository: PermissionRepository = PermissionRepositoryImpl()
-
     private val permissionUnder13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA)
     private val permissionOver13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS)
-
     private var checkPermission = false
     private var checkOverlay = false
     private var checkNotification = false
-
     private var version13 = true
     private var versionUnder13 = false
 
@@ -94,6 +86,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grandResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grandResults)
         checkPermission = permissionRepository.onRequestPermissionsResult(requestCode, permissions, grandResults)
+
+        Log.e("LoginFragment","0920----onRequestPermissionsResult")
 
         // 앱이 13버전의 위라면
         if(version13 == true){
