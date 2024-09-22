@@ -30,6 +30,8 @@
 - Navigation 화면 구성 및 이동
 - 게시글 검색 기능
 - 디자인 패턴 MVVM & Hilt 적용
+- [Repository Pattern](https://hail-authority-984.notion.site/Repository-Pattern-1091ab4bbe9f80b98fbdf6c2de17829e?pvs=4) 
+
 
 ***
 
