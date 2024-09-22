@@ -63,6 +63,7 @@ class LoginViewModel @Inject constructor(
         bottomMenuRepository.setBottomNavigation()
     }
     fun setLogin(activity : Activity, context: Context, resultLauncher: ActivityResultLauncher<Intent>) {
+        Log.e("LoginViewModel", "setLogin")
         this.resultLauncher = resultLauncher
         googleLoginRepository.setLogin(activity, context)
     }

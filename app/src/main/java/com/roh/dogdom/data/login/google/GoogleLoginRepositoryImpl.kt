@@ -4,17 +4,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.roh.dogdom.data.firebase.user.UserInfo
-
 
 class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
     private val TAG = "LoginRepositoryImpl"
@@ -31,14 +27,12 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
         .build()
 
     override fun setLogin(activity : Activity, context: Context) : Boolean {
+        Log.e(TAG, "setLogin")
         mActivity = activity
         mContext = context
         mGoogleSignInClient = GoogleSignIn.getClient(mActivity,gso)
-
-//        setResultSignUP()
         return true
     }
-
 
     override fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
@@ -49,8 +43,7 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
             val displayName = account?.displayName.toString()
             val photoUrl = account?.photoUrl.toString()
             val ID = account?.id.toString()
-
-            //viewModel.UpdateData(displayName, ID, email, photoUrl,0)
+            val token = account?.idToken.toString()
 
             Log.e(TAG, "로그인한 유저의 이메일 ${email}")
             Log.e(TAG, "로그인한 유저의 성 ${familyName}")
@@ -59,6 +52,7 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
             Log.e(TAG, "로그인한 유저의 프로필 사진의 주소 ${photoUrl}")
             Log.e(TAG, "로그인한 유저의 ID ${ID}")
 
+
         }catch (e: ApiException) {
             Log.e(TAG, "signInResult:failed code= ${e.statusCode}")
         }
@@ -66,8 +60,8 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
 
     override fun GoogleSignIn(resultLauncher: ActivityResultLauncher<Intent>) {
         val signIntent: Intent = mGoogleSignInClient.signInIntent
-        Log.e(TAG, "signIntent ${signIntent}")
         resultLauncher.launch(signIntent)
+
     }
     override fun GoogleSignOut() {
         mGoogleSignInClient.signOut()

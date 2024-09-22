@@ -7,9 +7,10 @@ class LoginRepositoryImpl ()
     override fun kakaoLogin(): Boolean {
         return true
     }
-
+    override fun googleLogin(): Boolean {
+        return true
+    }
     override fun goEmailSignUp(): Boolean {
-        Log.e("LoginRepositoryImpl", "goEmailSignUp")
         return true
     }
 
@@ -17,7 +18,4 @@ class LoginRepositoryImpl ()
         return true
     }
 
-    override fun googleLogin(): Boolean {
-        return true
-    }
 }
