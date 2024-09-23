@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.Task
 import com.roh.dogdom.views.startup.MainActivity
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.login.kakao.KakaoLoginRepository
+import com.roh.dogdom.data.login.kakao.KakaoLoginRepositoryImpl
 import com.roh.dogdom.data.permission.PermissionRepository
 import com.roh.dogdom.data.permission.PermissionRepositoryImpl
 import com.roh.dogdom.databinding.FragmentLoginBinding
@@ -36,11 +38,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private var version13 = true
     private var versionUnder13 = false
 
+    private val kakaoLoginRepository: KakaoLoginRepository = KakaoLoginRepositoryImpl()
+
     override fun init() {
         setSystemStatusBarLayout()
         SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
         mActivity = activity as MainActivity
         binding.vm = viewModel
+
+        // google 소셜 로그인
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             // 정상적으로 결과가 받아들여지면 조건문 실행
             if (result.resultCode == Activity.RESULT_OK){
@@ -50,6 +56,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 viewModel.goMain()
             }
         }
+
+//        kakaoLoginRepository.setLogin(mActivity, mContext)
+//        kakaoLoginRepository.signIn()
+
         viewModel.setLogin(mActivity,mContext,resultLauncher)
 //        askPermission()
         initViewModelCallback()

@@ -13,7 +13,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
-    private val TAG = "LoginRepositoryImpl"
+    private val TAG = this::class.simpleName
     private lateinit var mActivity : Activity
     private lateinit var mContext : Context
 

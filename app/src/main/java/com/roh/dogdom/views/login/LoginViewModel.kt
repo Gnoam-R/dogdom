@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -14,6 +13,7 @@ import com.roh.dogdom.data.bottommenu.BottomMenuRepository
 import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.login.LoginRepository
 import com.roh.dogdom.data.login.google.GoogleLoginRepository
+import com.roh.dogdom.data.login.kakao.KakaoLoginRepository
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -23,6 +23,7 @@ class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
     private val bottomMenuRepository: BottomMenuRepository,
     private val googleLoginRepository: GoogleLoginRepository,
+    private val kakaoLoginRepository: KakaoLoginRepository,
     private val userRepository: UserRepository
 ) : ViewModel(){
 
@@ -53,7 +54,7 @@ class LoginViewModel @Inject constructor(
         }
     }
     fun goKakaoLogin() {
-        loginRepository.kakaoLogin()
+        kakaoLoginRepository.signIn()
     }
     fun handleSignInResult(task: Task<GoogleSignInAccount>) {
         googleLoginRepository.handleSignInResult(task)
@@ -66,5 +67,6 @@ class LoginViewModel @Inject constructor(
         Log.e("LoginViewModel", "setLogin")
         this.resultLauncher = resultLauncher
         googleLoginRepository.setLogin(activity, context)
+        kakaoLoginRepository.setLogin(activity, context)
     }
 }
