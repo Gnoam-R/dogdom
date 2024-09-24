@@ -2,9 +2,7 @@ package com.roh.dogdom.data.login.kakao
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.model.ClientError
@@ -26,7 +24,6 @@ class KakaoLoginRepositoryImpl: KakaoLoginRepository {
         }
     }
     override fun setLogin(activity: Activity, context: Context): Boolean {
-        Log.e(TAG, "setLogin")
         mActivity = activity
         mContext = context
         val kakaoSdkAppkeyString = mContext.getString(R.string.kakao_app_key)
@@ -35,13 +32,10 @@ class KakaoLoginRepositoryImpl: KakaoLoginRepository {
     }
 
     override fun signIn() {
-        Log.e(TAG, "signIn")
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(mContext)) {
-            Log.e(TAG, "카카오계정으로 로그인 실패----3")
             UserApiClient.instance.loginWithKakaoTalk(mContext) { token, error ->
                 // 로그인 실패 부분
                 if (error != null) {
-                    Log.e(TAG, "로그인 실패 $error")
                     // 사용자가 취소
                     if (error is ClientError && error.reason == ClientErrorCause.Cancelled ) {
                         return@loginWithKakaoTalk

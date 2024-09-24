@@ -27,23 +27,13 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login){
-//    private val viewModel: LocalPageViewModel by viewModel()
     private val viewModel by viewModels<LoginViewModel>()
-    private val permissionRepository: PermissionRepository = PermissionRepositoryImpl()
-    private val permissionUnder13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA)
-    private val permissionOver13 = arrayOf<String>(Manifest.permission.ANSWER_PHONE_CALLS, Manifest.permission.CAMERA, Manifest.permission.POST_NOTIFICATIONS)
-    private var checkPermission = false
-    private var checkOverlay = false
-    private var checkNotification = false
-    private var version13 = true
-    private var versionUnder13 = false
-
-    private val kakaoLoginRepository: KakaoLoginRepository = KakaoLoginRepositoryImpl()
 
     override fun init() {
+        mActivity = activity as MainActivity
         setSystemStatusBarLayout()
         SystemUiChangeColor(enumUiColorPos.totalUiBarWhite)
-        mActivity = activity as MainActivity
+
         binding.vm = viewModel
 
         // google 소셜 로그인
@@ -56,79 +46,21 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 viewModel.goMain()
             }
         }
-
-//        kakaoLoginRepository.setLogin(mActivity, mContext)
-//        kakaoLoginRepository.signIn()
-
         viewModel.setLogin(mActivity,mContext,resultLauncher)
-//        askPermission()
         initViewModelCallback()
-        Log.e("LoginFragment","${findNavController().currentDestination?.id}")
     }
-
-    private fun askPermission() {
-        if(permissionRepository.checkVersion()) {
-            permissionRepository.setPermissions( mActivity, permissionOver13, 1000)
-            permissionRepository.requestPermissions()
-            version13 = true
-        }
-        else {
-            permissionRepository.setPermissions(mActivity, permissionUnder13, 1000)
-            permissionRepository.requestPermissions()
-            versionUnder13 = true
-
-            val notificationManager = mActivity.getSystemService(NotificationManager::class.java)
-            if (!notificationManager.areNotificationsEnabled()) {
-                val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-                    .putExtra(Settings.EXTRA_APP_PACKAGE, mActivity.packageName)
-                startActivity(intent)
-            }else{
-                checkNotification =true
-            }
-        }
-//        checkOverlay = repository.checkOverlay()
-    }
-
-    private fun moveNextView() {
-        // 접속 제한을 두는 것 보다는 향후 이용시 다시 물어보는것이 나을듯하다
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grandResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grandResults)
-        checkPermission = permissionRepository.onRequestPermissionsResult(requestCode, permissions, grandResults)
-
-        Log.e("LoginFragment","0920----onRequestPermissionsResult")
-
-        // 앱이 13버전의 위라면
-        if(version13 == true){
-            if(checkPermission == true && checkOverlay == true ){
-                moveNextView()
-            }
-        }
-        // 앱이 13버전의 아래라면
-        else if(versionUnder13 == true) {
-            if(checkPermission == true && checkOverlay == true && checkNotification ==true){
-                moveNextView()
-            }
-        }
-        else {
-//            Log.e(TAG,"permission version error")
-        }
-    }
-
-    fun setResultSignUP() {
-
-    }
-
     private fun initViewModelCallback() {
         with(viewModel) {
             goMain.observe(viewLifecycleOwner, Observer {
                 // 바텀 네비게이션 설정
                 setBottomNav()
-                val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-                findNavController().navigate(direction)
+                moveNextView()
             })
-
         }
+    }
+
+    private fun moveNextView() {
+        val direction: NavDirections = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+        findNavController().navigate(direction)
     }
 }
