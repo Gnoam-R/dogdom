@@ -13,12 +13,13 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
-    private val TAG = "LoginRepositoryImpl"
+    private val TAG = this::class.simpleName
     private lateinit var mActivity : Activity
     private lateinit var mContext : Context
 
     // 구글 소셜 로그인
     lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var mResultLauncher: ActivityResultLauncher<Intent>
 
     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestEmail()
@@ -26,12 +27,20 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
         .requestId()
         .build()
 
-    override fun setLogin(activity : Activity, context: Context) : Boolean {
-        Log.e(TAG, "setLogin")
+    override fun setLogin(activity : Activity, context: Context, resultLauncher: ActivityResultLauncher<Intent>) : Boolean {
         mActivity = activity
         mContext = context
-        mGoogleSignInClient = GoogleSignIn.getClient(mActivity,gso)
+        mResultLauncher = resultLauncher
+        mGoogleSignInClient = GoogleSignIn.getClient(mActivity, gso)
         return true
+    }
+    override fun signIn() {
+        val signIntent: Intent = mGoogleSignInClient.signInIntent
+        mResultLauncher.launch(signIntent)
+    }
+    override fun signOut() {
+        mGoogleSignInClient.signOut()
+            .addOnCompleteListener(mActivity) {}
     }
 
     override fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
@@ -45,30 +54,19 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
             val ID = account?.id.toString()
             val token = account?.idToken.toString()
 
-            Log.e(TAG, "로그인한 유저의 이메일 ${email}")
-            Log.e(TAG, "로그인한 유저의 성 ${familyName}")
-            Log.e(TAG, "로그인한 유저의 이름 ${givenName}")
-            Log.e(TAG, "로그인한 유저의 전체이름 ${displayName}")
-            Log.e(TAG, "로그인한 유저의 프로필 사진의 주소 ${photoUrl}")
-            Log.e(TAG, "로그인한 유저의 ID ${ID}")
-
-
+            /*
+                Log.e(TAG, "로그인한 유저의 이메일 ${email}")
+                Log.e(TAG, "로그인한 유저의 성 ${familyName}")
+                Log.e(TAG, "로그인한 유저의 이름 ${givenName}")
+                Log.e(TAG, "로그인한 유저의 전체이름 ${displayName}")
+                Log.e(TAG, "로그인한 유저의 프로필 사진의 주소 ${photoUrl}")
+                Log.e(TAG, "로그인한 유저의 ID ${ID}")
+            */
         }catch (e: ApiException) {
             Log.e(TAG, "signInResult:failed code= ${e.statusCode}")
         }
     }
 
-    override fun GoogleSignIn(resultLauncher: ActivityResultLauncher<Intent>) {
-        val signIntent: Intent = mGoogleSignInClient.signInIntent
-        resultLauncher.launch(signIntent)
-
-    }
-    override fun GoogleSignOut() {
-        mGoogleSignInClient.signOut()
-            .addOnCompleteListener(mActivity) {
-
-            }
-    }
     override fun revokeAccess() {
         mGoogleSignInClient.revokeAccess()
             .addOnCompleteListener(mActivity) {
@@ -100,5 +98,4 @@ class GoogleLoginRepositoryImpl () : GoogleLoginRepository {
             Log.e(TAG, "현재 로그인한 유저의 프로필 사진의 주소 ${photoUrl}")
         }
     }
-
 }

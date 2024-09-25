@@ -30,13 +30,13 @@ class ViewPagerAdapterTypeImage (var AdapterItem: MainPost2, var mainPosition : 
         val ImageMember = binding.ivViewPager
 
         fun bind(item: MainPost2, position: Int) {
-            Log.e("ViewPagerAdapterTypeImage", "test : ${position}")
+//            Log.e("ViewPagerAdapterTypeImage", "test : ${position}")
 
             val currentTime = System.currentTimeMillis()
             val sdf = SimpleDateFormat("yyyy-MM-dd-hh-mm-ss")
             val date = sdf.format(currentTime)
 
-            Log.e("ViewPagerAdapterTypeImage", "test : ${mainPosition}")
+//            Log.e("ViewPagerAdapterTypeImage", "test : ${mainPosition}")
             var position1 = mainPosition + 1
             var position2 = position + 1
             postRepository.downloadImage(ImageMember, "file/img${position1}_$position2.jpeg")

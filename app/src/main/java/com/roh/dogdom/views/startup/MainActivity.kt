@@ -1,6 +1,5 @@
 package com.roh.dogdom.views.startup
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer

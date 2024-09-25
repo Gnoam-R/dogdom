@@ -5,15 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
 import com.roh.dogdom.data.bottommenu.BottomMenuRepository
-import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.login.LoginRepository
-import com.roh.dogdom.data.login.google.GoogleLoginRepository
+import com.roh.dogdom.data.login.LoginType
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,49 +20,33 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
     private val bottomMenuRepository: BottomMenuRepository,
-    private val googleLoginRepository: GoogleLoginRepository,
-    private val userRepository: UserRepository
 ) : ViewModel(){
 
 
-    lateinit var resultLauncher: ActivityResultLauncher<Intent>
     lateinit var mActivity: Activity
     private val _goMain = SingleLiveEvent<Unit>()
     val goMain: LiveData<Unit> get() = _goMain
     private val _goEmailSignUp = SingleLiveEvent<Unit>()
     val goEmailSignUp: LiveData<Unit> get() = _goEmailSignUp
 
-//    private val _setBtMenu = SingleLiveEvent<Unit>()
-//    val setBtMenu: LiveData<Unit> get() = _setBtMenu
-
     fun goMain() {
         _goMain.call()
     }
-    fun goGoogleLogin() {
-        googleLoginRepository.GoogleSignIn(resultLauncher)
-        googleLoginRepository.GetCurrentUserProfile{ userInfo ->
-            val InfoPath = "dogdom/user/user-google-${userInfo.userId}"
-            userRepository.uploadToServer(userInfo, InfoPath)
-//            userInfo.userId = ""
-//            val InfoPath2 = "dogdom/user/user-google-${userInfo.userId}"
-//            userRepository.uploadToServer(userInfo, InfoPath2)
-//            val InfoPath3 = "dogdom/user/user-google-${userInfo.userId}"
-//            userRepository.uploadToServer(userInfo, InfoPath)
+
+    fun goLogin(num: Int) {
+        when (num) {
+            1 -> loginRepository.goLogin(LoginType.GOOGLE)
+            2 -> loginRepository.goLogin(LoginType.KAKAO)
         }
     }
-    fun goKakaoLogin() {
-        loginRepository.kakaoLogin()
-    }
+
     fun handleSignInResult(task: Task<GoogleSignInAccount>) {
-        googleLoginRepository.handleSignInResult(task)
+
     }
     fun setBottomNav() {
-        Log.e("LoginViewModel", "setBottomNav")
         bottomMenuRepository.setBottomNavigation()
     }
     fun setLogin(activity : Activity, context: Context, resultLauncher: ActivityResultLauncher<Intent>) {
-        Log.e("LoginViewModel", "setLogin")
-        this.resultLauncher = resultLauncher
-        googleLoginRepository.setLogin(activity, context)
+        loginRepository.setLogin(activity, context, resultLauncher)
     }
 }
