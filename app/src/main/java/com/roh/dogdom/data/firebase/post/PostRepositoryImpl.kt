@@ -45,11 +45,11 @@ class PostRepositoryImpl : PostRepository {
     override fun downloadImage(image: ImageView, path: String) {
         // 이미지뷰 크기에 맞춰 이미지 크기 조정
         val ref = FirebaseStorage.getInstance().getReference(path)
-        Log.e("downLoadFb", "Image : $path")
+//        Log.e("downLoadFb", "Image : $path")
 
         ref.downloadUrl.addOnCompleteListener {task ->
             if (task.isSuccessful) {
-                Log.e("downLoadFb", "Image : ${image.width}, ${image.height}")
+//                Log.e("downLoadFb", "Image : ${image.width}, ${image.height}")
                 Glide.with(image.context)
                     .load(task.result)
                     .apply(RequestOptions()

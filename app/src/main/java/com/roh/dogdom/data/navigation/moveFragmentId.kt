@@ -8,6 +8,7 @@ data class MvFragment (
     val MessageId: Int = R.id.messageFragment,
     val PersonalId: Int = R.id.personalFragment,
     val ReleaseId: Int = R.id.releaseFragment,
+    val ReleaseDynamicId: Int = R.id.releaseDynamicFragment,
 )
 
 data class NextFragmentId (
@@ -17,4 +18,5 @@ data class NextFragmentId (
     val MESSAGE: Int = 4,
     val PERSONAL: Int = 5,
     val LOGIN: Int = 6,
+    val RELEASE_DYNAMIC: Int = 7,
 )

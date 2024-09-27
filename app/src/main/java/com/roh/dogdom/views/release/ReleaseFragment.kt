@@ -21,12 +21,12 @@ class ReleaseFragment : BaseFragment<FragmentReleaseBinding>(R.layout.fragment_r
         val ref = FirebaseStorage.getInstance().getReference("0604_file/0604_image3.jpeg")
         ref.downloadUrl.addOnCompleteListener {task ->
             if (task.isSuccessful) {
-                Log.e("downLoadFb----0927", "success®")
+//                Log.e("downLoadFb----0927", "success®")
                 Glide.with(this)
                     .load(task.result)
                     .into(imageView)
             } else {
-                Log.e("downLoadFb----0927", "error")
+//                Log.e("downLoadFb----0927", "error")
             }
         }
     }
