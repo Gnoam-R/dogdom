@@ -12,7 +12,7 @@ import com.roh.dogdom.R
 import com.roh.dogdom.data.navigation.*
 
 
-class BottomMenuRepositoryImpl() : BottomMenuRepository {
+class BottomNavigationRepositoryImpl() : BottomNavigationRepository {
 
     private lateinit var mActivity : Activity
     private lateinit var mView : View
@@ -48,7 +48,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
 
     override fun setBottomNavigation() {
         // 바텀 네비게이션 && jetpack 네비게이션
-        Log.e("BottomMenuRepositoryImpl", "setBottomNavigation")
+        Log.e("BottomNavigationRepositoryImpl", "setBottomNavigation")
         mNavView.setupWithNavController(mNavController)
         // 기본 아이콘 틴트 색상 제거
         val direction : NavDirections = ActionOnlyNavDirections(actionId = R.id.messagesFragment)

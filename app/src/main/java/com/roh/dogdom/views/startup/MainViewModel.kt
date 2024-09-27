@@ -5,14 +5,14 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.roh.dogdom.data.bottommenu.BottomMenuRepository
+import com.roh.dogdom.data.bottommenu.BottomNavigationRepository
 import com.roh.dogdom.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val bottomMenuRepository: BottomMenuRepository
+    private val BottomNavigationRepository: BottomNavigationRepository
 ) : ViewModel() {
     private val _goEx = SingleLiveEvent<Unit>()
     val goEx: LiveData<Unit> get() = _goEx
@@ -20,9 +20,9 @@ class MainViewModel @Inject constructor(
         _goEx.call()
     }
     fun initBottomMenu(activity: Activity, view : View, navController: NavController) {
-        bottomMenuRepository.initBottomNavigation(activity, view, navController)
+        BottomNavigationRepository.initBottomNavigation(activity, view, navController)
     }
     fun setBottomMenu() {
-        bottomMenuRepository.setBottomNavigation()
+        BottomNavigationRepository.setBottomNavigation()
     }
 }

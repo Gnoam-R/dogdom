@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
-import com.roh.dogdom.data.bottommenu.BottomMenuRepository
+import com.roh.dogdom.data.bottommenu.BottomNavigationRepository
 import com.roh.dogdom.data.login.LoginRepository
 import com.roh.dogdom.data.login.LoginType
 import com.roh.dogdom.util.SingleLiveEvent
@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
-    private val bottomMenuRepository: BottomMenuRepository,
+    private val BottomNavigationRepository: BottomNavigationRepository,
 ) : ViewModel(){
 
 
@@ -44,7 +44,7 @@ class LoginViewModel @Inject constructor(
 
     }
     fun setBottomNav() {
-        bottomMenuRepository.setBottomNavigation()
+        BottomNavigationRepository.setBottomNavigation()
     }
     fun setLogin(activity : Activity, context: Context, resultLauncher: ActivityResultLauncher<Intent>) {
         loginRepository.setLogin(activity, context, resultLauncher)
