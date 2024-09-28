@@ -1,31 +1,11 @@
 package com.roh.dogdom.data.chatgpt
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-
-//data class ChatGptMyInfo (
-//    var MyName: String = "",
-//    var MyMessage: String = "",
-//    var MyProfileImage: Int = 0,
-//        )
-//
-//data class ChatGptYourInfo (
-//    var YourName: String = "",
-//    var YourMessage: String = "",
-//    var YourProfileImage: Int = 0,
-//    )
 
 class ChatGptInfo {
     companion object {
         val dataList: MutableList<ChatGptDataSource> = mutableListOf()
     }
-
-//    companion object {
-//        var mName : String? = null
-//        var mMessage : String? = null
-//        var mImage : Int? = null
-//        var mViewType : Int? = null
-//    }
 
     fun getData(): MutableList<ChatGptDataSource> {
         return dataList
