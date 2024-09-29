@@ -22,7 +22,6 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
     private fun initViewModelCallback() {
         with(viewModel) {
             btCancel.observe(viewLifecycleOwner, Observer {
-                // 바텀 네비게이션 설정
                 Log.e("ReleaseDynamicFragment", "initViewModelCallback")
             })
         }
