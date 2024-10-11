@@ -92,7 +92,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/my_layout"
-                android:layout_width="368dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:background="@drawable/chat_bg_color_white"
                 app:layout_constraintBottom_toBottomOf="parent"
