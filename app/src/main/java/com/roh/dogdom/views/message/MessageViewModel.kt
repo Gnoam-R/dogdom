@@ -26,7 +26,7 @@ class MessageViewModel @Inject constructor(
     }
     fun setBottomNav() {
         Log.e("LoginViewModel", "setBottomNav")
-//        bottomMenuRepository.setBottomNavigation()
+//        BottomNavigationRepository.setBottomNavigation()
     }
 
     

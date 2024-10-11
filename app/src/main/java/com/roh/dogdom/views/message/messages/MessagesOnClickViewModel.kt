@@ -86,7 +86,7 @@ class MessagesOnClickViewModel @Inject constructor(
     }
 
     fun setBottomNav() {
-//        bottomMenuRepository.setBottomNavigation()
+//        BottomNavigationRepository.setBottomNavigation()
     }
 
     

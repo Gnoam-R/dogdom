@@ -1,9 +1,7 @@
 package com.roh.dogdom.module.di
 
-import com.roh.dogdom.data.bottommenu.BottomMenuRepository
-import com.roh.dogdom.data.bottommenu.BottomMenuRepositoryImpl
-import com.roh.dogdom.data.permission.PermissionRepository
-import com.roh.dogdom.data.permission.PermissionRepositoryImpl
+import com.roh.dogdom.data.bottommenu.BottomNavigationRepository
+import com.roh.dogdom.data.bottommenu.BottomNavigationRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +15,8 @@ class BottomMenuModule {
     @Singleton
     @Provides
     fun provideBottomMenuRepository(
-    ) : BottomMenuRepository {
-        return BottomMenuRepositoryImpl()
+    ) : BottomNavigationRepository {
+        return BottomNavigationRepositoryImpl()
     }
 
 }

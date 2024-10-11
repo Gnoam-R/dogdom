@@ -1,11 +1,6 @@
 package com.roh.dogdom.views.login
 
-import android.Manifest
 import android.app.Activity
-import android.app.NotificationManager
-import android.content.Intent
-import android.provider.Settings
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,14 +11,9 @@ import com.google.android.gms.tasks.Task
 import com.roh.dogdom.views.startup.MainActivity
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.login.kakao.KakaoLoginRepository
-import com.roh.dogdom.data.login.kakao.KakaoLoginRepositoryImpl
-import com.roh.dogdom.data.permission.PermissionRepository
-import com.roh.dogdom.data.permission.PermissionRepositoryImpl
 import com.roh.dogdom.databinding.FragmentLoginBinding
 import com.roh.dogdom.util.enumUiColorPos
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login){

@@ -13,6 +13,8 @@
     <string name="button_3">Button 3</string>
     <string name="see_all_logs">SEE ALL LOGS</string>
     <string name="delete_logs">Delete Logs</string>
+    <string name="cancel_button_description">cancel_titleBar</string>
+
 
     <!--home-->
     <string name="search_bar_text">Send the sample</string>

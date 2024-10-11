@@ -11,8 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.roh.dogdom.R
 import com.roh.dogdom.data.navigation.*
 
-
-class BottomMenuRepositoryImpl() : BottomMenuRepository {
+class BottomNavigationRepositoryImpl() : BottomNavigationRepository {
+    private val TAG = this::class.simpleName
 
     private lateinit var mActivity : Activity
     private lateinit var mView : View
@@ -39,6 +39,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                 mvFragment.HomeId     -> mNavView.visibility = View.VISIBLE
                 mvFragment.PersonalId -> mNavView.visibility = View.VISIBLE
                 mvFragment.MessageId  -> mNavView.visibility = View.VISIBLE
+                mvFragment.ReleaseDynamicId -> mNavView.visibility = View.VISIBLE
                 else -> {
                     mNavView.visibility = View.GONE
                 }
@@ -48,7 +49,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
 
     override fun setBottomNavigation() {
         // 바텀 네비게이션 && jetpack 네비게이션
-        Log.e("BottomMenuRepositoryImpl", "setBottomNavigation")
+        Log.e("BottomNavigationRepositoryImpl", "setBottomNavigation")
         mNavView.setupWithNavController(mNavController)
         // 기본 아이콘 틴트 색상 제거
         val direction : NavDirections = ActionOnlyNavDirections(actionId = R.id.messagesFragment)
@@ -66,12 +67,11 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
                     true
                 }
                 R.id.main_release -> {
-                    checkFragmentId(nextFragmentId.RELEASE)
+                    checkFragmentId(nextFragmentId.RELEASE_DYNAMIC)
                     true
                 }
                 R.id.main_message -> {
                     checkFragmentId(nextFragmentId.MESSAGE)
-//                    checkFragmentId(nextFragmentId.MESSAGE)
                     true
                 }
                 R.id.main_user -> {
@@ -92,6 +92,8 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
         var currentFragment : Int = -1
         var mvFragment : Int = -1
 
+
+        Log.e(TAG, "$mNavNextPos")
         when (mNavNextPos) {
             nextFragmentId.HOME -> nextFragment = 1
             nextFragmentId.CIRCLE -> nextFragment = 2
@@ -99,16 +101,11 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.MESSAGE -> nextFragment = 4
             nextFragmentId.PERSONAL -> nextFragment = 5
             nextFragmentId.LOGIN -> nextFragment = 6
+            nextFragmentId.RELEASE_DYNAMIC -> nextFragment = 7
             else -> Log.e("checkFragmentId", "check next Fragment Id again")
         }
         mvFragment = nextFragment
         moveFragment(mvFragment)
-//        if(currentFragment == nextFragment)
-//            Log.e("checkFragmentId", "locate current fragement")
-//        else {
-//            mvFragment = nextFragment
-//            moveFragment(mvFragment)
-//        }
     }
 
     private fun moveFragment(nextFragment : Int) {
@@ -119,6 +116,7 @@ class BottomMenuRepositoryImpl() : BottomMenuRepository {
             nextFragmentId.PERSONAL -> ActionOnlyNavDirections(actionId= mvFragment.PersonalId)
             nextFragmentId.RELEASE -> ActionOnlyNavDirections(actionId= mvFragment.ReleaseId)
             nextFragmentId.LOGIN -> ActionOnlyNavDirections(actionId= mvFragment.Loginid)
+            nextFragmentId.RELEASE_DYNAMIC -> ActionOnlyNavDirections(actionId= mvFragment.ReleaseDynamicId)
             else -> ActionOnlyNavDirections(actionId= mvFragment.HomeId)
         }
         mNavController.navigate(direction)

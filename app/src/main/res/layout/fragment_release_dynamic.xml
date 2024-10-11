@@ -2,12 +2,11 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-<!--        <variable-->
-<!--            name="vm"-->
-<!--            type="com.roh.dogdom.views.login.LoginViewModel" />-->
+        <variable
+            name="vm"
+            type="com.roh.dogdom.views.release.ReleaseDynamicViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +15,7 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout17"
+            android:id="@+id/release_statusBar"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:background="@drawable/bt_cancel"
+                android:onClick="@{() -> vm.onClickedCancel() }"
+                android:contentDescription="@string/cancel_button_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:background="@drawable/bt_release"
+                android:onClick="@{() -> vm.onClickedRelease() }"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -74,49 +76,117 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout18"
+            android:id="@+id/release_titleBar"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout17">
+            app:layout_constraintTop_toBottomOf="@+id/release_statusBar">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_message_title"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_release_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="10dp"
+                android:background="@null"
                 android:text="@string/release_title"
+                android:onTextChanged="@{(s, start, before, count) -> vm.releaseTitle(s)}"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_release_description"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_release_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
+                android:background="@null"
                 android:text="@string/release_desription"
+                android:onTextChanged="@{(s, start, before, count) -> vm.releaseDescription(s)}"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_message_title" />
+                app:layout_constraintTop_toBottomOf="@+id/et_release_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout18" />
+            app:layout_constraintTop_toBottomOf="@+id/release_titleBar">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_release_content1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/iv_release_card_1"
+                android:onClick="@{() -> vm.loadImage(1) }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_release_content2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_release_content2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/iv_release_card_2"
+                android:onClick="@{() -> vm.loadImage(2) }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_release_content3"
+                app:layout_constraintStart_toEndOf="@+id/iv_release_content1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_release_content3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/iv_release_card_3"
+                android:onClick="@{() -> vm.loadImage(3) }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_release_content4"
+                app:layout_constraintStart_toEndOf="@+id/iv_release_content2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_release_content4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:background="@drawable/bt_release_add"
+                android:onClick="@{() -> vm.loadImage(4) }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_release_content3"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
