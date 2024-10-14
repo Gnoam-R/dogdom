@@ -18,8 +18,11 @@ class ReleaseDynamicViewModel @Inject constructor(
     private val _loadImage = SingleLiveEvent<Unit>()
     val loadImage: LiveData<Unit> get() = _loadImage
 
-    private val _btCancle = SingleLiveEvent<Unit>()
-    val btCancel: LiveData<Unit> get() = _btCancle
+    private val _btBack = SingleLiveEvent<Unit>()
+    val btBack: LiveData<Unit> get() = _btBack
+
+    private val _btNext = SingleLiveEvent<Unit>()
+    val btNext: LiveData<Unit> get() = _btNext
 
     private val _releaseTitle = MutableLiveData("")
     val releaseTitle: LiveData<String> get() = _releaseTitle
@@ -31,12 +34,12 @@ class ReleaseDynamicViewModel @Inject constructor(
 
     }
 
-    fun onClickedCancel() {
-        _btCancle.call()
+    fun onClickedBack() {
+        _btBack.call()
     }
 
-    fun onClickedRelease() {
-
+    fun onClickedNext() {
+        _btNext.call()
     }
 
     fun releaseTitle(text: CharSequence) {
@@ -46,9 +49,5 @@ class ReleaseDynamicViewModel @Inject constructor(
     fun releaseDescription(text: CharSequence) {
         Log.e("releaseDescription", "$text")
         _releaseDescription.value = text.toString()
-    }
-
-    fun handleSignInResult(task: Task<GoogleSignInAccount>) {
-
     }
 }

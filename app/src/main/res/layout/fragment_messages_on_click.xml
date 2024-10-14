@@ -87,12 +87,13 @@
             android:background="#FCFCFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_chat_gpt">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/my_layout"
-                android:layout_width="368dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:background="@drawable/chat_bg_color_white"
                 app:layout_constraintBottom_toBottomOf="parent"
