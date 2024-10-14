@@ -15,7 +15,6 @@
  */
 
 package com.roh.dogdom.views.log
-
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +22,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-
 import com.roh.dogdom.R
 import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.navigator.AppNavigator
@@ -36,7 +34,6 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
-
     @Inject lateinit var logger: LoggerLocalDataSource
     @Inject lateinit var navigator: AppNavigator
 
@@ -50,17 +47,8 @@ class ButtonsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-//        populateFields(context)
     }
 
-//    private fun populateFields(context: Context) {
-//        logger = (context.applicationContext as LogApplication).
-//            serviceLocator.loggerLocalDataSource
-//
-//        navigator = (context.applicationContext as LogApplication).
-//            serviceLocator.provideNavigator(requireActivity())
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Button>(R.id.button1).setOnClickListener {

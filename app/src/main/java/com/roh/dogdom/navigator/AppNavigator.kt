@@ -2,6 +2,7 @@ package com.roh.dogdom.navigator
 
 
 enum class Screens {
+    HOME,
     BUTTONS,
     LOGS
 }

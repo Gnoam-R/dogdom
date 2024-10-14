@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:background="@drawable/bt_cancel"
-                android:onClick="@{() -> vm.onClickedCancel() }"
+                android:onClick="@{() -> vm.onClickedBack() }"
                 android:contentDescription="@string/cancel_button_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="18dp"
                 android:background="@drawable/bt_release"
-                android:onClick="@{() -> vm.onClickedRelease() }"
+                android:onClick="@{() -> vm.onClickedNext() }"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
