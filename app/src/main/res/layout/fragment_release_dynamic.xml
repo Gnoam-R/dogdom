@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
@@ -15,7 +15,7 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/release_statusBar"
+            android:id="@+id/ct_release_statusBar"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,41 +48,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout9"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:layout_marginTop="44dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/message_title"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/release_titleBar"
+            android:id="@+id/ct_first"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/release_statusBar">
+            app:layout_constraintTop_toBottomOf="@+id/ct_release_statusBar">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_release_title"
@@ -117,21 +89,21 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/release_titleBar">
+            app:layout_constraintTop_toTopOf="@+id/ct_second">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_release_content1"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:background="@drawable/iv_release_card_1"
                 android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE) }"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -141,12 +113,12 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_release_content2"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:background="@drawable/iv_release_card_2"
                 android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE) }"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -156,12 +128,12 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_release_content3"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:background="@drawable/iv_release_card_3"
                 android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE) }"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -171,13 +143,13 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/iv_release_content4"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:background="@drawable/bt_release_add"
                 android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE) }"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -185,6 +157,77 @@
                 app:layout_constraintStart_toEndOf="@+id/iv_release_content3"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_second"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/ct_first">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/iv_card_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ct_image_statusBar"/>
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ct_image_statusBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/colorWhiteOrange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ct_second">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/release_image_title"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/bt_image_release"
+                    app:layout_constraintStart_toEndOf="@+id/bt_image_close"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/bt_image_close"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="18dp"
+                    android:background="@drawable/ic_close_white"
+                    android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE_CLOSE) }"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/bt_image_release"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/ic_release_white"
+                    android:onClick="@{() -> vm.onClick(vm.viewId.IMAGE_RELEASE) }"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

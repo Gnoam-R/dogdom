@@ -1,9 +1,7 @@
 package com.roh.dogdom.module.di
 
-import com.roh.dogdom.data.chatgpt.ChatGptRepository
-import com.roh.dogdom.data.chatgpt.ChatGptRepositoryImpl
-import com.roh.dogdom.data.dogimage.DogImageRepository
-import com.roh.dogdom.data.dogimage.DogImageRepositoryImpl
+import com.roh.dogdom.data.image.remote.DogImageRepository
+import com.roh.dogdom.data.image.remote.DogImageRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

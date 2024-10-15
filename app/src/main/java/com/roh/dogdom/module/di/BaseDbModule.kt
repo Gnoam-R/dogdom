@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import com.roh.dogdom.data.db.BaseDao
 import com.roh.dogdom.data.db.BaseDb
-import com.roh.dogdom.data.db.Log.LogDao
-import com.roh.dogdom.data.db.Log.LogDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

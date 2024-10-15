@@ -30,6 +30,9 @@ class ReleaseDynamicViewModel @Inject constructor() : ViewModel(){
             ReleaseDynamicViewId.TITLE -> return
             ReleaseDynamicViewId.DESCRIPTION -> return
             ReleaseDynamicViewId.IMAGE -> _loadImage.call()
+            ReleaseDynamicViewId.IMAGE_CLOSE -> return
+            ReleaseDynamicViewId.IMAGE_RELEASE -> return
+
         }
     }
 
@@ -50,5 +53,7 @@ enum class ReleaseDynamicViewId() {
     RELEASE,
     TITLE,
     DESCRIPTION,
-    IMAGE
+    IMAGE,
+    IMAGE_CLOSE,
+    IMAGE_RELEASE,
 }

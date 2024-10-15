@@ -1,5 +1,7 @@
 package com.roh.dogdom.views.home
 
+import android.content.Intent
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +14,7 @@ import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.db.BaseLocalDataSource
+import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
 import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
@@ -34,6 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private lateinit var retrofit : Retrofit
 
     @Inject lateinit var baseDb: BaseLocalDataSource
+    @Inject lateinit var logDb: LoggerLocalDataSource
     @Inject lateinit var navigator: AppNavigator
 
     @Inject lateinit var commentRepository: CommentRepository
@@ -83,6 +87,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         baseDb.getAllLogs { it ->
             Log.e("initDB ", "${it}")
         }
+
+//        logDb.addLog("hello : ${aa}")
+//        logDb.getAllLogs {
+//            Log.e("logDb ", "${it}")
+//        }
     }
 
     var aa = 0
@@ -94,15 +103,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
         initRetrofit()
-//        initFB()
+        initFB()
 
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
             Log.e("HomeFragment","${aa}")
             initDB(aa++)
-//            replaceFragment(3, buttonsFragment)
-//            navigator.navigateTo(Screens.BUTTONS)
+            replaceFragment(3, buttonsFragment)
+            navigator.navigateTo(Screens.BUTTONS)
         }
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
@@ -110,6 +119,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         }
         binding.btTgDiscover.setOnClickListener {
             baseDb.removeLogs()
+            logDb.removeLogs()
         }
         val etQuestion = binding.etSearch
 
