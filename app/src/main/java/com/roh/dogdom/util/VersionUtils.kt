@@ -82,4 +82,10 @@ object VersionUtils {
     fun hasS(): Boolean {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
     }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    @JvmStatic
+    fun hasTiramisu(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+    }
 }
