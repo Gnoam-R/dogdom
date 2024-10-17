@@ -136,12 +136,13 @@
             tools:layout="@layout/item_home_horizontal_recycler1" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_fragment_container2"
+            android:id="@+id/ct_home_second"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_fragment_container1"
             tools:layout="@layout/fragment_home_second_contents">

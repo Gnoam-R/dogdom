@@ -141,7 +141,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             }
             2 -> {
                 childFragmentManager.beginTransaction().apply {
-                    replace(R.id.main_fragment_container2, fragment)
+                    replace(R.id.ct_home_second, fragment)
                     commit()
                 }
             }
