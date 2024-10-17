@@ -26,8 +26,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.roh.dogdom.R
-import com.roh.dogdom.data.db.Log.Log
-import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
+import com.roh.dogdom.data.db.log.LogEntity
+import com.roh.dogdom.data.db.log.LoggerLocalDataSource
 import com.roh.dogdom.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -89,7 +89,7 @@ class LogsFragment : Fragment() {
  * RecyclerView adapter for the logs list.
  */
 private class LogsViewAdapter(
-    private val logsDataSet: List<Log>,
+    private val logsDataSet: List<LogEntity>,
     private val daterFormatter: DateFormatter
 ) : RecyclerView.Adapter<LogsViewAdapter.LogsViewHolder>() {
 

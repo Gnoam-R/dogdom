@@ -1,7 +1,6 @@
 package com.roh.dogdom.views.release
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
@@ -14,8 +13,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.db.release.local.ReleaseDatabase
+import com.roh.dogdom.data.db.release.local.ReleaseLocalDataSource
 import com.roh.dogdom.databinding.FragmentReleaseDynamicBinding
 import com.roh.dogdom.navigator.AppNavigator
 import com.roh.dogdom.util.MoveViewType
@@ -27,13 +31,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.layout.fragment_release_dynamic){
     @Inject lateinit var navigator: AppNavigator
+    @Inject lateinit var releaseDb: ReleaseLocalDataSource
+
     private val viewModel by viewModels<ReleaseDynamicViewModel>()
 
     private val pickMultipleMedia =
         registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(3)) { uris ->
             // Callback is invoked after th user selects a media item or closes the photo picker.
             if (uris != null) {
-                pref.setString("isImageLoaded", "로드 완료")
                 Log.d("PhotoPicker", "Selected URI: $uris")
             } else {
                 Log.d("PhotoPicker", "No media selected")
@@ -43,7 +48,6 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
     private var getImageLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            pref.setString("isImageLoaded", "로드 완료")
             val data: Intent? = result.data
             data?.data?.let { uri ->
                 loadImage(uri)
@@ -51,30 +55,37 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
     override fun onStart() {
         super.onStart()
-        isImageLoaded()
+        // isImageLoaded()
     }
 
     override fun init() {
         binding.vm = viewModel
-        resetView()
         initViewModelCallback()
     }
 
+    private fun initDB() {
+        releaseDb.add(
+            1004,
+            "제목",
+            "내용",
+            "이미지 uri"
+        )
+        releaseDb.getAll {
+            Log.e("releaseDb ", "${it}")
+        }
+    }
+
+
     private fun resetView() {
-        pref.setString("isImageLoaded", null)
         binding.ctImage.visibility = View.VISIBLE
         binding.ctSecond.visibility = View.GONE
     }
 
     private fun isImageLoaded() {
         val isImageLoaded =  pref.getString("isImageLoaded", null)
-
+        Log.e("ReleaseDynamicFragment-check", "onStart: isImageLoaded $isImageLoaded")
         if(isImageLoaded != "null") {
             binding.ctImage.visibility = View.GONE
             binding.ctSecond.visibility = View.VISIBLE
@@ -87,12 +98,16 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
     private fun initViewModelCallback() {
         with(viewModel) {
             btBack.observe(viewLifecycleOwner, Observer {
+
                 moveView(MoveViewType.BACK)
             })
             btNext.observe(viewLifecycleOwner, Observer {
                 moveView(MoveViewType.NEXT)
             })
             loadImage.observe(viewLifecycleOwner, Observer {
+//                releaseDb.remove()
+
+                initDB()
                 pickImageFromGallery()
             })
         }

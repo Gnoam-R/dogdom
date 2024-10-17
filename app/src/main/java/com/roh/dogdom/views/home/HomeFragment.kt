@@ -1,7 +1,5 @@
 package com.roh.dogdom.views.home
 
-import android.content.Intent
-import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,8 +11,8 @@ import com.roh.dogdom.api.chatGpt.ChatMessage
 import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.db.BaseLocalDataSource
-import com.roh.dogdom.data.db.Log.LoggerLocalDataSource
+import com.roh.dogdom.data.db.log.LoggerLocalDataSource
+import com.roh.dogdom.data.db.release.local.ReleaseLocalDataSource
 import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
@@ -36,7 +34,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
 
-    @Inject lateinit var baseDb: BaseLocalDataSource
     @Inject lateinit var logDb: LoggerLocalDataSource
     @Inject lateinit var navigator: AppNavigator
 
@@ -83,15 +80,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     }
     private fun initDB(aa : Int) {
         Log.e("initDB ", "${aa}")
-        baseDb.addLog("test : ${aa}" )
-        baseDb.getAllLogs { it ->
-            Log.e("initDB ", "${it}")
-        }
-
-//        logDb.addLog("hello : ${aa}")
-//        logDb.getAllLogs {
-//            Log.e("logDb ", "${it}")
-//        }
     }
 
     var aa = 0
@@ -118,7 +106,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             replaceFragment(3, homeSearchFragment)
         }
         binding.btTgDiscover.setOnClickListener {
-            baseDb.removeLogs()
             logDb.removeLogs()
         }
         val etQuestion = binding.etSearch

@@ -2,8 +2,8 @@ package com.roh.dogdom.module.di
 
 import android.content.Context
 import androidx.room.Room
-import com.roh.dogdom.data.db.Log.LogDao
-import com.roh.dogdom.data.db.Log.LogDB
+import com.roh.dogdom.data.db.log.LogDao
+import com.roh.dogdom.data.db.log.LogDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
