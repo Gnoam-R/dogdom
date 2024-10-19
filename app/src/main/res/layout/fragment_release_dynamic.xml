@@ -50,7 +50,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ct_first"
             android:layout_width="match_parent"
-            android:layout_height="76dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,32 +58,36 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_release_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
                 android:layout_marginTop="10dp"
                 android:background="@null"
                 android:text="@string/release_title"
-                android:onTextChanged="@{(s, start, before, count) -> vm.releaseTitle(s)}"
+                android:onTextChanged="@{(s, start, before, count) -> vm.getTitle(s)}"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_release_description"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
                 android:background="@null"
                 android:text="@string/release_desription"
-                android:onTextChanged="@{(s, start, before, count) -> vm.releaseDescription(s)}"
+                android:onTextChanged="@{(s, start, before, count) -> vm.getComment(s)}"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_release_title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

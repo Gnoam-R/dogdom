@@ -1,6 +1,5 @@
 package com.roh.dogdom.data.db.release.local
 
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import java.util.concurrent.ExecutorService
@@ -17,20 +16,11 @@ class ReleaseLocalDataSource @Inject constructor(private val releaseDao: Release
     }
 
     fun add(
-        userId: Int,
-        title: String?,
-        comment: String?,
-        imageUri: String?,
+        release: ReleaseEntity
     ) {
         executorService.execute {
             releaseDao.insertAll(
-                ReleaseEntity(
-                    userId,
-                    title,
-                    comment,
-                    imageUri,
-                    System.currentTimeMillis()
-                )
+                release
             )
         }
     }

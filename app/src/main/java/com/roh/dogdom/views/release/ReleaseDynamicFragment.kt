@@ -13,12 +13,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.db.release.local.ReleaseDatabase
+import com.roh.dogdom.data.db.release.local.ReleaseEntity
 import com.roh.dogdom.data.db.release.local.ReleaseLocalDataSource
 import com.roh.dogdom.databinding.FragmentReleaseDynamicBinding
 import com.roh.dogdom.navigator.AppNavigator
@@ -34,12 +31,16 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
     @Inject lateinit var releaseDb: ReleaseLocalDataSource
 
     private val viewModel by viewModels<ReleaseDynamicViewModel>()
+    private var releaseEntity = ReleaseEntity(
+        userId = 1004
+    )
 
     private val pickMultipleMedia =
         registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(3)) { uris ->
             // Callback is invoked after th user selects a media item or closes the photo picker.
             if (uris != null) {
                 Log.d("PhotoPicker", "Selected URI: $uris")
+                releaseEntity.imageUri = uris.toString()
             } else {
                 Log.d("PhotoPicker", "No media selected")
             }
@@ -50,14 +51,13 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
             data?.data?.let { uri ->
-                loadImage(uri)
+                releaseEntity.imageUri = uri.toString()
             }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        // isImageLoaded()
     }
 
     override fun init() {
@@ -65,49 +65,25 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
         initViewModelCallback()
     }
 
-    private fun initDB() {
-        releaseDb.add(
-            1004,
-            "제목",
-            "내용",
-            "이미지 uri"
-        )
+    private fun insertRelease(info: ReleaseEntity) {
+        releaseDb.add(info)
         releaseDb.getAll {
             Log.e("releaseDb ", "${it}")
-        }
-    }
-
-
-    private fun resetView() {
-        binding.ctImage.visibility = View.VISIBLE
-        binding.ctSecond.visibility = View.GONE
-    }
-
-    private fun isImageLoaded() {
-        val isImageLoaded =  pref.getString("isImageLoaded", null)
-        Log.e("ReleaseDynamicFragment-check", "onStart: isImageLoaded $isImageLoaded")
-        if(isImageLoaded != "null") {
-            binding.ctImage.visibility = View.GONE
-            binding.ctSecond.visibility = View.VISIBLE
-        }
-        else {
-            Log.e("ReleaseDynamicFragment", "$isImageLoaded")
         }
     }
 
     private fun initViewModelCallback() {
         with(viewModel) {
             btBack.observe(viewLifecycleOwner, Observer {
-
                 moveView(MoveViewType.BACK)
             })
             btNext.observe(viewLifecycleOwner, Observer {
+                releaseEntity.title = releaseTitle.value
+                releaseEntity.comment = releaseComment.value
+                insertRelease(releaseEntity)
                 moveView(MoveViewType.NEXT)
             })
             loadImage.observe(viewLifecycleOwner, Observer {
-//                releaseDb.remove()
-
-                initDB()
                 pickImageFromGallery()
             })
         }
@@ -132,11 +108,27 @@ class ReleaseDynamicFragment : BaseFragment<FragmentReleaseDynamicBinding>(R.lay
         }
     }
 
+    private fun resetView() {
+        binding.ctImage.visibility = View.VISIBLE
+        binding.ctSecond.visibility = View.GONE
+    }
+
+    private fun isImageLoaded() {
+        val isImageLoaded =  pref.getString("isImageLoaded", null)
+        Log.e("ReleaseDynamicFragment-check", "onStart: isImageLoaded $isImageLoaded")
+        if(isImageLoaded != "null") {
+            binding.ctImage.visibility = View.GONE
+            binding.ctSecond.visibility = View.VISIBLE
+        }
+        else {
+            Log.e("ReleaseDynamicFragment", "$isImageLoaded")
+        }
+    }
+
     private fun loadImage(imageUri: Uri) {
         try {
             Log.e("ReleaseDynamicFragment", "imageUri: $imageUri")
             val bitmap = MediaStore.Images.Media.getBitmap(mContext.contentResolver, imageUri)
-//            imageView.setImageBitmap(bitmap) // imageView는 이미지 표시를 위한 ImageView입니다.
         } catch (e: IOException) {
             e.printStackTrace()
         }

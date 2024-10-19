@@ -78,11 +78,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         postRepository.init()
         userRepository.init()
     }
-    private fun initDB(aa : Int) {
-        Log.e("initDB ", "${aa}")
-    }
-
-    var aa = 0
 
     override fun init() {
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
@@ -96,8 +91,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
-            Log.e("HomeFragment","${aa}")
-            initDB(aa++)
             replaceFragment(3, buttonsFragment)
             navigator.navigateTo(Screens.BUTTONS)
         }

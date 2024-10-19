@@ -35,8 +35,8 @@
     <string name="message_chat_input_hint">The input information</string>
 
     <!--Release-->
-    <string name="release_title">Release something new</string>
-    <string name="release_desription">What you are thinking right now...</string>
+    <string name="release_title">제목</string>
+    <string name="release_desription">내용...</string>
     <string name="release_cancle">Cancle</string>
     <string name="release_release">Release</string>
     <string name="release_next">Next</string>

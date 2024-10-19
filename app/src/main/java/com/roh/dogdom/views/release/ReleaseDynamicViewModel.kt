@@ -1,6 +1,5 @@
 package com.roh.dogdom.views.release
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,8 +18,8 @@ class ReleaseDynamicViewModel @Inject constructor() : ViewModel(){
     val btNext: LiveData<Unit> get() = _btNext
     private val _releaseTitle = MutableLiveData("")
     val releaseTitle: LiveData<String> get() = _releaseTitle
-    private val _releaseDescription = MutableLiveData("")
-    val releaseDescription: LiveData<String> get() = _releaseDescription
+    private val _releaseComment = MutableLiveData("")
+    val releaseComment: LiveData<String> get() = _releaseComment
 
     fun onClick(viewType: ReleaseDynamicViewId) {
         when (viewType) {
@@ -32,20 +31,16 @@ class ReleaseDynamicViewModel @Inject constructor() : ViewModel(){
             ReleaseDynamicViewId.IMAGE -> _loadImage.call()
             ReleaseDynamicViewId.IMAGE_CLOSE -> return
             ReleaseDynamicViewId.IMAGE_RELEASE -> return
-
         }
     }
 
-    fun releaseTitle(text: CharSequence) {
-        Log.e("releaseDescription", "$text")
+    fun getTitle(text: CharSequence) {
         _releaseTitle.value = text.toString()
     }
-    fun releaseDescription(text: CharSequence) {
-        Log.e("releaseDescription", "$text")
-        _releaseDescription.value = text.toString()
+    fun getComment(text: CharSequence) {
+        _releaseComment.value = text.toString()
     }
 }
-
 
 enum class ReleaseDynamicViewId() {
     BASE,
