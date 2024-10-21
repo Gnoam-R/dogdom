@@ -1,5 +1,6 @@
 package com.roh.dogdom.module.di
 
+import com.roh.dogdom.data.db.user.UserLocalDataSource
 import com.roh.dogdom.data.firebase.user.UserRepository
 import com.roh.dogdom.data.firebase.user.UserRepositoryImpl
 import com.roh.dogdom.data.login.LoginRepository
@@ -25,7 +26,7 @@ object LoginModule {
         return LoginRepositoryImpl(
             GoogleLoginRepositoryImpl(),
             KakaoLoginRepositoryImpl(),
-            UserRepositoryImpl()
+            UserRepositoryImpl(),
         )
     }
 }

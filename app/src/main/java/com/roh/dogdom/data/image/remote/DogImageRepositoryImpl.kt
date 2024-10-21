@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.dogimage
+package com.roh.dogdom.data.image.remote
 
 import android.util.Log
 import com.roh.dogdom.api.dog.DogImageRespond
@@ -7,7 +7,7 @@ import com.roh.dogdom.api.dog.DogRetrofitService
 import retrofit2.Callback
 import retrofit2.Retrofit
 
-class DogImageRepositoryImpl : DogImageRepository{
+class DogImageRepositoryImpl : DogImageRepository {
 
     // retrofit2 test
     private lateinit var retrofitService: DogRetrofitService

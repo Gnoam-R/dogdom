@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
     <data>
-        <variable
-            name="vm"
-            type="com.roh.dogdom.views.todo.TodoListViewModel" />
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="com.roh.dogdom.views.todo.TodoListViewModel" />-->
     </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout

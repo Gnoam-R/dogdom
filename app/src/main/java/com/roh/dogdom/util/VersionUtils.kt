@@ -3,10 +3,6 @@ package com.roh.dogdom.util
 import android.os.Build
 import androidx.annotation.ChecksSdkIntAtLeast
 
-/**
- * @author Hemanth S (h4h13).
- */
-
 object VersionUtils {
     /**
      * @return true if device is running API >= 23
@@ -81,5 +77,11 @@ object VersionUtils {
     @JvmStatic
     fun hasS(): Boolean {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+    }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    @JvmStatic
+    fun hasTiramisu(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
     }
 }

@@ -14,12 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeContentsSecondFragment :
     BaseFragment<FragmentHomeSecondContentsBinding>(R.layout.fragment_home_second_contents){
 
-    val datas = mutableListOf<Int>()
-
     private var ItemList = MainPost()
     private var ItemList2 = MainPost2()
     private lateinit var MyAdapter : HomeAdapter
-
 
     override fun init() {
         MyAdapter = HomeAdapter(ItemList2)
@@ -31,12 +28,5 @@ class HomeContentsSecondFragment :
                 Log.e("HomeContentsSecondFragment", "onItemClick: $pos" )
             }
         })
-    }
-
-    private fun moveNextScreen() {
-//        findNavController().navigate(
-//            SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-//        )
-
     }
 }

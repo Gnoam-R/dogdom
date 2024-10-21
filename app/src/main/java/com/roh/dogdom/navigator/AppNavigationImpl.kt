@@ -20,7 +20,7 @@ class AppNavigationImpl @Inject constructor(private val activity: FragmentActivi
         }
 
         activity.supportFragmentManager.beginTransaction()
-            .replace(R.id.main_fragment_container2, fragment)
+            .replace(R.id.ct_home_second, fragment)
             .addToBackStack(fragment::class.java.canonicalName)
             .commit()
     }

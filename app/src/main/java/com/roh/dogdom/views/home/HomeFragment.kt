@@ -11,7 +11,8 @@ import com.roh.dogdom.api.chatGpt.ChatMessage
 import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
-import com.roh.dogdom.data.db.BaseLocalDataSource
+import com.roh.dogdom.data.db.log.LoggerLocalDataSource
+import com.roh.dogdom.data.db.user.UserLocalDataSource
 import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
@@ -28,23 +29,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
-
-    // retrofit2 test
-    private lateinit var retrofitService: RetrofitService
-    private lateinit var retrofit : Retrofit
-
-    @Inject lateinit var baseDb: BaseLocalDataSource
     @Inject lateinit var navigator: AppNavigator
-
-    @Inject lateinit var commentRepository: CommentRepository
-    @Inject lateinit var likeRepository: LikeRepository
-    @Inject lateinit var postRepository: PostRepository
-    @Inject lateinit var userRepository: UserRepository
-
-    private lateinit var homeAdapter : HomeAdapter
-    private lateinit var mainPost : MainPost
-
-    lateinit var messages: MutableList<ChatMessage>
 
     private val viewModel by viewModels<HomeViewModel>()
 
@@ -53,39 +38,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     private val homeSearchFragment = HomeSearchFragment()
     private val buttonsFragment = ButtonsFragment()
 
-   lateinit var fbStorage : FirebaseStorage
-
-    private fun downLoadFB() {
-        // Create a storage reference from our app
-        val storageRef = fbStorage.reference
-
-        // Create a reference with an initial file path and name
-        val pathReference = storageRef.child("0604_file/0604_image1")
-
-        // Create a reference to a file from a Google Cloud Storage URI
-        val gsReference = fbStorage.getReferenceFromUrl("gs://bucket/images/stars.jpg")
-
-        // Create a reference from an HTTPS URL
-        // Note that in the URL, characters are URL escaped!
-        val httpsReference = fbStorage.getReferenceFromUrl(
-            "https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg",
-        )
-    }
-    private fun initFB() {
-        commentRepository.init()
-        likeRepository.init()
-        postRepository.init()
-        userRepository.init()
-    }
-    private fun initDB(aa : Int) {
-        Log.e("initDB ", "${aa}")
-        baseDb.addLog("test : ${aa}" )
-        baseDb.getAllLogs { it ->
-            Log.e("initDB ", "${it}")
-        }
-    }
-
-    var aa = 0
+    private lateinit var retrofitService: RetrofitService
+    private lateinit var retrofit : Retrofit
+//    lateinit var messages: MutableList<ChatMessage>
 
     override fun init() {
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
@@ -94,25 +49,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
         initRetrofit()
-//        initFB()
-
-        Log.e("HomeFragment","${findNavController().currentDestination?.id}")
 
         binding.btTgAlarm.setOnClickListener {
-            Log.e("HomeFragment","${aa}")
-            initDB(aa++)
-//            replaceFragment(3, buttonsFragment)
-//            navigator.navigateTo(Screens.BUTTONS)
+            replaceFragment(3, buttonsFragment)
+            navigator.navigateTo(Screens.BUTTONS)
         }
         binding.transformationLayout.setOnClickListener {
             binding.transformationLayout.startTransform()
             replaceFragment(3, homeSearchFragment)
         }
-        binding.btTgDiscover.setOnClickListener {
-            baseDb.removeLogs()
-        }
-        val etQuestion = binding.etSearch
-
+        binding.btTgDiscover.setOnClickListener {}
     }
 
     private fun initRetrofit() {
@@ -121,7 +67,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     }
 
     private fun replaceFragment(fragmentNum : Int, fragment: Fragment) {
-        // 현 Activity 에 연결된 Fragment 관리하는 supportFragmentManager 를 통해 Fragment 전환
         when(fragmentNum){
             1 -> {
                 childFragmentManager.beginTransaction().apply {
@@ -131,7 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
             }
             2 -> {
                 childFragmentManager.beginTransaction().apply {
-                    replace(R.id.main_fragment_container2, fragment)
+                    replace(R.id.ct_home_second, fragment)
                     commit()
                 }
             }

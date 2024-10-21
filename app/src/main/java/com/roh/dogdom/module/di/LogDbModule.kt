@@ -2,10 +2,8 @@ package com.roh.dogdom.module.di
 
 import android.content.Context
 import androidx.room.Room
-import com.roh.dogdom.data.db.BaseDao
-import com.roh.dogdom.data.db.BaseDb
-import com.roh.dogdom.data.db.Log.LogDao
-import com.roh.dogdom.data.db.Log.LogDatabase
+import com.roh.dogdom.data.db.log.LogDao
+import com.roh.dogdom.data.db.log.LogDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,19 +14,19 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object BaseDbModule {
+object LogDbModule {
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext appContext: Context) : BaseDb {
+    fun provideDatabase(@ApplicationContext appContext: Context) : LogDB {
         return Room.databaseBuilder(
             appContext,
-            BaseDb::class.java,
-            "base.db"
+            LogDB::class.java,
+            "logs.db"
         ).build()
     }
 
     @Provides
-    fun provideDao(database: BaseDb) : BaseDao {
-        return database.baseDao()
+    fun provideDao(database: LogDB) : LogDao {
+        return database.logDao()
     }
 }

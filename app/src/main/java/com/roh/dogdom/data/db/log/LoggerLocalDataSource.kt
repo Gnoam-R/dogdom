@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.db
+package com.roh.dogdom.data.db.log
 
 import android.os.Handler
 import android.os.Looper
@@ -8,8 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BaseLocalDataSource @Inject constructor(private val baseDao: BaseDao) {
-
+class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) {
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
     private val mainThreadHandler by lazy {
         Handler(Looper.getMainLooper())
@@ -17,8 +16,8 @@ class BaseLocalDataSource @Inject constructor(private val baseDao: BaseDao) {
 
     fun addLog(msg: String) {
         executorService.execute {
-            baseDao.insertAll(
-                BaseEntity(
+            logDao.insertAll(
+                LogEntity(
                     msg,
                     System.currentTimeMillis()
                 )
@@ -26,16 +25,16 @@ class BaseLocalDataSource @Inject constructor(private val baseDao: BaseDao) {
         }
     }
 
-    fun getAllLogs(callback: (List<BaseEntity>) -> Unit) {
+    fun getAllLogs(callback: (List<LogEntity>) -> Unit) {
         executorService.execute {
-            val base = baseDao.getAll()
-            mainThreadHandler.post { callback(base) }
+            val logs = logDao.getAll()
+            mainThreadHandler.post { callback(logs) }
         }
     }
 
     fun removeLogs() {
         executorService.execute {
-            baseDao.nukeTable()
+            logDao.nukeTable()
         }
     }
 
