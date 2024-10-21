@@ -22,7 +22,6 @@ class HomeAdapter(var AdapterItem: MainPost2)
 
     private var listener : OnItemClickListener? = null
     private lateinit var viewPager: ViewPager2
-
     private val commentRepository: CommentRepository = CommentRepositoryImpl()
 
     interface OnItemClickListener {
@@ -42,8 +41,6 @@ class HomeAdapter(var AdapterItem: MainPost2)
         }
     }
 
-
-
     inner class ImageViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
@@ -52,7 +49,6 @@ class HomeAdapter(var AdapterItem: MainPost2)
         val tvShare = binding.tvShare
         val idViewPager2 = binding.idViewPager2
 
-
         val storageReference = FirebaseStorage.getInstance()
 
         fun bind(AdapterItem: MainPost2) {
@@ -60,16 +56,12 @@ class HomeAdapter(var AdapterItem: MainPost2)
             var pagerAdapter = ViewPagerAdapterTypeImage(AdapterItem, pos)
             Log.e("ImageViewHolder", "ImageViewHolder: $pos" )
             idViewPager2.adapter = pagerAdapter
-
-
-//            ivPost.setImageResource(AdapterItem.getImageMembers()[pos])
             ivProfile.setImageResource(AdapterItem.getProfileMembers()[pos])
 
             tvName.text = AdapterItem.getNameMembers()[pos]
             tvLike.text = AdapterItem.getLikeMembers()[pos]
             tvMessage.text = AdapterItem.getMessageMembers()[pos]
             tvShare.text = AdapterItem.getShareMembers()[pos]
-
 
             if(pos != RecyclerView.NO_POSITION) {
                 itemView.setOnClickListener {
@@ -112,16 +104,13 @@ class HomeAdapter(var AdapterItem: MainPost2)
         }
     }
 
-
     inner class VideoViewHolder(private val binding: ItemHomeVerticalSecondRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-
         val ivProfile = binding.ivProfile
         val tvName = binding.tvName
         val tvLike = binding.tvLike
         val tvMessage = binding.tvMessage
         val tvShare = binding.tvShare
         val idViewPager2 = binding.idViewPager2
-
 
         var pagerAdapter = ViewPagerAdapterTypeVideo(AdapterItem)
 
@@ -152,16 +141,7 @@ class HomeAdapter(var AdapterItem: MainPost2)
         val multiBinding  = ItemHomeVerticalSecondRecyclerBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup, false)
         val videoBinding  = ItemHomeVerticalSecondRecyclerBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup, false)
 
-        // Instantiate a ViewPager2 and a PagerAdapter.
-//        viewPager = View.f(R.id.viewPager_winter)
-//        viewPager.setPageTransformer(TutorialZoomOutPageTransformer())
-
-//        return ImagesViewHolder(multiBinding)
-
         return when(viewType) {
-//            0 -> ImageViewHolder(singleBinding)
-//            1 -> ImagesViewHolder(multiBinding)
-//            2 -> VideoViewHolder(videoBinding)
             0 -> ImageViewHolder(singleBinding)
             1 -> ImageViewHolder(singleBinding)
             2 -> ImageViewHolder(singleBinding)
@@ -180,9 +160,4 @@ class HomeAdapter(var AdapterItem: MainPost2)
     override fun getItemCount(): Int {
         return AdapterItem.getNameMembers().size
     }
-
-//    fun addItem(check : Check) {
-//        lst.add(check)
-//    }
-
 }

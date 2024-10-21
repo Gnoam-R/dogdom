@@ -35,12 +35,3 @@ data class ChatChoice(
     @SerializedName("finish_reason") val finish_reason: String,
     @SerializedName("index") val index: Int
 )
-
-
-//data class ChatGptRequest (
-////    @SerializedName("choices") private val choices: List<ChatChoice>? = null
-//
-//    @SerializedName("message")val message: String,
-//    @SerializedName("role")val role: String,
-//    @SerializedName("finish_reason")val choices: List<ChatChoice>
-//    )

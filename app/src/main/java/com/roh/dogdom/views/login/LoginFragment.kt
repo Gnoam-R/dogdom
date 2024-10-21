@@ -11,14 +11,16 @@ import com.google.android.gms.tasks.Task
 import com.roh.dogdom.views.startup.MainActivity
 import com.roh.dogdom.R
 import com.roh.dogdom.base.BaseFragment
+import com.roh.dogdom.data.db.user.UserLocalDataSource
 import com.roh.dogdom.databinding.FragmentLoginBinding
 import com.roh.dogdom.util.enumUiColorPos
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login){
     private val viewModel by viewModels<LoginViewModel>()
-
+    @Inject lateinit var userDB: UserLocalDataSource
     override fun init() {
         mActivity = activity as MainActivity
         setSystemStatusBarLayout()

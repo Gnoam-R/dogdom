@@ -1,4 +1,4 @@
-package com.roh.dogdom.data.db.log
+package com.roh.dogdom.data.db.user
 
 import android.os.Handler
 import android.os.Looper
@@ -8,34 +8,28 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) {
+class UserLocalDataSource @Inject constructor(private val userDao: UserDao) {
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
     private val mainThreadHandler by lazy {
         Handler(Looper.getMainLooper())
     }
 
-    fun addLog(msg: String) {
+    fun addUser(info: UserEntity) {
         executorService.execute {
-            logDao.insertAll(
-                LogEntity(
-                    msg,
-                    System.currentTimeMillis()
-                )
-            )
+            userDao.insertAll(info)
         }
     }
 
-    fun getAllLogs(callback: (List<LogEntity>) -> Unit) {
+    fun getAllUsers(callback: (List<UserEntity>) -> Unit) {
         executorService.execute {
-            val logs = logDao.getAll()
-            mainThreadHandler.post { callback(logs) }
+            val usersInfo = userDao.getAll()
+            mainThreadHandler.post { callback(usersInfo)}
         }
     }
 
-    fun removeLogs() {
+    fun removeUsers() {
         executorService.execute {
-            logDao.nukeTable()
+            userDao.nukeTable()
         }
     }
-
 }
