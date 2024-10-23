@@ -42,11 +42,11 @@
 
 <h1 align="center">
 
-| **권한 요청** | **소셜 로그인** | **쿠팡 웹뷰** | **구글 맵 화면** |
+| **로그인** | **홈 화면** | **Post 등록** | **사진 선택** |
 |---|---|---|---|
 | <img src="https://github.com/user-attachments/assets/1470f06c-f59c-4f5c-b9e5-227ac25c5748" width="180" height="400"/> | <img src="https://github.com/user-attachments/assets/364ba301-64c0-4e65-b27f-d8c770fe577c" width="180" height="400"/> | <img src="https://github.com/user-attachments/assets/dcb8a42a-5eb6-4279-9a15-592fca27e33f" width="180" height="400"/>| <img src="https://github.com/user-attachments/assets/e652da12-032f-4eff-96f6-02e7dc29d7ae" width="180" height="400"/>
 
-| **AR 뷰** | **AR 뷰2** | **AR 뷰3** | **POI 업로드** | 
+| **채팅** | **채팅2** | **AR 뷰3** | **설정** | 
 |---|---|---|---|
 | <img src="https://github.com/user-attachments/assets/35dcb56e-37e8-4ded-a0f3-26dcc56ceeba" width="180" height="400"/> | <img src="https://github.com/user-attachments/assets/28da72ad-6f7c-47c8-8542-0692280622d0" width="180" height="400"/> | <img src="https://github.com/rohhyungwoo/ARAD_Public/assets/67363759/4e5bb0e1-3b92-45e1-91b6-0205fde399d0" width="180" height="400"/> |<img src="https://github.com/user-attachments/assets/5115e99e-28cd-4136-b7bd-51ce8ea85cdf" width="180" height="400"/> 
 
