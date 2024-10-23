@@ -27,7 +27,7 @@
 
 ## 🖥️ 주요 기능
 
-- [카카오톡/구글 소셜 로그인](https://github.com/Gnoam-R/dogdom/blob/main/development/login)
+- [카카오톡/구글 소셜 로그인](https://github.com/Gnoam-R/dogdom/blob/main/development/login.md)
 - [SNS 게시글 스크롤 & 파이어베이스 DB 연동](https://github.com/Gnoam-R/dogdom/blob/main/development/firebase.md)
 - [Navigation 화면 구성 및 이동](https://knowum.tistory.com/10)
 - 게시글 검색 기능
