@@ -80,5 +80,7 @@ LocalDB 데이터는 아래 쿼리문으로 가져올수 있으며 `Log`를 찍�
     fun getAll(): List<UserEntity>
 ```
 
+결과 Log 메시지
+
 ![image](https://github.com/user-attachments/assets/874c757b-99c5-4c99-baa4-b60b8c58892b)
 
