@@ -8,7 +8,7 @@
 ## 📝 Feature Check List
   - [x] Real time database 연동
   - [x] 추상화
-  - [ ] 비동기
+  - [ ] 성능 최적화
 
 ## 📷 Screenshot
 
