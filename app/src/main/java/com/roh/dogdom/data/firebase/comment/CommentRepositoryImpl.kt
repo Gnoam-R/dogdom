@@ -1,19 +1,9 @@
 package com.roh.dogdom.data.firebase.comment
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.util.Log
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
-import com.roh.dogdom.data.firebase.FireBaseRepository
 import com.roh.dogdom.data.firebase.FireBaseRepositoryImpl
-import com.roh.dogdom.data.firebase.user.UserInfo
-
 
 class CommentRepositoryImpl : CommentRepository {
 
@@ -24,9 +14,8 @@ class CommentRepositoryImpl : CommentRepository {
     lateinit var fbDatabaseRef : DatabaseReference
 
     override fun init() {
-//        Log.e("sdfd", "test")
-//        fbDatabase = fireBaseRepository.getFireBase()
-//        fbDatabaseRef = fbDatabase.getReference(InfoPah)
+        fbDatabase = fireBaseRepository.getFireBase()
+        fbDatabaseRef = fbDatabase.getReference(InfoPah)
     }
     override fun uploadToServer(commentInfo: CommentInfo, path: String) {
         fbDatabaseRef = fbDatabase.getReference(path)

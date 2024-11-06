@@ -12,7 +12,9 @@ import com.roh.dogdom.api.chatGpt.RetrofitClient
 import com.roh.dogdom.api.chatGpt.RetrofitService
 import com.roh.dogdom.base.BaseFragment
 import com.roh.dogdom.data.db.log.LoggerLocalDataSource
+import com.roh.dogdom.data.db.release.local.ReleaseLocalDataSource
 import com.roh.dogdom.data.db.user.UserLocalDataSource
+import com.roh.dogdom.data.firebase.comment.CommentInfo
 import com.roh.dogdom.data.firebase.comment.CommentRepository
 import com.roh.dogdom.data.firebase.like.LikeRepository
 import com.roh.dogdom.data.firebase.post.PostRepository
@@ -24,23 +26,37 @@ import com.roh.dogdom.navigator.Screens
 import com.roh.dogdom.util.enumUiColorPos
 import com.roh.dogdom.views.log.ButtonsFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.runBlocking
 import retrofit2.Retrofit
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
     @Inject lateinit var navigator: AppNavigator
-
     private val viewModel by viewModels<HomeViewModel>()
-
     private val homeContentsFirstFragment = HomeContentsFirstFragment()
     private val homeContentsSecondFragment = HomeContentsSecondFragment()
     private val homeSearchFragment = HomeSearchFragment()
     private val buttonsFragment = ButtonsFragment()
 
+    @Inject lateinit var commentRepository: CommentRepository
+    @Inject lateinit var release: ReleaseLocalDataSource
+
+    private fun downLoadFB() {
+        commentRepository.uploadToServer(
+            commentInfo = CommentInfo(
+                1004,
+                "그놈의 하루",
+                    userId = "gnoam"
+            ),
+            path = "dogdom/comment"
+        )
+    }
+
     private lateinit var retrofitService: RetrofitService
     private lateinit var retrofit : Retrofit
-//    lateinit var messages: MutableList<ChatMessage>
 
     override fun init() {
         SystemUiChangeColor(enumUiColorPos.totalUiBarBlack)
@@ -49,6 +65,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
         replaceFragment(2, homeContentsSecondFragment)
         initViewModelCallback()
         initRetrofit()
+        downLoadFB()
 
         binding.btTgAlarm.setOnClickListener {
             replaceFragment(3, buttonsFragment)

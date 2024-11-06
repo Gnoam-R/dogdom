@@ -22,7 +22,6 @@ class HomeAdapter(var AdapterItem: MainPost2)
 
     private var listener : OnItemClickListener? = null
     private lateinit var viewPager: ViewPager2
-    private val commentRepository: CommentRepository = CommentRepositoryImpl()
 
     interface OnItemClickListener {
         fun onItemClick (pos : Int)

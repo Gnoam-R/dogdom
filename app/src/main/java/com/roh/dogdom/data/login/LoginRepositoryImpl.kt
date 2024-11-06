@@ -13,6 +13,7 @@ import com.roh.dogdom.data.login.google.GoogleLoginRepository
 import com.roh.dogdom.data.login.kakao.KakaoLoginRepository
 import javax.inject.Inject
 import com.roh.dogdom.data.firebase.user.UserRepository
+import com.roh.dogdom.data.login.google.UserRole
 
 class LoginRepositoryImpl @Inject constructor(
     private val googleLoginRepository: GoogleLoginRepository,
@@ -20,13 +21,12 @@ class LoginRepositoryImpl @Inject constructor(
     private val userRepository: UserRepository,
 )
   : LoginRepository {
-
     private val TAG = this::class.simpleName
 
-    override fun goLogin(type: LoginType): Boolean {
+    override fun goLogin(type: LoginType, user: UserLocalDataSource): Boolean {
         when (type) {
             LoginType.KAKAO -> kakaoLogin()
-            LoginType.GOOGLE -> googleLogin()
+            LoginType.GOOGLE -> googleLogin(user = user)
             else -> return false
         }
         return true
@@ -54,27 +54,27 @@ class LoginRepositoryImpl @Inject constructor(
         }
         return true
     }
-    private fun googleLogin(): Boolean {
+    private fun googleLogin(user: UserLocalDataSource): Boolean {
         googleLoginRepository.signIn()
         googleLoginRepository.GetCurrentUserProfile{ userInfo ->
             if (isGetCurrentUserInfo()) {
 
             }
             else {
-//                userDB.addUser(UserEntity(
-//                    name = userInfo.name,
-//                    profile_image = userInfo.profileAddress,
-//                    account_id = userInfo.userId,
-//                ))
-
+                user.addUser(UserEntity(
+                    name = userInfo.name,
+                    profile_image = userInfo.profileAddress,
+                    account_id = userInfo.userId,
+                ))
+                userInfo.role = UserRole.ADMIN
                 userRepository.uploadToServer(
                     userInfo,
                     path = "dogdom/user/user-google-${userInfo.userId}"
                 )
 
-//                userDB.getAllUsers {
-//                    Log.e("LoginRepositoryImpl", "$it")
-//                }
+                user.getAllUsers {
+                    Log.e("LoginRepositoryImpl", "$it")
+                }
             }
         }
         return true

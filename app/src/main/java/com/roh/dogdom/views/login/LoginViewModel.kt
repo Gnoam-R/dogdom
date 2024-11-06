@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
 import com.roh.dogdom.data.bottommenu.BottomNavigationRepository
+import com.roh.dogdom.data.db.user.UserLocalDataSource
 import com.roh.dogdom.data.login.LoginRepository
 import com.roh.dogdom.data.login.LoginType
 import com.roh.dogdom.util.SingleLiveEvent
@@ -22,6 +23,7 @@ class LoginViewModel @Inject constructor(
     private val BottomNavigationRepository: BottomNavigationRepository,
 ) : ViewModel(){
 
+    @Inject lateinit var userDB: UserLocalDataSource
     lateinit var mActivity: Activity
     private val _goMain = SingleLiveEvent<Unit>()
     val goMain: LiveData<Unit> get() = _goMain
@@ -31,8 +33,8 @@ class LoginViewModel @Inject constructor(
 
     fun goLogin(num: Int) {
         when (num) {
-            1 -> loginRepository.goLogin(LoginType.GOOGLE)
-            2 -> loginRepository.goLogin(LoginType.KAKAO)
+            1 -> loginRepository.goLogin(LoginType.GOOGLE, userDB)
+            2 -> loginRepository.goLogin(LoginType.KAKAO, userDB)
         }
     }
 

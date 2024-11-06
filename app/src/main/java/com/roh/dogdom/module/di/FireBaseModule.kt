@@ -21,12 +21,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object FireBaseModule {
-//    @Singleton
-//    @Provides
-//    fun initializeFireBase(
-//    ) : FireBaseRepository {
-//        return FireBaseRepositoryImpl()
-//    }
+    @Singleton
+    @Provides
+    fun initializeFireBase(
+    ) : FireBaseRepository {
+        return FireBaseRepositoryImpl()
+    }
     @Singleton
     @Provides
     fun provideUserRepository(

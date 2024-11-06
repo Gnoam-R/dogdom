@@ -17,24 +17,11 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
     @Inject lateinit var userDB: UserLocalDataSource
 
-    @Inject lateinit var commentRepository: CommentRepository
-    @Inject lateinit var likeRepository: LikeRepository
-    @Inject lateinit var postRepository: PostRepository
-    @Inject lateinit var userRepository: UserRepository
-
-    lateinit var fbStorage : FirebaseStorage
     private val _goEx = SingleLiveEvent<Unit>()
     val goEx: LiveData<Unit> get() = _goEx
 
     fun goEx() {
         _goEx.call()
     }
-    private fun downLoadFB() {
-        val storageRef = fbStorage.reference
-        val pathReference = storageRef.child("0604_file/0604_image1")
-        val gsReference = fbStorage.getReferenceFromUrl("gs://bucket/images/stars.jpg")
-        val httpsReference = fbStorage.getReferenceFromUrl(
-            "https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg",
-        )
-    }
+
 }
