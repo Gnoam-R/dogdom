@@ -79,4 +79,6 @@ private fun googleLogin(user: UserLocalDataSource): Boolean {
 |  RecyclerView 이미지 로드   |
 | :-------------: |
 
+https://github.com/user-attachments/assets/d4f1ecb4-15dd-4c9d-b984-df9247ae0219
+
 
