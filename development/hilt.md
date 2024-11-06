@@ -93,3 +93,13 @@ object LoginModule {
 }
 ```
 
+위 코드는 Dagger/Hilt에서 의존성을 주입하는 모듈을 생성하는 부분으로써 앱의 생명주기동안 단 한번만 생성되어 주입됩니다.
+이러한 어노테이션으로 설정하게 되면 hilt라이브러리에서 자동으로 의존 관리를 진행하게 되고 @inject 어노테이션으로 의존성 주입이 가능해 집니다.
+
+아래는 @Module 코드를 컴파일시에 hilt 라이브러리에서 의존 관리를 위해 자동으로 생성하는 코드입니다.
+
+<img width="807" alt="image" src="https://github.com/user-attachments/assets/2c0aec0a-c173-44e9-a8a0-7afc9f61ead2">
+
+
+
+
